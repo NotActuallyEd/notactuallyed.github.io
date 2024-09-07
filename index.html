@@ -3,48 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sideproject Studio</title>
+    <title>Parallax SVG with Links</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Import DM Sans font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Add your SVG image here, this is an example of a simple SVG circle -->
-        <img src = "sideprojectlogo.svg" alt="Logo"/>
+    <div class="parallax-container">
+        <img src = "sideprojectlogo.svg" alt="Logo" width="377px" height="195px"/>
+    </div>
+
+    <div class="content">
+        <p class="text">funny placeholder</p>
+        <div class="social-links">
+            <img src="roblox.png" alt="Roblox" class="social-icon">
+            <span class="dot">•</span>
+            <img src="discord.png" alt="Discord" class="social-icon">
+        </div>
     </div>
 </body>
-<style>
-  html, body {
-    margin: 0;
-    height: 100%;
-    background-color: #0c1216;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Center the container */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Animate the SVG */
-img {
-    animation: moveUpDown 3s ease-in-out infinite;
-}
-
-/* Define the animation for moving up and down */
-@keyframes moveUpDown {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(50px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-</style>
 </html>
+
+
+/* General Reset and Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Parallax Container */
+.parallax-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Parallax Effect on SVG */
+.parallax-svg {
+    position: absolute;
+    transform: translateY(-30px);
+    will-change: transform;
+}
+
+body {
+    perspective: 1px;
+}
+
+.parallax-container {
+    transform-style: preserve-3d;
+}
+
+/* Adjust scrolling speed */
+.parallax-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: -1;
+}
+
+.parallax-container .parallax-svg {
+    transform: translateZ(-1px) scale(1.5);
+}
+
+/* Centered Content Under SVG */
+.content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Text Styling */
+.text {
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Social Links Styling */
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Social Icons Styling */
+.social-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.dot {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+/* Adding a minimum height to the body to ensure parallax scrolling */
+body {
+    height: 200vh; /* Allows the scroll effect to take place */
+}
