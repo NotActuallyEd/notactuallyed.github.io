@@ -6,15 +6,17 @@
     <title>Season 3.14</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
         
         body {
-            font-family: "DM Sans", sans-serif;
+            font-family: "Nanum Brush Script", cursive;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f5743d;
+            background: rgb(255,255,255);
+            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,158,1,1) 35%, rgba(255,47,47,1) 100%);
         }
         .countdown-container {
             text-align: center;
@@ -57,7 +59,7 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             countdownElement.innerHTML = `
-                ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds
+                ${days}D ${hours}H ${minutes}M ${seconds}S
             `;
         }
 
