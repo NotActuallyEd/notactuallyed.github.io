@@ -1,1 +1,52 @@
 <img src = "sideprojectlogo.svg" alt="Logo"/>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sideproject Studio</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Add your SVG image here, this is an example of a simple SVG circle -->
+        <img src = "sideprojectlogo.svg" alt="Logo"/>
+    </div>
+</body>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background-color: #0c1216;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Animate the SVG */
+img {
+    animation: moveUpDown 3s ease-in-out infinite;
+}
+
+/* Define the animation for moving up and down */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+</style>
+</html>
