@@ -3,125 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sideproject</title>
-    <!-- Import DM Sans font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap" rel="stylesheet">
-
+    <title>S3.14</title>
     <style>
-        /* General Reset and Font */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: black;
-            color: white;
+            font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Parallax Container */
-        .parallax-container {
-            position: relative;
             height: 100vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            margin: 0;
+            background-color: #f0f0f0;
         }
-
-        /* Parallax Effect on SVG Image */
-        .parallax-img {
-            position: absolute;
-            transform: translateY(-30px);
-            will-change: transform;
-        }
-
-        body {
-            perspective: 1px;
-        }
-
-        .parallax-container {
-            transform-style: preserve-3d;
-        }
-
-        /* Adjust scrolling speed */
-        .parallax-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: transparent;
-            z-index: -1;
-        }
-
-        .parallax-container .parallax-img {
-            transform: translateZ(-1px) scale(1.5);
-        }
-
-        /* Centered Content Under SVG */
-        .content {
+        .countdown-container {
             text-align: center;
-            margin-top: 20px;
         }
-
-        /* Text Styling */
-        .text {
-            font-size: 16px;
-            font-family: 'DM Sans', sans-serif;
-            margin-bottom: 10px;
+        h1 {
+            font-size: 36px;
         }
-
-        /* Social Links Styling */
-        .social-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Social Icons Styling */
-        .social-icon {
-            width: 30px;
-            height: 30px;
-            margin: 0 10px;
-        }
-
-        .dot {
+        #countdown {
             font-size: 24px;
-            margin: 0 10px;
-        }
-
-        /* Adding a minimum height to the body to ensure parallax scrolling */
-        body {
-            height: 200vh; /* Allows the scroll effect to take place */
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="parallax-container">
-        <!-- Using <img> to load the external SVG file -->
-        <img src="sideprojectlogo.svg" alt="parallaxing logo" class="parallax-img">
-    </div>
+<div class="countdown-container">
+    <h1>Countdown to September 14, 2024, 8:00 PM GMT+7</h1>
+    <div id="countdown"></div>
+</div>
 
-    <div class="content">
-        <p class="text">funny placeholder</p>
-        <div class="social-links">
-            <img src="roblox.png" alt="Roblox" class="social-icon">
-            <span class="dot">•</span>
-            <img src="discord.png" alt="Discord" class="social-icon">
-        </div>
-    </div>
+<script>
+    function countdownToDate(targetDate) {
+        const countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                countdownElement.innerHTML = "The time has already passed!";
+                clearInterval(interval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `
+                ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds
+            `;
+        }
+
+        const interval = setInterval(updateCountdown, 1000);
+    }
+
+    const targetDate = new Date('September 14, 2024 20:00:00 GMT+7').getTime();
+    countdownToDate(targetDate);
+</script>
 
 </body>
 </html>
