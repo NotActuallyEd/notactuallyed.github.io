@@ -3,72 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Season 3.14</title>
+    <title>Nation Roleplay</title>
+    <!-- Font Imports -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+    </style>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            zoom: 0.8;
+        }
+
         body {
-            font-family: "Nanum Brush Script", cursive;
+            font-family: 'Instrument Serif', serif;
+            background: linear-gradient(to bottom, #F4E1D2, #FF4500);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: rgb(255,255,255);
-            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,158,1,1) 35%, rgba(255,47,47,1) 100%);
+            color: #000;
         }
-        .countdown-container {
+
+        .container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Section (Title and Timer) */
+        .left-section {
             text-align: center;
         }
-        h1 {
-            font-size: 34px;
-            color: white;
-        }
-        #countdown {
+
+        .timer {
+            font-family: 'Kode Mono', monospace;
             font-size: 24px;
-            margin-top: 20px;
-            color: white;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        /* Right Section (Countries) */
+        .right-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .country {
+            background-color: #3b0101;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            width: 300px;
+            color: #FFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .country span {
+            font-family: 'Kode Mono', monospace;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .right-section {
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="countdown-container">
-    <h1>Season 3.14 ・ Mokukahoruu</h1>
-    <div id="countdown"></div>
-</div>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <div class="timer" id="countdown">30D 21H 34M 12S</div>
+            <h1>nation roleplay</h1>
+            <h2>season 3.142</h2>
+        </div>
 
-<script>
-    function countdownToDate(targetDate) {
-        const countdownElement = document.getElementById("countdown");
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="country">
+                <div>Country1</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country2</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country3</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country4</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country5</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country6</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country7</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+            <div class="country">
+                <div>Country8</div>
+                <span>42M 42.6B$ 126K 42K 76K</span>
+            </div>
+        </div>
+    </div>
 
-        function updateCountdown() {
+    <!-- JavaScript Countdown Timer -->
+    <script>
+        // Set the end date for the countdown (30 days from now)
+        const countdownDate = new Date().getTime() + (30 * 00 * 00 * 00 * 1000); 
+
+        // Update the countdown every second
+        const countdownFunction = setInterval(() => {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const distance = countdownDate - now;
 
-            if (distance < 0) {
-                countdownElement.innerHTML = "The time has already passed!";
-                clearInterval(interval);
-                return;
-            }
-
+            // Time calculations
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `
-                ${days}D ${hours}H ${minutes}M ${seconds}S
-            `;
-        }
+            // Display the result in the timer element
+            document.getElementById("countdown").innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
 
-        const interval = setInterval(updateCountdown, 1000);
-    }
-
-    const targetDate = new Date('September 14, 2024 20:00:00 GMT+7').getTime();
-    countdownToDate(targetDate);
-</script>
+            // If the countdown is over, display some message
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
