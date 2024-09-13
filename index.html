@@ -11,46 +11,46 @@
       <div class="countdown" id="countdown"></div>
       <p class="date-text">*AS OF SEPTEMBER 15TH 2024</p>
       <h1 class="title">Sahurle Nation Roleplay</h1>
-      <p class="season">Season 3.14 &bull; Mohokahoruu</p>
+      <p class="season">Season 3.14 &bull; Mohokahoruu</br>(NOT STARTED)</p>
     </div>
 
     <div class="right-section">
       <div class="country" id="country1">
-        <div class="name">Country1</div>
+        <div class="name">Akatsuki & Seojjogilmol</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <!-- Repeat for more countries -->
       <div class="country" id="country2">
-        <div class="name">Country2</div>
+        <div class="name">Bio-State Cascadia</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country3">
-        <div class="name">Country3</div>
+        <div class="name">Dosnia</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country4">
-        <div class="name">Country4</div>
+        <div class="name">Drestia</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country5">
-        <div class="name">Country5</div>
+        <div class="name">Demoria</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country6">
-        <div class="name">Country6</div>
+        <div class="name">Illqurisvaldett *(Kamikaji)</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country7">
-        <div class="name">Country7</div>
+        <div class="name">Sterylex & Kastilitus</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country8">
-        <div class="name">Country8</div>
+        <div class="name">flam whats your country</div>
         <div class="stats">42M 42.6B$ 126K 42K 76K</div>
       </div>
       <div class="country" id="country9">
-        <div class="name">Country9</div>
-        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+        <div class="name">[tairo reserved spot]</div>
+        <div class="stats">0 0$ 0 0 0</div>
       </div>
     </div>
   </div>
@@ -167,7 +167,7 @@ body {
   // Countdown Timer Script
 const countdownElement = document.getElementById("countdown");
 
-const targetDate = new Date("October 14, 2024 08:00:00 GMT+7").getTime();
+const targetDate = new Date("October 14, 2024 20:00:00 GMT+7").getTime();
 
 const updateCountdown = () => {
   const now = new Date().getTime();
@@ -182,7 +182,7 @@ const updateCountdown = () => {
 
   if (timeLeft < 0) {
     clearInterval(countdownInterval);
-    countdownElement.innerHTML = "EXPIRED";
+    countdownElement.innerHTML = "…";
   }
 };
 
