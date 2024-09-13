@@ -1,175 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHL</title>
-    <!-- Font Imports -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-    </style>
-    <style>
-        /* General Styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Instrument Serif', serif;
-            background: linear-gradient(to bottom, #F4E1D2, #FF4500);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #000;
-            overflow: hidden;
-            user-select: none;
-        }
-
-        .container {
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Left Section (Title and Timer) */
-        .left-section {
-            text-align: center;
-        }
-
-        .timer {
-            font-family: 'Kode Mono', monospace;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        /* Right Section (Countries) */
-        .right-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .country {
-            background-color: #3b0101;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 10px;
-            width: 500px;
-            color: #FFF;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 3px solid #FFCBED;
-        }
-
-        .country span {
-            font-family: 'Kode Mono', monospace;
-            font-size: 12px;
-        }
-
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .right-section {
-                margin-top: 30px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahurle Nation Roleplay</title>
 </head>
 <body>
-
-    <div class="container">
-        <!-- Left Section -->
-        <div class="left-section">
-            <div class="timer" id="countdown">hi</div>
-            <h1>Sahurle Nation Roleplay</h1>
-            <h2>Season 3.14・Mohokahoruu</h2>
-        </div>
-
-        <!-- Right Section -->
-        <div class="right-section">
-            <div class="country">
-                <div>Illqurisvaldett</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Naskara</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Akatsuki & Seojjogilmol</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>FLAM COUNTRY</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Demoria</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Jasperia</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Dosnia</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Drestia</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-            <div class="country">
-                <div>Ambrosia</div>
-                <span>42M 42.6B$ 126K 42K 76K</span>
-            </div>
-        </div>
+  <div class="container">
+    <div class="left-section">
+      <div class="countdown" id="countdown"></div>
+      <p class="date-text">*AS OF SEPTEMBER 15TH 2024</p>
+      <h1 class="title">Sahurle Nation Roleplay</h1>
+      <p class="season">Season 3.14 &bull; Mohokahoruu</p>
     </div>
 
-    <!-- JavaScript Countdown Timer -->
-    <script>
-        // Set the specific end date and time (October 15th, 2024, 08:00 GMT+7)
-        const countdownDate = new Date('October 15, 2024 08:00:00 GMT+7').getTime();
-        
-        // Update the countdown every second
-        const countdownFunction = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-        
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-            // Display the result in the timer element
-            document.getElementById("countdown").innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
-        
-            // If the countdown is over, display some message
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "GOODBYE.";
-            }
-        }, 1000);
-    </script>
-
+    <div class="right-section">
+      <div class="country" id="country1">
+        <div class="name">Country1</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <!-- Repeat for more countries -->
+      <div class="country" id="country2">
+        <div class="name">Country2</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country3">
+        <div class="name">Country3</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country4">
+        <div class="name">Country4</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country5">
+        <div class="name">Country5</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country6">
+        <div class="name">Country6</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country7">
+        <div class="name">Country7</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country8">
+        <div class="name">Country8</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+      <div class="country" id="country9">
+        <div class="name">Country9</div>
+        <div class="stats">42M 42.6B$ 126K 42K 76K</div>
+      </div>
+    </div>
+  </div>
 </body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,158,1,1) 35%, rgba(255,47,47,1) 100%);
+  font-family: 'Instrument Serif', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  max-width: 100%;
+  height: 90vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.countdown {
+  font-family: 'Kode Mono', monospace;
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.date-text {
+  font-family: 'Kode Mono', monospace;
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 3rem;
+  color: black;
+}
+
+.season {
+  font-family: 'Kode Mono', monospace;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.country {
+  background-color: #3d070a;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  color: white;
+  font-weight: bold;
+}
+
+.stats {
+  color: white;
+  font-family: 'Kode Mono', monospace;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-section {
+    width: 100%;
+    align-items: center;
+  }
+
+  .country {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+</style>
+<script>
+  // Countdown Timer Script
+const countdownElement = document.getElementById("countdown");
+
+const targetDate = new Date("October 14, 2024 08:00:00 GMT+7").getTime();
+
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const timeLeft = targetDate - now;
+
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  countdownElement.innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
+
+  if (timeLeft < 0) {
+    clearInterval(countdownInterval);
+    countdownElement.innerHTML = "EXPIRED";
+  }
+};
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+  
+</script>
 </html>
