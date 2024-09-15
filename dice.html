@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roll | SHL</title>
+</head>
+<body>
+  <div class="container">
+    <div class="dice-section">
+      <div class="dice-roll" id="dice-roll">
+        <p class="roll-value" id="roll-value">100</p>
+        <p class="modifier">+ <span id="modifier-value">100</span></p>
+      </div>
+      <p class="label">DICE ROLL</p>
+    </div>
+
+    <div class="input-section">
+      <div class="input-group">
+        <label for="min-input">Min</label>
+        <input type="number" id="min-input" min="0" max="20" required>
+      </div>
+      <div class="input-group">
+        <label for="max-input">Max</label>
+        <input type="number" id="max-input" min="0" max="20" required>
+      </div>
+      <div class="input-group">
+        <label for="modifier-input">Modifier</label>
+        <input type="number" id="modifier-input" required>
+      </div>
+      <button id="roll-btn">ROLL!</button>
+    </div>
+  </div>
+</body>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,158,1,1) 35%, rgba(255,47,47,1) 100%);
+  font-family: 'Martian Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.dice-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dice-roll {
+  background-color: #3d070a;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  flex-direction: column;
+}
+
+.roll-value {
+  font-size: 4rem;
+  color: #ff8200;
+  font-weight: 800;
+}
+
+.modifier {
+  color: #ff8200;
+  font-size: 1.2rem;
+}
+
+.label {
+  color: #3d070a;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.input-group label {
+  color: #3d070a;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 150px;
+  padding: 5px;
+  font-size: 1.2rem;
+  border: 1px solid #3d070a;
+  border-radius: 5px;
+  font-family: 'Martian Mono', monospace;
+  text-align: center;
+}
+
+button {
+  background-color: #3d070a;
+  color: #ff8200;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff8200;
+  color: #3d070a;
+  transition: 0.3s;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-section {
+    align-items: center;
+  }
+
+  .input-group {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+</style>
+<script>
+const rollBtn = document.getElementById("roll-btn");
+const rollValue = document.getElementById("roll-value");
+const modifierValue = document.getElementById("modifier-value");
+
+rollBtn.addEventListener("click", () => {
+  const minInput = document.getElementById("min-input").value;
+  const maxInput = document.getElementById("max-input").value;
+  const modifierInput = document.getElementById("modifier-input").value;
+
+  const min = parseInt(minInput);
+  const max = parseInt(maxInput);
+  const modifier = parseInt(modifierInput);
+
+  if (isNaN(min) || isNaN(max) || isNaN(modifier)) {
+    alert("Please fill all the inputs!");
+    return;
+  }
+
+  if (min < 0 || max > 20 || min > max) {
+    alert("Invalid Min or Max values!");
+    return;
+  }
+
+  const randomRoll = Math.floor(Math.random() * (max - min + 1)) + min;
+  const totalRoll = randomRoll + modifier;
+
+  rollValue.innerText = totalRoll;
+  modifierValue.innerText = modifier;
+});
+</script>
+</html>
