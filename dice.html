@@ -170,7 +170,8 @@ const rollBtn = document.getElementById("roll-btn");
 const rollValue = document.getElementById("roll-value");
 const modifierValue = document.getElementById("modifier-value");
 
-rollBtn.addEventListener("click", () => {
+// Function to handle the dice roll logic
+const rollDice = () => {
   const minInput = document.getElementById("min-input").value;
   const maxInput = document.getElementById("max-input").value;
   const modifierInput = document.getElementById("modifier-input").value;
@@ -194,6 +195,17 @@ rollBtn.addEventListener("click", () => {
 
   rollValue.innerText = totalRoll;
   modifierValue.innerText = modifier;
+};
+
+// Event listener for the "ROLL!" button click
+rollBtn.addEventListener("click", rollDice);
+
+// Event listener for the space bar press
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    event.preventDefault(); // Prevents the default spacebar action, such as scrolling
+    rollDice();
+  }
 });
 </script>
 </html>
