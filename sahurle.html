@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahurle Nation Roleplay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
+        
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Kode Mono', monospace;
+            overflow: hidden;
+        }
+
+        /* Gradient Background */
+        body {
+            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,203,186,1) 32%, rgba(255,122,0,1) 69%, rgba(255,14,14,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Sahurle Nation Roleplay Logo */
+        #sahurlenrplogo {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Subheader */
+        .subheader {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* Country Stats */
+        .stats-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px 0;
+        }
+
+        .stats-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        .stats-table th {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 16px;
+        }
+
+        .stats-table td {
+            font-family: 'Instrument Serif', serif;
+            font-size: 14px;
+        }
+
+        .stats-table tbody tr:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stats-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button-container img {
+            width: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img id="sahurlenrplogo" src="sahurlenrplogo.svg" alt="Sahurle Nation Roleplay Logo">
+
+        <!-- Countdown -->
+        <div class="countdown" id="countdown">
+            30D 00H 00M 00S
+        </div>
+
+        <!-- Subheader -->
+        <div class="subheader">
+            December 8th ・ Season 3.14 ・ Mohokahoruu
+        </div>
+
+        <!-- Stats Table -->
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country *(Prov.)</th>
+                        <th>Population</th>
+                        <th>GDP</th>
+                        <th>Army</th>
+                        <th>Navy</th>
+                        <th>Airforce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nakachi Yukiyo *(Seoj. & Kita)</td>
+                        <td>84.20M</td>
+                        <td>360.00B$</td>
+                        <td>1.05M~</td>
+                        <td>389</td>
+                        <td>546</td>
+                    </tr>
+                    <tr>
+                        <td>Commonwealth Cascadia</td>
+                        <td>17.13M</td>
+                        <td>355.65B$</td>
+                        <td>92K</td>
+                        <td>103</td>
+                        <td>247</td>
+                    </tr>
+                    <tr>
+                        <td>USS. Suicheong</td>
+                        <td>55.66M</td>
+                        <td>341.97B$</td>
+                        <td>155K</td>
+                        <td>103</td>
+                        <td>247</td>
+                    </tr>
+                    <tr>
+                        <td>Drestia</td>
+                        <td>24.38M</td>
+                        <td>111.02B$</td>
+                        <td>325K</td>
+                        <td>133</td>
+                        <td>234</td>
+                    </tr>
+                    <tr>
+                        <td>UR. Demoria</td>
+                        <td>29.92M</td>
+                        <td>332.25B$</td>
+                        <td>87K</td>
+                        <td>103</td>
+                        <td>502</td>
+                    </tr>
+                    <tr>
+                        <td>SF. Illqurisvaldet *(Kami.)</td>
+                        <td>67.42M</td>
+                        <td>365.36B$</td>
+                        <td>176K</td>
+                        <td>155</td>
+                        <td>802</td>
+                    </tr>
+                    <tr>
+                        <td>Jasperia</td>
+                        <td>25.32M</td>
+                        <td>154.23B$</td>
+                        <td>122K+L8</td>
+                        <td>284</td>
+                        <td>642</td>
+                    </tr>
+                    <tr>
+                        <td>Sterylex & Kastilitus</td>
+                        <td>28.97M</td>
+                        <td>100.02B$</td>
+                        <td>187K</td>
+                        <td>287</td>
+                        <td>876</td>
+                    </tr>
+                    <tr>
+                        <td>Virtaria</td>
+                        <td>13.98M</td>
+                        <td>99.82B$</td>
+                        <td>201K</td>
+                        <td>355</td>
+                        <td>462</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <a href="dice.html">
+                <img src="war.svg" alt="W">
+            </a>
+            <a href="dice.html">
+                <img src="nation.svg" alt="N">
+            </a>
+            <a href="dice.html">
+                <img src="other.svg" alt="O">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown function
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const targetDate = new Date('October 15, 2024 20:00:00 GMT+0700').getTime(); // Target date in GMT+7
+
+            const interval = setInterval(function() {
+                const now = new Date().getTime();
+                const timeLeft = targetDate - now;
+
+                // Calculate days, hours, minutes, and seconds
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Display result in the countdown element
+                countdownElement.innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
+
+                // If countdown finishes, stop the timer
+                if (timeLeft < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = '0D 00H 00M 00S';
+                }
+            }, 1000);
+        }
+
+        // Start the countdown
+        startCountdown();
+    </script>
+</body>
+</html>
