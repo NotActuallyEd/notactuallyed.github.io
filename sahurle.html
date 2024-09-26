@@ -3,231 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahurle Nation Roleplay</title>
-    
-    <!-- Font imports -->
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <title>SHL | Main</title>
     <style>
+        /* i dont know what you have in mind, but here we stand on opposing sides */
+        /* le go to wa */
+
         @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
-
-        /* General reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none; /* Prevents text selection */
-        }
-
+        
         body {
-            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,203,186,1) 32%, rgba(255,122,0,1) 69%, rgba(255,14,14,1) 100%);
+            margin: 0;
             font-family: 'Kode Mono', monospace;
+            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,203,186,1) 32%, rgba(255,122,0,1) 69%, rgba(255,14,14,1) 100%);
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
             height: 100vh;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden;
         }
 
-        /* Logo */
-        #logo {
-            margin-top: 20px;
+        .left-section {
+            padding: 50px;
+            color: #3E1010;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
-        /* Countdown */
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 90px;
+            margin-bottom: 50px;
+        }
+
         .countdown {
-            font-size: 3rem;
-            text-align: center;
-            font-family: 'Kode Mono', monospace;
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 30px;
         }
 
-        .subtext {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.2rem;
+        .info {
+            font-size: 40px;
+            font-weight: 600;
         }
 
-        /* Buttons (w, n, o) */
-        .button-container {
+        .icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+        }
+
+        .icons img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .right-section {
+            width: 50%;
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            align-items: center;
         }
 
-        .button-container img {
-            margin: 0 10px;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-        }
-
-        /* Table */
         table {
             width: 100%;
-            margin: 0 auto;
-            max-width: 1200px;
-            text-align: center;
+            border-collapse: separate;
+            border-spacing: 20px; /* Spacing between cells */
             font-family: 'Instrument Serif', serif;
-            color: #331a1a;
         }
 
         th, td {
-            padding: 10px;
+            text-align: left;
+            padding: 12px;
+            border: 5px solid #FF66B9;
+            background-color: #21212F;
+            color: #FF96B6;
+            border-radius: 8px;
         }
 
         th {
+            background-color: #21212F;
+            color: #DAD1FF;
+            font-size: 18px;
             font-style: italic;
+            border-color: #8381E1; /* Border color for the header row */
         }
 
         td {
-            font-family: 'Instrument Serif', serif;
+            background-color: #33141F;
+            color: #FF96B6;
         }
 
-        /* Styling the rows */
-        .country-row {
-            font-family: 'Instrument Serif', serif;
-            background-color: #381b1b;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 8px;
+        td.country {
+            font-style: italic;
         }
 
+        td.stats {
+            font-family: 'Kode Mono', monospace;
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: #DAD1FF;
+        }
+
+        /* Ensure table is vertically centered */
+        .table-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Logo -->
-    <div id="logo">
-        <img src="sahurlenrplogo.svg" alt="Sahurle Nation Roleplay Logo">
+    <div class="left-section">
+        <h1>Sahurle Nation Roleplay</h1>
+        <div id="countdown" class="countdown">30D 00H 00M 00S</div>
+        <div class="info">DECEMBER 8TH・SEASON 3.14・MOHOKAHORUU</div>
+        <div class="icons">
+            <img src="war.png" alt="War">
+            <img src="nation.png" alt="Nation">
+            <img src="other.png" alt="Other">
+        </div>
     </div>
 
-    <!-- Countdown -->
-    <div class="countdown" id="countdown">
-        30D 00H 00M 00S
+    <div class="right-section">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="highlight">Country *(Prov.)</th>
+                        <th>Population</th>
+                        <th>GDP</th>
+                        <th>Army</th>
+                        <th>Navy</th>
+                        <th>Airforce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="country">Nakachi 'Yukiyo' *(Seoj. & Kita.)</td>
+                        <td class="stats">84.20M</td>
+                        <td class="stats">360.00B$</td>
+                        <td class="stats">1.05M~</td>
+                        <td class="stats">389</td>
+                        <td class="stats">546</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Commonwealth Cascadia</td>
+                        <td class="stats">17.13M</td>
+                        <td class="stats">355.65B$</td>
+                        <td class="stats">92K</td>
+                        <td class="stats">103</td>
+                        <td class="stats">247</td>
+                    </tr>
+                    <tr>
+                        <td class="country">USS. Suicheong</td>
+                        <td class="stats">55.66M</td>
+                        <td class="stats">341.97B$</td>
+                        <td class="stats">155K</td>
+                        <td class="stats">103</td>
+                        <td class="stats">247</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Drestia</td>
+                        <td class="stats">24.38M</td>
+                        <td class="stats">111.02B$</td>
+                        <td class="stats">325K</td>
+                        <td class="stats">133</td>
+                        <td class="stats">234</td>
+                    </tr>
+                    <tr>
+                        <td class="country">UR. Demoria</td>
+                        <td class="stats">29.92M</td>
+                        <td class="stats">332.25B$</td>
+                        <td class="stats">87K</td>
+                        <td class="stats">103</td>
+                        <td class="stats">502</td>
+                    </tr>
+                    <tr>
+                        <td class="country">SF. Illqurisvaldet *(Kami.)</td>
+                        <td class="stats">67.42M</td>
+                        <td class="stats">365.36B$</td>
+                        <td class="stats">176K</td>
+                        <td class="stats">155</td>
+                        <td class="stats">802</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Jasperia</td>
+                        <td class="stats">25.32M</td>
+                        <td class="stats">154.23B$</td>
+                        <td class="stats">122K+L8</td>
+                        <td class="stats">284</td>
+                        <td class="stats">642</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Sterylex & Kastilitus</td>
+                        <td class="stats">28.97M</td>
+                        <td class="stats">100.02B$</td>
+                        <td class="stats">187K</td>
+                        <td class="stats">287</td>
+                        <td class="stats">876</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Virtaria</td>
+                        <td class="stats">13.98M</td>
+                        <td class="stats">99.82B$</td>
+                        <td class="stats">201K</td>
+                        <td class="stats">355</td>
+                        <td class="stats">462</td>
+                    </tr>
+                    <tr>
+                        <td class="country">Ambrosia</td>
+                        <td class="stats">45.55M</td>
+                        <td class="stats">279.42B$</td>
+                        <td class="stats">199K</td>
+                        <td class="stats">442</td>
+                        <td class="stats">310</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="subtext">DECEMBER 8TH・SEASON 3.14・MOHOKAHORUU</div>
-
-    <!-- Buttons -->
-    <div class="button-container">
-        <a href="dice.html"><img src="war.svg" alt="War Button"></a>
-        <a href="dice.html"><img src="nation.svg" alt="Nation Button"></a>
-        <a href="dice.html"><img src="other.svg" alt="Other Button"></a>
-    </div>
-
-    <!-- Table -->
-    <table>
-        <thead>
-            <tr>
-                <th>Country *(Prov.)</th>
-                <th>Population</th>
-                <th>GDP</th>
-                <th>Army</th>
-                <th>Navy</th>
-                <th>Airforce</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="country-row">
-                <td>Nakachi *Yukiyo (*Seoj. & Kita.)</td>
-                <td>84.20M</td>
-                <td>360.08B$</td>
-                <td>1.05M~</td>
-                <td>389</td>
-                <td>546</td>
-            </tr>
-            <tr class="country-row">
-                <td>Commonwealth Cascadia</td>
-                <td>17.13M</td>
-                <td>355.65B$</td>
-                <td>92K</td>
-                <td>103</td>
-                <td>247</td>
-            </tr>
-            <tr class="country-row">
-                <td>USS. Suicheong</td>
-                <td>55.66M</td>
-                <td>341.97B$</td>
-                <td>155K</td>
-                <td>103</td>
-                <td>247</td>
-            </tr>
-            <tr class="country-row">
-                <td>Drestia</td>
-                <td>24.38M</td>
-                <td>111.02B$</td>
-                <td>325K</td>
-                <td>133</td>
-                <td>234</td>
-            </tr>
-            <tr class="country-row">
-                <td>UR. Demoria</td>
-                <td>29.92M</td>
-                <td>332.25B$</td>
-                <td>87K</td>
-                <td>103</td>
-                <td>502</td>
-            </tr>
-            <tr class="country-row">
-                <td>SF. Illqurisvaldet *(Kami.)</td>
-                <td>67.42M</td>
-                <td>365.36B$</td>
-                <td>176K</td>
-                <td>155</td>
-                <td>802</td>
-            </tr>
-            <tr class="country-row">
-                <td>Jasperia</td>
-                <td>25.32M</td>
-                <td>154.23B$</td>
-                <td>122K+L8</td>
-                <td>284</td>
-                <td>642</td>
-            </tr>
-            <tr class="country-row">
-                <td>Sterylex & Kastilitus</td>
-                <td>28.97M</td>
-                <td>100.02B$</td>
-                <td>187K</td>
-                <td>287</td>
-                <td>876</td>
-            </tr>
-            <tr class="country-row">
-                <td>Virtaria</td>
-                <td>13.98M</td>
-                <td>99.82B$</td>
-                <td>201K</td>
-                <td>355</td>
-                <td>462</td>
-            </tr>
-        </tbody>
-    </table>
 
     <script>
-        // Countdown logic
-        const countdown = document.getElementById("countdown");
-        const targetDate = new Date("October 14, 2024 20:00:00 GMT+7").getTime();
-
-        const updateCountdown = () => {
+        function countdown() {
+            const targetDate = new Date("October 14, 2024 20:00:00 GMT+7").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
-
-            if (distance <= 0) {
-                countdown.innerHTML = "00D 00H 00M 00S";
-                clearInterval(interval);
-                return;
-            }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdown.innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
-        };
+            document.getElementById("countdown").innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
 
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }
+
+        setInterval(countdown, 1000);
     </script>
-
 </body>
 </html>
