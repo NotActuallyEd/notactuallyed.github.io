@@ -19,15 +19,15 @@
     <div class="input-section">
       <div class="input-group">
         <label for="min-input">Min</label>
-        <input type="number" id="min-input" min="1" max="20" required>
+        <input type="number" id="min-input" placeholder="1" min="1" max="20" required>
       </div>
       <div class="input-group">
         <label for="max-input">Max</label>
-        <input type="number" id="max-input" min="1" max="30" required>
+        <input type="number" id="max-input" placeholder="20" min="1" max="30" required>
       </div>
       <div class="input-group">
         <label for="modifier-input">Modifier</label>
-        <input type="number" id="modifier-input" min="0" max="20" required>
+        <input type="number" id="modifier-input" placeholder="0" min="0" max="20" required>
       </div>
       <!-- New input group for ThreadID -->
       <div class="input-group">
@@ -193,7 +193,7 @@ const sendToWebhook = async (roll, modifier, min, max, threadID) => {
   const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
   
   const payload = {
-    content: `## Dice Roll: ${roll} \n > Modifier: +${modifier} \n > Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
+    content: `# ${roll} \n > Modifier: +${modifier} \n > Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
   };
   
   try {
