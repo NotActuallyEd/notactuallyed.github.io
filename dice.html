@@ -183,11 +183,10 @@ const threadIDInput = document.getElementById("thread-id-input");
 
 // Function to send data to Discord Webhook
 const sendToWebhook = async (roll, modifier, threadID) => {
-  const webhookURL = "https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY";
+  const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
   
   const payload = {
-    content: `Dice Roll: ${roll} + Modifier: ${modifier} (ThreadID: ${threadID})`,
-    thread_id: threadID
+    content: `Dice Roll: ${roll} + Modifier: ${modifier}`
   };
   
   try {
