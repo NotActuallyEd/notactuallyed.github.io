@@ -248,7 +248,7 @@ const rollDice = () => {
 
   // Send data to webhook if ThreadID is provided
   if (threadID) {
-    sendToWebhook(totalRoll, modifier, threadID);
+    sendToWebhook(totalRoll, modifier, min, max, threadID);
   }
 };
 
@@ -262,5 +262,7 @@ document.addEventListener("keydown", (event) => {
     rollDice();
   }
 });
+</script>
+</html>
 </script>
 </html>
