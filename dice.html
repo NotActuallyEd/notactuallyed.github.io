@@ -109,6 +109,7 @@ body {
 .input-section {
   display: flex;
   flex-direction: column;
+  user-select:none;
 }
 
 .input-group {
@@ -116,7 +117,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 250px;
+  width: 35rem;
 }
 
 .input-group label {
@@ -125,7 +126,7 @@ body {
 }
 
 .input-group input {
-  width: 150px;
+  width: 400px;
   padding: 5px;
   font-size: 1.2rem;
   border: 1px solid #3d070a;
@@ -134,6 +135,12 @@ body {
   text-align: center;
   background-color: #1a1110;
   color: #ffe8de;
+}
+
+.input-group input::placeholder {
+  color: #87371f;
+  text-size: 8px;
+  opacity: 1; /* Firefox */
 }
 
 button {
