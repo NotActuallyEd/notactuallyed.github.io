@@ -27,7 +27,7 @@
       </div>
       <div class="input-group">
         <label for="modifier-input">Modifier</label>
-        <input type="number" id="modifier-input" required>
+        <input type="number" id="modifier-input" min="0" max="20" required>
       </div>
       <button id="roll-btn">ROLL!</button>
     </div>
@@ -35,7 +35,7 @@
 </body>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
 
 * {
   margin: 0;
@@ -138,13 +138,14 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.25s ease;
+  font-family: "Dela Gothic One", sans-serif;
 }
 
 button:hover {
   background-color: #4a2d2f;
   color: #ad5b50;
-  border: 1px solid white;
+  border: 0.1px solid white;
 }
 
 /* Responsive for mobile */
