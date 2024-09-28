@@ -29,6 +29,11 @@
         <label for="modifier-input">Modifier</label>
         <input type="number" id="modifier-input" min="0" max="20" required>
       </div>
+      <!-- New input group for ThreadID -->
+      <div class="input-group">
+        <label for="thread-id-input">ThreadID</label>
+        <input type="number" id="thread-id-input" placeholder="Optional Thread ID" minlength="18">
+      </div>
       <button id="roll-btn">ROLL!</button>
     </div>
   </div>
@@ -168,23 +173,53 @@ button:hover {
   }
 }
 </style>
+
 <script>
+// Fetch elements
 const rollBtn = document.getElementById("roll-btn");
 const rollValue = document.getElementById("roll-value");
 const modifierValue = document.getElementById("modifier-value");
+const threadIDInput = document.getElementById("thread-id-input");
+
+// Function to send data to Discord Webhook
+const sendToWebhook = async (roll, modifier, threadID) => {
+  const webhookURL = "https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY";
+  
+  const payload = {
+    content: `Dice Roll: ${roll} + Modifier: ${modifier} (ThreadID: ${threadID})`,
+    thread_id: threadID
+  };
+  
+  try {
+    const response = await fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error sending to webhook:", error);
+  }
+};
 
 // Function to handle the dice roll logic
 const rollDice = () => {
   const minInput = document.getElementById("min-input").value;
   const maxInput = document.getElementById("max-input").value;
   const modifierInput = document.getElementById("modifier-input").value;
+  const threadID = threadIDInput.value;
 
   const min = parseInt(minInput);
   const max = parseInt(maxInput);
   const modifier = parseInt(modifierInput);
 
   if (isNaN(min) || isNaN(max) || isNaN(modifier)) {
-    alert("Please fill all the inputs!");
+    alert("Please fill all the required inputs!");
     return;
   }
 
@@ -193,11 +228,22 @@ const rollDice = () => {
     return;
   }
 
+  // Validate ThreadID (only numbers and at least 18 characters)
+  if (threadID && (threadID.length < 18 || isNaN(threadID))) {
+    alert("ThreadID must be at least 18 digits long and contain only numbers.");
+    return;
+  }
+
   const randomRoll = Math.floor(Math.random() * (max - min + 1)) + min;
   const totalRoll = randomRoll + modifier;
 
   rollValue.innerText = totalRoll;
   modifierValue.innerText = modifier;
+
+  // Send data to webhook if ThreadID is provided
+  if (threadID) {
+    sendToWebhook(totalRoll, modifier, threadID);
+  }
 };
 
 // Event listener for the "ROLL!" button click
