@@ -190,7 +190,7 @@ const threadIDInput = document.getElementById("thread-id-input");
 
 // Function to send data to Discord Webhook
 const sendToWebhook = async (roll, modifier, min, max, threadID) => {
-  const webhookURL = `aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI4OTUyNTcyMzU1NTY5MjU0NC9icWNSMmpzSGhUUWpld1FSRnRiTWpXeVJLb3d1QTN5YnRmenNvS2VETEV2V3pPckVVM1hER2tkWEs5UFU1aWtLS0xIWT90aHJlYWRfaWQ9${threadID}`;
+  const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
   
   const payload = {
     content: `# ${roll} \n > Modifier: +${modifier} \n > Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
