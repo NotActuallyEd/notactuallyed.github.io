@@ -94,7 +94,7 @@
         color: #40293F;
         text-align: center;
         line-height: 1.5;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 5s ease-in-out;
         display: flex;
         justify-content: center;
     }
@@ -141,27 +141,27 @@
             <img src="SHLTitle.svg" alt="Sahurle Title">
         </div>
         <div class="description" id="descriptionText">
-            “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
+            "The element of nostalgia and a longing for the past. A megacorporation has taken all walks of life, and the balance between automaton and human are near perfect. Will you disrupt or take hold of it?"
         </div>
     </div>
 
     <!-- Right Column for Country Stats -->
     <div class="right">
         <div class="country-stats">
-            <div class="heading">country / population / army / motor / navy / air</div>
-            <div class="entry">tairodan / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">canary / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">ddi / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">hanguk / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">issasuku / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">koryo / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">kamikaji / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">grapy / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">kaisar / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">nihon state / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">paculasian / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">skarletia / 10.000 / 10.000 / 10.000 / 10.000</div>
-            <div class="entry">flam / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="heading">country ／ population ／ army ／ motor ／ navy ／ air</div>
+            <div class="entry">tairodan (n): 104.021 / 5.891 / 112 / 13 / 18</div>
+            <div class="entry">canary: - / - / - / -</div>
+            <div class="entry">ddi: 116.353 / 8.558 / 106 / 11 / 13</div>
+            <div class="entry">hanguk: 107.601 / 6.560 / 60 / 3 / 16</div>
+            <div class="entry">issasuku: 75.833 / 9.602 / 171 / 14 / 15</div>
+            <div class="entry">koryo: 119.674 / 6.203 / 30 / 15 / 15</div>
+            <div class="entry">kamikaji: 117.294 / 6.891 / 51 / 2 / 8</div>
+            <div class="entry">grapy (n): 100.067 / 7.317 / 134 / 14 / 20</div>
+            <div class="entry">kaisar (n): 118.471 / 3.198 / 163 / 15 / 17</div>
+            <div class="entry">nihon state: 115.293 / 8.771 / 198 / 14 / 20</div>
+            <div class="entry">paculasian: 75.721 / 9.940 / 179 / 12 / 18</div>
+            <div class="entry">skarletia: 104.294 / 7.273 / 196 / 15 / 14</div>
+            <div class="entry">flam (n): 117.564 / 9.182 / 84 / 11 / 20</div>
         </div>
     </div>
 </div>
@@ -169,9 +169,11 @@
 <script>
     // JavaScript for dynamic description text rotation
     const descriptions = [
-        "“The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”",
-        "“A different quick brown fox leaps over the lazy dog in a similar way as before.”",
-        "“The fox is quick, the dog is lazy, and they seem to endlessly jump over each other.”"
+        "“The element of nostalgia and a longing for the past. A megacorporation has taken all walks of life, and the balance between automaton and human are near perfect. Will you disrupt or take hold of it?”",
+        "“There was a time when life felt less hollow, when laughter felt like sunlight and not just another sound lost in the ruins. Now, all that's left is the echo of something we just can’t quite remember.”",
+        "“The trees reclaim what we lost, filling cracked concrete with green vines and broken windows with ivy. Nature is the only thing that remembers what it meant to be alive.”",
+        "“The air here is heavy with stories we no longer tell, buried beneath layers of dust and silence. The past lives in every empty building, every abandoned alleyway. Sometimes, I can almost feel it breathing.”",
+        "“We used to dream of a world filled with life, not automaton — and now, in the quiet spaces of abandoned streets, I wonder if we traded our souls away the day we let them take over.”"
     ];
     
     let currentDescriptionIndex = 0;
@@ -188,7 +190,7 @@
             
             // Fade in
             descriptionElement.style.opacity = '1';
-        }, 1000); // 1 second to match CSS transition time
+        }, 5000);
     }
 
     // Update description every 5 seconds
