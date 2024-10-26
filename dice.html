@@ -193,7 +193,7 @@ const sendToWebhook = async (roll, modifier, min, max, threadID) => {
   const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
   
   const payload = {
-    content: `# ${roll} \n > Modifier: +${modifier} \n > Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
+    content: `# ${roll} \n > Modifier: +${modifier} ／ Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
   };
   
   try {
