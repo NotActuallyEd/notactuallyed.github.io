@@ -14,37 +14,42 @@
         background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
         color: #1E233B;
         display: flex;
-        align-items: center;
-        justify-content: center;
         height: 100vh;
         overflow: hidden;
+        align-items: center; /* Center content vertically */
+        justify-content: center; /* Center content horizontally */
     }
 
-    /* Layout container */
+    /* Main container with responsive layout */
     .container {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 20px;
+        width: 90%;
         max-width: 1200px;
+        gap: 50px;
     }
 
-    /* Left and Right Column */
+    /* Left and right columns */
     .left, .right {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
 
-    /* Adjust alignment */
-    .left-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+    /* Responsive font sizes */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .header-links, .subheader, .country-stats .heading {
+            font-size: 16px;
+        }
+        .country-stats .entry {
+            font-size: 22px;
+        }
     }
 
     /* Header Links */
@@ -52,8 +57,10 @@
         font-size: 20px;
         color: #2A3050;
         letter-spacing: -2px;
-        margin-bottom: 10px;
-        text-align: left;
+        margin-bottom: 5px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
     }
     .header-links a {
         text-decoration: none;
@@ -64,31 +71,32 @@
         text-decoration: underline;
     }
 
-    /* Subheader */
+    /* Subheader text */
     .subheader {
         font-size: 14px;
         color: #2A3050;
         letter-spacing: -2px;
-        text-align: left;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    /* Title SVG with center alignment */
+    .title-image {
+        display: flex;
+        justify-content: center;
         margin-bottom: 20px;
     }
 
-    /* Title SVG */
-    .title-image {
-        margin: 20px 0;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    /* Dynamic Description Text */
+    /* Centered Dynamic Description Text */
     .description {
         font-size: 20px;
         color: #40293F;
         text-align: center;
-        margin: 10px 0;
         line-height: 1.5;
         transition: opacity 1s ease-in-out;
+        display: flex;
+        justify-content: center;
     }
 
     /* Country Stats Table */
@@ -97,6 +105,7 @@
         color: #1E233B;
         font-size: 20px;
         text-align: right;
+        align-self: flex-end; /* Align to right edge */
     }
     .country-stats .heading {
         font-size: 20px;
@@ -105,24 +114,6 @@
         font-size: 26px;
         margin: 5px 0;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .header-links, .subheader {
-            text-align: center;
-        }
-        .left, .right {
-            align-items: center;
-        }
-        .country-stats {
-            text-align: center;
-        }
-    }
 </style>
 </head>
 <body>
@@ -130,31 +121,28 @@
 <div class="container">
     <!-- Left Column -->
     <div class="left">
+        <!-- Header Links at the top left corner -->
         <div class="header-links">
             <a href="dice.html">dice</a> / 
             <a href="document.html">document</a> / 
             <a href="embed.html">embed</a>
         </div>
-        
+
+        <!-- Centered Content: Title and Description -->
+        <div class="title-image">
+            <img src="SHLTitle.svg" alt="Sahurle Title">
+        </div>
+        <div class="description" id="descriptionText">
+            “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
+        </div>
+
+        <!-- Subheader at the bottom left corner -->
         <div class="subheader">
             inventum 1 year 476
         </div>
-
-        <!-- Centered Content -->
-        <div class="left-content">
-            <!-- Title SVG -->
-            <div class="title-image">
-                <img src="SHLTitle.svg" alt="Sahurle Title">
-            </div>
-
-            <!-- Dynamic Description Text -->
-            <div class="description" id="descriptionText">
-                “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
-            </div>
-        </div>
     </div>
 
-    <!-- Right Column -->
+    <!-- Right Column for Country Stats -->
     <div class="right">
         <div class="country-stats">
             <div class="heading">country / population / army / motor / navy / air</div>
