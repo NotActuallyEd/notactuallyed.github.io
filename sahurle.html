@@ -122,7 +122,11 @@
 </style>
 </head>
 <body>
-
+  <audio id="background-audio" autoplay loop>
+    <source src="tothatsummer" type="audio/ogg">
+    Your browser doesn't like it when I play audio :sob:
+  </audio>
+    
 <div class="container">
     <!-- Left Column -->
     <div class="left">
@@ -130,10 +134,12 @@
         <div class="header-links">
             <a href="dice.html">dice</a> / 
             <a href="document.html">document</a> / 
-            <a href="embed.html">embed</a>
+            <a href="embed.html">embed</a> /
+            <a href="https://www.youtube.com/watch?v=Pnb6mWLvyso">music source</a> /
+            <p id="mute-toggle" onclick="toggleMute()">mute</p>
         </div>
         <div class="subheader">
-            inventum 1 year 476
+            inventum 1, year 476
         </div>
 
         <!-- Centered Content: Title and Description -->
@@ -196,6 +202,16 @@
 
     // Update description every 4 seconds (3 seconds visible + 1 second transition)
     setInterval(updateDescription, 6000);
+
+    // audioaudio time!
+    const audio = document.getElementById("background-audio");
+    const muteToggle = document.getElementById("mute-toggle");
+
+    // Function to toggle mute/unmute
+    function toggleMute() {
+      audio.muted = !audio.muted; // Toggle the muted property
+      muteToggle.textContent = audio.muted ? "unmute" : "mute"; // updaet
+    }
 </script>
 
 </body>
