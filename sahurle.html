@@ -1,254 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <title>SHL | Main</title>
-    <style>
-        /* i dont know what you have in mind, but here we stand on opposing sides */
-        /* le go to wa */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHL NRP | main</title>
+<style>
+    /* Background gradient */
+    body {
+        margin: 0;
+        font-family: 'DotGothic16', sans-serif;
+        background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
+        color: #1E233B;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
 
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
-        
-        body {
-            margin: 0;
-            font-family: 'Kode Mono', monospace;
-            background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,203,186,1) 32%, rgba(255,122,0,1) 69%, rgba(255,14,14,1) 100%);
-            display: flex;
-            justify-content: space-between;
-            height: 100vh;
-            overflow: hidden;
-        }
+    /* Header links */
+    .header-links {
+        font-size: 20px;
+        color: #2A3050;
+        letter-spacing: -2px;
+    }
+    .header-links a {
+        text-decoration: none;
+        color: inherit;
+        margin-right: 10px;
+    }
+    .header-links a:hover {
+        text-decoration: underline;
+    }
 
-        .left-section {
-            padding: 50px;
-            color: #3E1010;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+    /* Subheader text */
+    .subheader {
+        font-size: 14px;
+        color: #2A3050;
+        letter-spacing: -2px;
+    }
 
-        h1 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 40px;
-        }
+    /* Center SVG title */
+    .title-image {
+        margin-top: 20px;
+    }
 
-        .countdown {
-            font-size: 10px;
-            font-weight: bold;
-        }
+    /* Description text */
+    .description {
+        font-size: 20px;
+        color: #40293F;
+        text-align: center;
+        margin: 20px 0;
+        line-height: 1.5;
+    }
 
-        .info {
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .icons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            width: 150px;
-        }
-
-        .icons img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .right-section {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 20px; /* Spacing between cells */
-            font-family: 'Instrument Serif', serif;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 10px 20px;
-            border: 5px solid #FF66B9;
-            background-color: #21212F;
-            color: #FF96B6;
-            border-radius: 8px;
-        }
-
-        th {
-            background-color: #21212F;
-            color: #DAD1FF;
-            font-size: 18px;
-            font-style: italic;
-            border-color: #8381E1; /* Border color for the header row */
-        }
-
-        td {
-            background-color: #33141F;
-            color: #FF96B6;
-        }
-
-        td.country {
-            font-style: italic;
-        }
-
-        td.stats {
-            font-family: 'Kode Mono', monospace;
-            font-size: 16px;
-        }
-
-        .highlight {
-            color: #DAD1FF;
-        }
-
-        /* Ensure table is vertically centered */
-        .table-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-spacing: 0;
-            border-collapse: collapse;
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
-        }
-    </style>
+    /* Country stats table */
+    .country-stats {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-family: 'DotGothic16', sans-serif;
+        color: #1E233B;
+        text-align: right;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    .country-stats .heading {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .country-stats .entry {
+        font-size: 26px;
+        margin: 5px 0;
+    }
+</style>
 </head>
 <body>
 
-    <div class="left-section">
-        <h1>Sahurle Nation Roleplay</h1>
-        <div id="countdown" class="countdown">30D 00H 00M 00S</div>
-        <div class="info">DECEMBER 8TH・SEASON 3.14・MOHOKAHORUU</div>
-        <div class="icons">
-            <img src="war.png" alt="War">
-            <img src="nation.png" alt="Nation">
-            <img src="other.png" alt="Other">
-        </div>
+    <!-- Header Links -->
+    <div class="header-links">
+        <a href="dice.html">dice</a> / 
+        <a href="document.html">document</a> / 
+        <a href="embed.html">embed</a>
+    </div>
+    
+    <!-- Subheader -->
+    <div class="subheader">
+        inventum 1 year 476
     </div>
 
-    <div class="right-section">
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="highlight">Country *(Prov.)</th>
-                        <th>Population</th>
-                        <th>GDP</th>
-                        <th>Army</th>
-                        <th>Navy</th>
-                        <th>Airforce</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="country">Nakachi 'Yukiyo' *(Seoj. & Kita.)</td>
-                        <td class="stats">84.20M</td>
-                        <td class="stats">360.00B$</td>
-                        <td class="stats">1.05M~</td>
-                        <td class="stats">389</td>
-                        <td class="stats">546</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Commonwealth Cascadia</td>
-                        <td class="stats">17.13M</td>
-                        <td class="stats">355.65B$</td>
-                        <td class="stats">92K</td>
-                        <td class="stats">103</td>
-                        <td class="stats">247</td>
-                    </tr>
-                    <tr>
-                        <td class="country">USS. Suicheong</td>
-                        <td class="stats">55.66M</td>
-                        <td class="stats">341.97B$</td>
-                        <td class="stats">155K</td>
-                        <td class="stats">103</td>
-                        <td class="stats">247</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Drestia</td>
-                        <td class="stats">24.38M</td>
-                        <td class="stats">111.02B$</td>
-                        <td class="stats">325K</td>
-                        <td class="stats">133</td>
-                        <td class="stats">234</td>
-                    </tr>
-                    <tr>
-                        <td class="country">UR. Demoria</td>
-                        <td class="stats">29.92M</td>
-                        <td class="stats">332.25B$</td>
-                        <td class="stats">87K</td>
-                        <td class="stats">103</td>
-                        <td class="stats">502</td>
-                    </tr>
-                    <tr>
-                        <td class="country">SF. Illqurisvaldet *(Kami.)</td>
-                        <td class="stats">67.42M</td>
-                        <td class="stats">365.36B$</td>
-                        <td class="stats">176K</td>
-                        <td class="stats">155</td>
-                        <td class="stats">802</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Jasperia</td>
-                        <td class="stats">25.32M</td>
-                        <td class="stats">154.23B$</td>
-                        <td class="stats">122K+L8</td>
-                        <td class="stats">284</td>
-                        <td class="stats">642</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Sterylex & Kastilitus</td>
-                        <td class="stats">28.97M</td>
-                        <td class="stats">100.02B$</td>
-                        <td class="stats">187K</td>
-                        <td class="stats">287</td>
-                        <td class="stats">876</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Virtaria</td>
-                        <td class="stats">13.98M</td>
-                        <td class="stats">99.82B$</td>
-                        <td class="stats">201K</td>
-                        <td class="stats">355</td>
-                        <td class="stats">462</td>
-                    </tr>
-                    <tr>
-                        <td class="country">Ambrosia</td>
-                        <td class="stats">45.55M</td>
-                        <td class="stats">279.42B$</td>
-                        <td class="stats">199K</td>
-                        <td class="stats">442</td>
-                        <td class="stats">310</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Title SVG -->
+    <div class="title-image">
+        <img src="SHLTitle.svg" alt="Sahurle">
     </div>
 
-    <script>
-        function countdown() {
-            const targetDate = new Date("October 14, 2024 20:00:00 GMT+7").getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+    <!-- Description Text -->
+    <div class="description">
+        Season 3.26 • Polariarch<br>
+        “The quick brown fox jumps over the lazy dog<br>
+        as the quick brown fox also jumped over<br>
+        the lazy dog as the quick brown fox kept<br>
+        jumping over.”
+    </div>
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <!-- Country Stats -->
+    <div class="country-stats">
+        <div class="heading">country / population / army / motor / navy / air</div>
+        <div class="entry">tairodan / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">canary / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">ddi / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">hanguk / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">issasuku / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">koryo / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">kamikaji / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">grapy / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">kaisar / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">nihon state / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">paculasian / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">skarletia / 10.000 / 10.000 / 10.000 / 10.000</div>
+        <div class="entry">flam / 10.000 / 10.000 / 10.000 / 10.000</div>
+    </div>
 
-            document.getElementById("countdown").innerHTML = `${days}D ${hours}H ${minutes}M ${seconds}S`;
-
-            if (distance < 0) {
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }
+</body>
+</html>
 
         setInterval(countdown, 1000);
     </script>
