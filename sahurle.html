@@ -19,6 +19,7 @@
         overflow: hidden;
         align-items: center; /* Center content vertically */
         justify-content: center; /* Center content horizontally */
+        user-select: none;
     }
 
     /* Main container with responsive layout */
@@ -112,6 +113,11 @@
     .country-stats .entry {
         font-size: 16px;
         margin: 5px 0;
+        user-select: text;
+    }
+    .country-stats .entry::selection {
+        background: black;
+        color: white;
     }
 </style>
 </head>
