@@ -123,10 +123,6 @@
 </style>
 </head>
 <body>
-  <audio id="background-audio" autoplay loop>
-    <source src="tothatsummer.ogg" type="audio/ogg">
-    Your browser doesn't like it when I play audio :sob:
-  </audio>
     
 <div class="container">
     <!-- Left Column -->
@@ -137,6 +133,7 @@
             <a href="document">document</a>/ 
             <a href="embed">embed</a>/
             <a href="https://www.youtube.com/watch?v=Pnb6mWLvyso">music source</a>/
+            <a href="#" id="muteUnmute">mute</a>
         </div>
         <div class="subheader">
             inventum 1, year 476
@@ -172,6 +169,9 @@
     </div>
 </div>
 
+<!-- Looping Background Audio -->
+<audio id="backgroundAudio" src="tothatsummer.ogg" loop autoplay></audio>
+
 <script>
     // JavaScript for dynamic description text rotation
     const descriptions = [
@@ -199,23 +199,24 @@
             descriptionElement.style.opacity = '1';
         }, 1000); // 1 second to match CSS transition time
     }
-
-        // Get the audio element and the mute toggle link
-        const audio = document.getElementById("background-audio");
-        const muteToggle = document.getElementById("mute-toggle");
-
-        // Function to toggle mute and update link text
-        function toggleMute() {
-            // Toggle the muted property
-            audio.muted = !audio.muted;
-            
-            // Update the link text based on muted status
-            muteToggle.textContent = audio.muted ? "Unmute" : "Mute";
-            
-            // Prevent the link's default action (navigating)
-            return false;
+    
+    // Audio mute/unmute toggle
+    const audio = document.getElementById("backgroundAudio");
+    const muteButton = document.getElementById("muteUnmute");
+    
+    muteButton.addEventListener("click", () => {
+        if (audio.muted) {
+            audio.muted = false;
+            muteButton.textContent = "mute";
+        } else {
+            audio.muted = true;
+            muteButton.textContent = "unmute";
         }
-    </script>
+    });
+    
+    // Start description rotation
+    setInterval(updateDescription, 5000); // Rotate every 5 seconds
+</script>
 
 </body>
 </html>
