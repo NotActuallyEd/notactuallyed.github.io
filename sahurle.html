@@ -14,29 +14,37 @@
         background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
         color: #1E233B;
         display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100vh;
         overflow: hidden;
     }
 
-    /* Layout styling */
+    /* Layout container */
     .container {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        padding: 40px;
+        padding: 20px;
+        max-width: 1200px;
     }
 
-    /* Left and right column */
-    .left {
+    /* Left and Right Column */
+    .left, .right {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
-    .right {
-        flex: 1;
+
+    /* Adjust alignment */
+    .left-content {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 
     /* Header Links */
@@ -44,7 +52,8 @@
         font-size: 20px;
         color: #2A3050;
         letter-spacing: -2px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+        text-align: left;
     }
     .header-links a {
         text-decoration: none;
@@ -55,24 +64,29 @@
         text-decoration: underline;
     }
 
-    /* Subheader text */
+    /* Subheader */
     .subheader {
         font-size: 14px;
         color: #2A3050;
         letter-spacing: -2px;
+        text-align: left;
+        margin-bottom: 20px;
     }
 
     /* Title SVG */
     .title-image {
         margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 
     /* Dynamic Description Text */
     .description {
         font-size: 20px;
         color: #40293F;
-        margin: 20px 0;
-        text-align: left;
+        text-align: center;
+        margin: 10px 0;
         line-height: 1.5;
         transition: opacity 1s ease-in-out;
     }
@@ -91,6 +105,24 @@
         font-size: 26px;
         margin: 5px 0;
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .header-links, .subheader {
+            text-align: center;
+        }
+        .left, .right {
+            align-items: center;
+        }
+        .country-stats {
+            text-align: center;
+        }
+    }
 </style>
 </head>
 <body>
@@ -98,26 +130,27 @@
 <div class="container">
     <!-- Left Column -->
     <div class="left">
-        <!-- Header Links -->
         <div class="header-links">
             <a href="dice.html">dice</a> / 
             <a href="document.html">document</a> / 
             <a href="embed.html">embed</a>
         </div>
         
-        <!-- Subheader -->
         <div class="subheader">
             inventum 1 year 476
         </div>
 
-        <!-- Title SVG -->
-        <div class="title-image">
-            <img src="SHLTitle.svg" alt="Sahurle Title">
-        </div>
+        <!-- Centered Content -->
+        <div class="left-content">
+            <!-- Title SVG -->
+            <div class="title-image">
+                <img src="SHLTitle.svg" alt="Sahurle Title">
+            </div>
 
-        <!-- Dynamic Description Text -->
-        <div class="description" id="descriptionText">
-            “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
+            <!-- Dynamic Description Text -->
+            <div class="description" id="descriptionText">
+                “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
+            </div>
         </div>
     </div>
 
@@ -173,4 +206,3 @@
 
 </body>
 </html>
-
