@@ -145,7 +145,7 @@
 
         <!-- Centered Content: Title and Description -->
         <div class="title-image">
-            <img src="SHLTitle.svg" alt="Sahurle Title">
+            <img src="SHLTitle.svg" alt="Sahurle / Season 3.26 * Polariarch">
         </div>
         <div class="description" id="descriptionText">
             "The element of nostalgia and a longing for the past. A megacorporation has taken all walks of life, and the balance between automaton and human are near perfect. Will you disrupt or take hold of it?"
@@ -201,19 +201,22 @@
         }, 1000); // 1 second to match CSS transition time
     }
 
-    // Update description every 4 seconds (3 seconds visible + 1 second transition)
-    setInterval(updateDescription, 6000);
+        // Get the audio element and the mute toggle link
+        const audio = document.getElementById("background-audio");
+        const muteToggle = document.getElementById("mute-toggle");
 
-    // audioaudio time!
-    const audio = document.getElementById("background-audio");
-    const muteToggle = document.getElementById("mute-toggle");
-
-    // Function to toggle mute/unmute
-    function toggleMute() {
-      audio.muted = !audio.muted; // Toggle the muted property
-      muteToggle.textContent = audio.muted ? "unmute" : "mute"; // updaet
-    }
-</script>
+        // Function to toggle mute and update link text
+        function toggleMute() {
+            // Toggle the muted property
+            audio.muted = !audio.muted;
+            
+            // Update the link text based on muted status
+            muteToggle.textContent = audio.muted ? "Unmute" : "Mute";
+            
+            // Prevent the link's default action (navigating)
+            return false;
+        }
+    </script>
 
 </body>
 </html>
