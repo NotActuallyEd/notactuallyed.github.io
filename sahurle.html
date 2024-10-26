@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHL NRP | main</title>
+<title>Sahurle</title>
+<!-- Import DotGothic16 and Montserrat fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
     /* Background gradient */
     body {
@@ -12,17 +14,37 @@
         background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
         color: #1E233B;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         height: 100vh;
+        overflow: hidden;
     }
 
-    /* Header links */
+    /* Layout styling */
+    .container {
+        display: flex;
+        width: 100%;
+        padding: 40px;
+    }
+
+    /* Left and right column */
+    .left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* Header Links */
     .header-links {
         font-size: 20px;
         color: #2A3050;
         letter-spacing: -2px;
+        margin-bottom: 5px;
     }
     .header-links a {
         text-decoration: none;
@@ -40,34 +62,30 @@
         letter-spacing: -2px;
     }
 
-    /* Center SVG title */
+    /* Title SVG */
     .title-image {
-        margin-top: 20px;
+        margin: 20px 0;
     }
 
-    /* Description text */
+    /* Dynamic Description Text */
     .description {
         font-size: 20px;
         color: #40293F;
-        text-align: center;
         margin: 20px 0;
+        text-align: left;
         line-height: 1.5;
+        transition: opacity 1s ease-in-out;
     }
 
-    /* Country stats table */
+    /* Country Stats Table */
     .country-stats {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
         font-family: 'DotGothic16', sans-serif;
         color: #1E233B;
-        text-align: right;
         font-size: 20px;
-        margin-top: 20px;
+        text-align: right;
     }
     .country-stats .heading {
         font-size: 20px;
-        font-weight: normal;
     }
     .country-stats .entry {
         font-size: 26px;
@@ -77,54 +95,82 @@
 </head>
 <body>
 
-    <!-- Header Links -->
-    <div class="header-links">
-        <a href="dice.html">dice</a> / 
-        <a href="document.html">document</a> / 
-        <a href="embed.html">embed</a>
+<div class="container">
+    <!-- Left Column -->
+    <div class="left">
+        <!-- Header Links -->
+        <div class="header-links">
+            <a href="dice.html">dice</a> / 
+            <a href="document.html">document</a> / 
+            <a href="embed.html">embed</a>
+        </div>
+        
+        <!-- Subheader -->
+        <div class="subheader">
+            inventum 1 year 476
+        </div>
+
+        <!-- Title SVG -->
+        <div class="title-image">
+            <img src="SHLTitle.svg" alt="Sahurle Title">
+        </div>
+
+        <!-- Dynamic Description Text -->
+        <div class="description" id="descriptionText">
+            “The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”
+        </div>
     </div>
+
+    <!-- Right Column -->
+    <div class="right">
+        <div class="country-stats">
+            <div class="heading">country / population / army / motor / navy / air</div>
+            <div class="entry">tairodan / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">canary / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">ddi / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">hanguk / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">issasuku / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">koryo / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">kamikaji / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">grapy / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">kaisar / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">nihon state / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">paculasian / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">skarletia / 10.000 / 10.000 / 10.000 / 10.000</div>
+            <div class="entry">flam / 10.000 / 10.000 / 10.000 / 10.000</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript for dynamic description text rotation
+    const descriptions = [
+        "“The quick brown fox jumps over the lazy dog as the quick brown fox also jumped over the lazy dog as the quick brown fox kept jumping over.”",
+        "“A different quick brown fox leaps over the lazy dog in a similar way as before.”",
+        "“The fox is quick, the dog is lazy, and they seem to endlessly jump over each other.”"
+    ];
     
-    <!-- Subheader -->
-    <div class="subheader">
-        inventum 1 year 476
-    </div>
+    let currentDescriptionIndex = 0;
+    const descriptionElement = document.getElementById('descriptionText');
 
-    <!-- Title SVG -->
-    <div class="title-image">
-        <img src="SHLTitle.svg" alt="Sahurle">
-    </div>
+    function updateDescription() {
+        // Fade out
+        descriptionElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            // Change text after fade out
+            currentDescriptionIndex = (currentDescriptionIndex + 1) % descriptions.length;
+            descriptionElement.innerHTML = descriptions[currentDescriptionIndex];
+            
+            // Fade in
+            descriptionElement.style.opacity = '1';
+        }, 1000); // 1 second to match CSS transition time
+    }
 
-    <!-- Description Text -->
-    <div class="description">
-        Season 3.26 • Polariarch<br>
-        “The quick brown fox jumps over the lazy dog<br>
-        as the quick brown fox also jumped over<br>
-        the lazy dog as the quick brown fox kept<br>
-        jumping over.”
-    </div>
-
-    <!-- Country Stats -->
-    <div class="country-stats">
-        <div class="heading">country / population / army / motor / navy / air</div>
-        <div class="entry">tairodan / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">canary / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">ddi / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">hanguk / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">issasuku / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">koryo / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">kamikaji / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">grapy / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">kaisar / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">nihon state / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">paculasian / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">skarletia / 10.000 / 10.000 / 10.000 / 10.000</div>
-        <div class="entry">flam / 10.000 / 10.000 / 10.000 / 10.000</div>
-    </div>
+    // Update description every 5 seconds
+    setInterval(updateDescription, 5000);
+</script>
 
 </body>
 </html>
 
-        setInterval(countdown, 1000);
-    </script>
-</body>
-</html>
