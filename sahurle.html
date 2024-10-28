@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="s326favicon.png">
 <title>SHL￤main</title>
-<!-- Import DotGothic16 and Montserrat fonts -->
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
     /* Background gradient */
@@ -131,10 +130,7 @@
         <div class="header-links">
             <a href="index">main</a>/ 
             <a href="dice">dice</a>/ 
-            <a href="document">document</a>/ 
-            <a href="embed">embed</a>/
-            <a href="https://www.youtube.com/watch?v=Pnb6mWLvyso">music</a>/
-            <a href="#" id="muteUnmute">mute</a>
+            <a href="document">document</a>
         </div>
         <div class="subheader">
             inventum 1, year 476 | notactuallyed
@@ -169,13 +165,7 @@
         </div>
     </div>
 </div>
-
-<!-- Looping Background Audio -->
-<audio id="backgroundAudio" loop autoplay>
-    <source src="tothatsummer.ogg" type="audio/ogg">
-    your browser kind of sad sad enough to no play audio :sob:
-</audio>
-
+    
 <script>
     // JavaScript for dynamic description text rotation
     const descriptions = [
@@ -203,20 +193,6 @@
             descriptionElement.style.opacity = '1';
         }, 1000); // 1 second to match CSS transition time
     }
-    
-    // Audio mute/unmute toggle
-    const audio = document.getElementById("backgroundAudio");
-    const muteButton = document.getElementById("muteUnmute");
-    
-    muteButton.addEventListener("click", () => {
-        if (audio.muted) {
-            audio.muted = false;
-            muteButton.textContent = "mute";
-        } else {
-            audio.muted = true;
-            muteButton.textContent = "unmute";
-        }
-    });
     
     // Start description rotation
     setInterval(updateDescription, 5000); // Rotate every 5 seconds
