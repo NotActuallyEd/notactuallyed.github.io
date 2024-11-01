@@ -19,6 +19,9 @@
         align-items: center; /* Center content vertically */
         justify-content: center; /* Center content horizontally */
         user-select: none;
+    }
+
+    * {
         cursor: none;
     }
 
@@ -123,13 +126,23 @@
 
     .glowing-cursor {
         position: fixed;
-        pointer-events: none; /* Prevent the cursor from interfering with other elements */
-        width: 20px; /* Set width of the glowing effect */
-        height: 20px; /* Set height of the glowing effect */
-        border-radius: 50%; /* Make it circular */
-        background-color: rgba(255, 255, 255, 0.8); /* White color with some transparency */
+        pointer-events: none; /* Prevent interference with other elements */
+        width: 20px; /* Normal width */
+        height: 20px; /* Normal height */
+        border-radius: 50%; /* Circular shape */
+        background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
-        transition: background-color 0.2s, box-shadow 0.2s; /* Smooth transition */
+        transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s; /* Smooth transitions */
+    }
+    
+    .glowing-cursor:hover {
+        transform: scale(1.5); /* Enlarge cursor on hover */
+        box-shadow: 0 0 30px rgba(255, 255, 255, 1); /* Increase glow on hover */
+    }
+    
+    .cursor-dissipate {
+        box-shadow: none; /* Remove glow when leaving the window */
+        transition: box-shadow 0.5s; /* Smooth dissipation */
     }
 </style>
 </head>
@@ -211,12 +224,11 @@
 
     // mouse cursor
     
-        function isMobile() {
+    function isMobile() {
         return /Mobi|Android/i.test(navigator.userAgent);
     }
     
     if (!isMobile()) {
-        // Create the glowing cursor element
         const cursor = document.createElement('div');
         cursor.classList.add('glowing-cursor');
         document.body.appendChild(cursor);
@@ -225,6 +237,16 @@
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = `${e.pageX}px`;
             cursor.style.top = `${e.pageY}px`;
+            cursor.classList.remove('cursor-dissipate'); // Remove dissipation class on movement
+        });
+    
+        // Handle mouse entering and leaving the window
+        window.addEventListener('mouseenter', () => {
+            cursor.classList.remove('cursor-dissipate'); // Show glow on window enter
+        });
+    
+        window.addEventListener('mouseleave', () => {
+            cursor.classList.add('cursor-dissipate'); // Remove glow on window leave
         });
     }
 </script>
