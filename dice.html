@@ -3,15 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.png">
   <title>SHL￤dice</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Martian+Mono:wght@100..800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(0deg, rgba(239,230,229,1) 0%, rgba(207,174,206,1) 50%, rgba(99,116,170,1) 100%);
+      font-family: 'Martian Mono', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .dice-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dice-roll {
+      background-color: #141925;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+      flex-direction: column;
+    }
+
+    .roll-value {
+      font-size: 4rem;
+      color: #141925;
+      font-weight: 800;
+    }
+
+    .modifier {
+      color: #141925;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .label {
+      color: #3d070a;
+      font-weight: 600;
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .input-section {
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 35rem;
+    }
+
+    .input-group label {
+      color: #141925;
+      font-weight: 600;
+    }
+
+    .input-group input {
+      width: 400px;
+      padding: 5px;
+      font-size: 1.2rem;
+      border: 1px solid #3d070a;
+      border-radius: 5px;
+      font-family: 'Martian Mono', monospace;
+      text-align: center;
+      background-color: #1a1110;
+      color: #ffe8de;
+    }
+
+    .input-group input::placeholder {
+      color: #87371f;
+    }
+
+    button {
+      background-color: #3d070a;
+      color: #ff8200;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 10px 50px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-family: "Dela Gothic One", sans-serif;
+    }
+
+    button:hover {
+      background-color: #4a2d2f;
+      color: #ad5b50;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .input-group {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="dice-section">
       <div class="dice-roll" id="dice-roll">
         <p class="roll-value" id="roll-value">0</p>
-        <p class="modifier">+</br><span id="modifier-value">0</span></p>
+        <p class="modifier">+<span id="modifier-value">0</span></p>
       </div>
       <p class="label">DICE ROLL</p>
     </div>
@@ -29,240 +158,81 @@
         <label for="modifier-input">Modifier</label>
         <input type="number" id="modifier-input" placeholder="0" min="0" max="20" required>
       </div>
-      <!-- New input group for ThreadID -->
       <div class="input-group">
         <label for="thread-id-input">ThreadID</label>
-        <input type="number" id="thread-id-input" placeholder="Optional Thread ID" minlength="18">
+        <input type="number" id="thread-id-input" placeholder="Optional Thread ID">
       </div>
       <button id="roll-btn">ROLL!</button>
     </div>
   </div>
-</body>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Instrument+Serif:ital@0;1&family=Kode+Mono:wght@400..700&display=swap');
+  <script>
+    const rollBtn = document.getElementById("roll-btn");
+    const rollValue = document.getElementById("roll-value");
+    const modifierValue = document.getElementById("modifier-value");
+    const threadIDInput = document.getElementById("thread-id-input");
 
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+    const loadInputs = () => {
+      document.getElementById("min-input").value = localStorage.getItem("min") || "";
+      document.getElementById("max-input").value = localStorage.getItem("max") || "";
+      document.getElementById("modifier-input").value = localStorage.getItem("modifier") || "";
+      threadIDInput.value = localStorage.getItem("threadID") || "";
+    };
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    const saveInputs = () => {
+      localStorage.setItem("min", document.getElementById("min-input").value);
+      localStorage.setItem("max", document.getElementById("max-input").value);
+      localStorage.setItem("modifier", document.getElementById("modifier-input").value);
+      localStorage.setItem("threadID", threadIDInput.value);
+    };
 
-body {
-  height: 100vh;
-  background: rgb(255, 14, 14);
-  background: linear-gradient(180deg, rgba(255,255,255,1) 2%, rgba(255,203,186,1) 32%, rgba(255,122,0,1) 69%, rgba(255,14,14,1) 100%);
-  font-family: 'Martian Mono', monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    const sendToWebhook = async (roll, modifier, min, max, threadID) => {
+      const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
+      const payload = {
+        content: `# ${roll} \n > Modifier: +${modifier} ／ Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
+      };
+      try {
+        const response = await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+      } catch (error) {
+        console.error("Error sending to webhook:", error);
+      }
+    };
 
-.container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  height: 100vh;
-  padding: 20px;
-}
+    const rollDice = () => {
+      const min = parseInt(document.getElementById("min-input").value);
+      const max = parseInt(document.getElementById("max-input").value);
+      const modifier = parseInt(document.getElementById("modifier-input").value);
+      const threadID = threadIDInput.value;
 
-.dice-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+      if (isNaN(min) || isNaN(max) || isNaN(modifier) || min < 0 || max > 30 || min > max || (threadID && (threadID.length < 18 || isNaN(threadID)))) {
+        alert("Invalid inputs!");
+        return;
+      }
 
-.dice-roll {
-  background-color: #3d070a;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 25px;
-  flex-direction: column;
-}
+      const randomRoll = Math.floor(Math.random() * (max - min + 1)) + min;
+      const totalRoll = randomRoll + modifier;
 
-.roll-value {
-  font-size: 4rem;
-  color: #ff8200;
-  font-weight: 800;
-}
+      rollValue.innerText = totalRoll;
+      modifierValue.innerText = modifier;
 
-.modifier {
-  color: #ff8200;
-  font-size: 1.2rem;
-  text-align: center;
-}
+      if (threadID) sendToWebhook(totalRoll, modifier, min, max, threadID);
+      saveInputs();
+    };
 
-.label {
-  color: #3d070a;
-  font-weight: 600;
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-.input-section {
-  display: flex;
-  flex-direction: column;
-  user-select:none;
-}
-
-.input-group {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 35rem;
-}
-
-.input-group label {
-  color: #3d070a;
-  font-weight: 600;
-}
-
-.input-group input {
-  width: 400px;
-  padding: 5px;
-  font-size: 1.2rem;
-  border: 1px solid #3d070a;
-  border-radius: 5px;
-  font-family: 'Martian Mono', monospace;
-  text-align: center;
-  background-color: #1a1110;
-  color: #ffe8de;
-}
-
-.input-group input::placeholder {
-  color: #87371f;
-  text-size: 8px;
-  opacity: 1; /* Firefox */
-}
-
-button {
-  background-color: #3d070a;
-  color: #ff8200;
-  font-weight: 600;
-  font-size: 1.2rem;
-  padding: 10px 50px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.25s ease;
-  font-family: "Dela Gothic One", sans-serif;
-}
-
-button:hover {
-  background-color: #4a2d2f;
-  color: #ad5b50;
-  border: 0.1px solid white;
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .input-section {
-    align-items: center;
-  }
-
-  .input-group {
-    width: 100%;
-    max-width: 200px;
-  }
-}
-</style>
-
-<script>
-// Fetch elements
-const rollBtn = document.getElementById("roll-btn");
-const rollValue = document.getElementById("roll-value");
-const modifierValue = document.getElementById("modifier-value");
-const threadIDInput = document.getElementById("thread-id-input");
-
-// Function to send data to Discord Webhook
-const sendToWebhook = async (roll, modifier, min, max, threadID) => {
-  const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadID}`;
-  
-  const payload = {
-    content: `# ${roll} \n > Modifier: +${modifier} ／ Range: ${min}-${max} \n *I am a webhook! This action was performed through the complementary [Sahurle Dice Roll](https://notactuallyed.github.io/dice.html) site!*`
-  };
-  
-  try {
-    const response = await fetch(webhookURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+    rollBtn.addEventListener("click", rollDice);
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        rollDice();
+      }
     });
 
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
-  } catch (error) {
-    console.error("Error sending to webhook:", error);
-  }
-};
-
-// Function to handle the dice roll logic
-const rollDice = () => {
-  const minInput = document.getElementById("min-input").value;
-  const maxInput = document.getElementById("max-input").value;
-  const modifierInput = document.getElementById("modifier-input").value;
-  const threadID = threadIDInput.value;
-
-  const min = parseInt(minInput);
-  const max = parseInt(maxInput);
-  const modifier = parseInt(modifierInput);
-
-  if (isNaN(min) || isNaN(max) || isNaN(modifier)) {
-    alert("Please fill all the required inputs!");
-    return;
-  }
-
-  if (min < 0 || max > 30 || min > max) {
-    alert("Invalid Min or Max values!");
-    return;
-  }
-
-  // Validate ThreadID (only numbers and at least 18 characters)
-  if (threadID && (threadID.length < 18 || isNaN(threadID))) {
-    alert("ThreadID must be at least 18 digits long and contain only numbers.");
-    return;
-  }
-
-  const randomRoll = Math.floor(Math.random() * (max - min + 1)) + min;
-  const totalRoll = randomRoll + modifier;
-
-  rollValue.innerText = totalRoll;
-  modifierValue.innerText = modifier;
-
-  // Send data to webhook if ThreadID is provided
-  if (threadID) {
-    sendToWebhook(totalRoll, modifier, min, max, threadID);
-  }
-};
-
-// Event listener for the "ROLL!" button click
-rollBtn.addEventListener("click", rollDice);
-
-// Event listener for the space bar press
-document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
-    event.preventDefault(); // Prevents the default spacebar action, such as scrolling
-    rollDice();
-  }
-});
-</script>
-</html>
-</script>
+    loadInputs();
+  </script>
+</body>
 </html>
