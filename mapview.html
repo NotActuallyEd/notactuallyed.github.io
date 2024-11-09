@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.svg">
+  <title>SHL￤mapview</title>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Background gradient */
+  body {
+    font-family: 'DotGothic16', sans-serif;
+    background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
+    color: #1E233B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.arrow {
+  width: 30px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrow.disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 500px;
+  height: 300px;
+  text-align: center;
+}
+
+#placeholder {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.text-content {
+  margin-top: 10px;
+}
+
+h1, p {
+  font-family: 'DotGothic16', monospace;
+  margin: 5px;
+}
+
+    .header-links {
+        font-size: 14px;
+        color: #2A3050;
+        margin-bottom: 5px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    
+    .header-links a {
+        text-decoration: none;
+        color: inherit;
+        margin-right: 10px;
+    }
+    .header-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<body>
+    <div class="header-links">
+          <a href="index">main</a>/ 
+          <a href="dice">dice</a>/ 
+          <a href="lore">lorebuild (wip)</a>
+      </div>
+  <div class="slider-container">
+    <!-- Arrow for left navigation -->
+    <img src="assets/leftarrow.svg" id="left-arrow" class="arrow" onclick="prevSlide()" alt="Left Arrow">
+
+    <!-- Slide content -->
+    <div class="slide">
+      <img id="placeholder" src="9-11-2024map.svg" alt="map">
+      <div class="text-content">
+        <h1 id="main-date">December 17th, 2024</h1>
+        <p id="season-info">December 17th, 2024 / Season 3.26</p>
+      </div>
+    </div>
+
+    <!-- Arrow for right navigation -->
+    <img src="assets/rightarrow.svg" id="right-arrow" class="arrow" onclick="nextSlide()" alt="Right Arrow">
+  </div>
+</body>
+
+<script>
+// Slide data
+const slides = [
+  {
+    img: "maps/9-11-2024map.svg",
+    mainDate: "November 11th, 2024",
+    seasonInfo: "Inventum 14, 476 / Season 3.26"
+  },
+  {
+    img: "maps/26-10-2024map.svg",
+    mainDate: "October 26th, 2024",
+    seasonInfo: "Inventum 14, 476 / Season 3.26 (PRACTICE)"
+  }
+];
+
+let currentSlide = 0;
+
+// DOM elements
+const placeholderImg = document.getElementById("placeholder");
+const mainDateText = document.getElementById("main-date");
+const seasonInfoText = document.getElementById("season-info");
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
+
+// Update the slide content
+function updateSlide() {
+  placeholderImg.src = slides[currentSlide].img;
+  mainDateText.textContent = slides[currentSlide].mainDate;
+  seasonInfoText.textContent = slides[currentSlide].seasonInfo;
+
+  // Update arrow visibility based on slide position
+  leftArrow.classList.toggle("disabled", currentSlide === 0);
+  rightArrow.classList.toggle("disabled", currentSlide === slides.length - 1);
+}
+
+// Go to the previous slide
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    updateSlide();
+  }
+}
+
+// Go to the next slide
+function nextSlide() {
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    updateSlide();
+  }
+}
+
+// Initialize the slider
+updateSlide();
+</script>
