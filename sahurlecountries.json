@@ -6,7 +6,7 @@
     "motor": 2,
     "navy": 2,
     "airforce": 2,
-    "multiplier": 1.0
+    "multiplier": 12
   },
   {
     "country": "CountryB",
