@@ -179,7 +179,7 @@
     <!-- Right Column for Country Stats -->
     <div class="right">
         <div class="country-stats">
-            <div class="heading">country: population ／ army ／ motor ／ navy ／ air</div>
+            <div class="heading">country: ms / population ／ army ／ motor ／ navy ／ air / x</div>
             <div class="entry">tairodan (n): 104.706 / 5.916 / 113 / 13 / 18</div>
             <div class="entry">canary: —</div>
             <div class="entry">ddi: 118.706 / 15.472 / 106 / 11 / 13</div>
@@ -255,6 +255,34 @@
             cursor.classList.add('cursor-dissipate'); // Remove glow on window leave
         });
     }
+
+    // mouse needs to change istg it sucks
+
+    function calculateMilitaryStrength(countryData) {
+      const armyStrength = countryData.army / 100000;
+      const motorStrength = countryData.motor / 5000; 
+      const navyStrength = countryData.navy / 500;
+      const airforceStrength = countryData.airforce / 500;
+
+      let militaryStrength = armyStrength + motorStrength + navyStrength + airforceStrength;
+      militaryStrength *= countryData.multiplier; // Apply multiplier
+      
+      return militaryStrength.toFixed(2); // Round to two decimal places
+    }
+
+    fetch('sahurlecountries.json') // Fetch the JSON data
+      .then(response => response.json())
+      .then(data => {
+        const headingDiv = document.querySelector('.heading'); 
+        data.forEach(country => {
+          const militaryStrength = calculateMilitaryStrength(country);
+          const entryDiv = document.createElement('div');
+          entryDiv.classList.add('entry');
+          entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${country.army} / ${country.motor} / ${country.navy} / ${country.airforce} / ${country.multiplier}x`;
+          headingDiv.appendChild(entryDiv);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
 </script>
 
 </body>
