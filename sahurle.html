@@ -11,18 +11,6 @@
 	  --glow-rgb: 250, 184, 255;
 	}
 	
-	body {
-	  background: linear-gradient(145deg, rgb(119, 46, 195), rgb(58, 18, 153));
-	  height: 100vh;
-	  overflow: hidden;
-	}
-	
-	* {
-	  margin: 0;
-	  padding: 0;
-	  box-sizing: border-box;
-	}
-	
 	.glow-point {
 	  position: absolute;
 	  box-shadow: 0rem 0rem 1.5rem 0.6rem rgb(var(--glow-rgb));
@@ -215,8 +203,8 @@
     setInterval(updateDescription, 5000); // Rotate every 5 seconds
 
 	// mouse cursor
-    
 	const originPosition = { x: 0, y: 0 };
+	
 	const last = {
 	  mousePosition: originPosition
 	};
@@ -293,8 +281,11 @@
 	};
 	
 	window.onmousemove = e => handleOnMove(e);
+	
 	window.ontouchmove = e => handleOnMove(e.touches[0]);
+	
 	document.body.onmouseleave = () => updateLastMousePosition(originPosition);
+
 	// better mouse fr
 
 	// military strength system
@@ -310,7 +301,7 @@
       	return militaryStrength.toFixed(2); // Round to two decimal places
     	}	
 
-    	fetch('countries.json') // Fetch the JSON data
+    	fetch('sahurlecountries.json') // Fetch the JSON data
       	.then(response => response.json())
       	.then(data => {
         	const headingDiv = document.querySelector('.heading'); 
