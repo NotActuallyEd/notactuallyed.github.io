@@ -159,10 +159,10 @@
 
         <!-- Centered Content: Title and Description -->
         <div class="title-image">
-            <img src="assets/SahurleTitle.svg" alt="Sahurle / Season 3.26 * Polariarch" height="50px">
+            <img src="assets/SahurleTitle.svg" alt="Sahurle / Season 3.26 * Polariarch" height="60px">
         </div>
         <div class="description" id="descriptionText">
-            "The element of nostalgia and a longing for the past. A megacorporation has taken all walks of life, and the balance between automaton and human are near perfect. Will you disrupt or take hold of it?"
+            "A longing for the past. Waiting something to happen?"
         </div>
     </div>
 
@@ -176,31 +176,6 @@
 </div>
     
 <script>
-    // JavaScript for dynamic description text rotation
-    const descriptions = [
-        "“ ill make a better quote later. ”",
-        "“ Welcome to the re-imagined world of Polariarch, a planet divided between technology and humanity. ”",
-        "“ Can the past really hear you?. ”"
-    
-    const currentDescriptionIndex = 0;
-    const descriptionElement = document.getElementById('descriptionText');
-
-    function updateDescription() {
-        // Fade out
-        descriptionElement.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Change text after fade out
-            currentDescriptionIndex = (currentDescriptionIndex + 1) % descriptions.length;
-            descriptionElement.innerHTML = descriptions[currentDescriptionIndex];
-            
-            // Fade in
-            descriptionElement.style.opacity = '1';
-        }, 1000); // 1 second to match CSS transition time
-    }
-    
-    // Start description rotation
-    setInterval(updateDescription, 5000); // Rotate every 5 seconds
 
 	// mouse cursor
 	const originPosition = { x: 0, y: 0 };
