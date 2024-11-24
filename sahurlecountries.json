@@ -1,0 +1,20 @@
+[
+  {
+    "country": "countryA",
+    "population": 1,
+    "army": 2,
+    "motor": 2,
+    "navy": 2,
+    "airforce": 2,
+    "multiplier": 1.0
+  },
+  {
+    "country": "CountryB",
+    "population": 2,
+    "army": 5,
+    "motor": 58,
+    "navy": 5,
+    "airforce": 4173,
+    "multiplier": 5000 
+  }
+]
