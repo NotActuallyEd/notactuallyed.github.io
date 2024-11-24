@@ -7,6 +7,28 @@
 <title>SHL￤main</title>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
+	:root {
+	  --glow-rgb: 250, 184, 255;
+	}
+	
+	body {
+	  background: linear-gradient(145deg, rgb(119, 46, 195), rgb(58, 18, 153));
+	  height: 100vh;
+	  overflow: hidden;
+	}
+	
+	* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+	
+	.glow-point {
+	  position: absolute;
+	  box-shadow: 0rem 0rem 1.5rem 0.6rem rgb(var(--glow-rgb));
+	  pointer-events: none;
+	}
+	/* oh my god the tabbing space is horrid, ill go fix it later */
     /* Background gradient */
     body {
         margin: 0;
@@ -118,37 +140,17 @@
         align-self: flex-end; /* Align to right edge */
     }
     .country-stats .heading {
-        font-size: 20px;
+        font-size: 10px;
+	color: rgba(30, 35, 59, 0.7);
     }
     .country-stats .entry {
-        font-size: 16px;
+        font-size: 13px;
         margin: 5px 0;
         user-select: text;
     }
     .country-stats .entry::selection {
         background: black;
         color: white;
-    }
-
-    .glowing-cursor {
-        position: fixed;
-        pointer-events: none; /* Prevent interference with other elements */
-        width: 20px; /* Normal width */
-        height: 20px; /* Normal height */
-        border-radius: 50%; /* Circular shape */
-        background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
-        transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s; /* Smooth transitions */
-    }
-    
-    .glowing-cursor:hover {
-        transform: scale(1.5); /* Enlarge cursor on hover */
-        box-shadow: 0 0 30px rgba(255, 255, 255, 1); /* Increase glow on hover */
-    }
-    
-    .cursor-dissipate {
-        box-shadow: none; /* Remove glow when leaving the window */
-        transition: box-shadow 0.5s; /* Smooth dissipation */
     }
 </style>
 </head>
@@ -180,19 +182,7 @@
     <div class="right">
         <div class="country-stats">
             <div class="heading">country: ms / population ／ army ／ motor ／ navy ／ air / x</div>
-            <div class="entry">tairodan (n): 104.706 / 5.916 / 113 / 13 / 18</div>
             <div class="entry">canary: —</div>
-            <div class="entry">ddi: 118.706 / 15.472 / 106 / 11 / 13</div>
-            <div class="entry">hanguk: 108.128 / 6.578 / 60 / 3 / 16</div>
-            <div class="entry">issasuku: 76.234 / 16.866 / 171 / 14 / 15</div>
-            <div class="entry">koryo: 120.499 /  9.232 / 30 / 15 / 15</div>
-            <div class="entry">kamikaji: 118.017 / 6.905 / 51 / 2 / 8</div>
-            <div class="entry">grapy (n): 100.742 / 7.325 / 134 / 14 / 20</div>
-            <div class="entry">kaisar (n): 119.263 / 3.203 / 163 / 15 / 17</div>
-            <div class="entry">nihon state: 116.169 / 8.771 / 198 / 14 / 20</div>
-            <div class="entry">paculasian: 76.228 / 9.972 / 179 / 12 / 18</div>
-            <div class="entry">skarletia: 94.876 / 14.271 / 196 / 15 / 14</div>
-            <div class="entry">flam (n): 118.225 / 9.273 / 84 / 11 / 20</div>
         </div>
     </div>
 </div>
@@ -200,13 +190,9 @@
 <script>
     // JavaScript for dynamic description text rotation
     const descriptions = [
-        "“The element of nostalgia and a longing for the past. A megacorporation has taken all walks of life, and the balance between automaton and human are near perfect. Will you disrupt or take hold of it?”",
-        "“There was a time when life felt less hollow, when laughter felt like sunlight and not just another sound lost in the ruins. Now, all that's left is the echo of something we just can’t quite remember.”",
-        "“The trees reclaim what we lost, filling cracked concrete with green vines and broken windows with ivy. Nature is the only thing that remembers what it meant to be alive.”",
-        "“The air here is heavy with stories we no longer tell, buried beneath layers of dust and silence. The past lives in every empty building, every abandoned alleyway. Sometimes, I can almost feel it breathing.”",
-        "“The night hums with a sadness that no automaton could ever understand. We fill the silence with whispers of memories, hoping the past can hear us.”",
-        "“We used to dream of a world filled with life, not automaton — and now, in the quiet spaces of abandoned streets, I wonder if we traded our souls away the day we let them take over.”"
-    ];
+        "“ ill make a better quote later. ”",
+        "“ Welcome to the re-imagined world of Polariarch, a planet divided between technology and humanity. ”",
+        "“ Can the past really hear you?. ”"
     
     let currentDescriptionIndex = 0;
     const descriptionElement = document.getElementById('descriptionText');
@@ -228,61 +214,115 @@
     // Start description rotation
     setInterval(updateDescription, 5000); // Rotate every 5 seconds
 
-    // mouse cursor
+	// mouse cursor
     
-    function isMobile() {
-        return /Mobi|Android/i.test(navigator.userAgent);
-    }
-    
-    if (!isMobile()) {
-        const cursor = document.createElement('div');
-        cursor.classList.add('glowing-cursor');
-        document.body.appendChild(cursor);
-    
-        // Update cursor position
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.pageX}px`;
-            cursor.style.top = `${e.pageY}px`;
-            cursor.classList.remove('cursor-dissipate'); // Remove dissipation class on movement
-        });
-    
-        // Handle mouse entering and leaving the window
-        window.addEventListener('mouseenter', () => {
-            cursor.classList.remove('cursor-dissipate'); // Show glow on window enter
-        });
-    
-        window.addEventListener('mouseleave', () => {
-            cursor.classList.add('cursor-dissipate'); // Remove glow on window leave
-        });
-    }
+	const originPosition = { x: 0, y: 0 };
+	const last = {
+	  mousePosition: originPosition
+	};
+	
+	const config = {
+	  glowDuration: 75,
+	  maximumGlowPointSpacing: 10
+	};
+	
+	const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+	
+	const withUnit = (value, unit) => `${value}${unit}`,
+	      px = value => withUnit(value, "px");
+	
+	const calcDistance = (a, b) => {
+	  const diffX = b.x - a.x,
+	        diffY = b.y - a.y;
+	  
+	  return Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+	};
+	
+	const appendElement = element => document.body.appendChild(element),
+	      removeElement = (element, delay) => setTimeout(() => document.body.removeChild(element), delay);
+	
+	const createGlowPoint = position => {
+	  const glow = document.createElement("div");
+	  
+	  glow.className = "glow-point";
+	  
+	  glow.style.left = px(position.x);
+	  glow.style.top = px(position.y);
+	  
+	  appendElement(glow);
+	  
+	  removeElement(glow, config.glowDuration);
+	};
+	
+	const determinePointQuantity = distance => Math.max(
+	  Math.floor(distance / config.maximumGlowPointSpacing),
+	  1
+	);
+	
+	const createGlow = (last, current) => {
+	  const distance = calcDistance(last, current),
+	        quantity = determinePointQuantity(distance);
+	  
+	  const dx = (current.x - last.x) / quantity,
+	        dy = (current.y - last.y) / quantity;
+	  
+	  Array.from(Array(quantity)).forEach((_, index) => { 
+	    const x = last.x + dx * index, 
+	          y = last.y + dy * index;
+	    
+	    createGlowPoint({ x, y });
+	  });
+	};
+	
+	const updateLastMousePosition = position => last.mousePosition = position;
+	
+	const adjustLastMousePosition = position => {
+	  if (last.mousePosition.x === 0 && last.mousePosition.y === 0) {
+	    last.mousePosition = position;
+	  }
+	};
+	
+	const handleOnMove = e => {
+	  const mousePosition = { x: e.clientX, y: e.clientY };
+	  
+	  adjustLastMousePosition(mousePosition);
+	  
+	  createGlow(last.mousePosition, mousePosition);
+	  
+	  updateLastMousePosition(mousePosition);
+	};
+	
+	window.onmousemove = e => handleOnMove(e);
+	window.ontouchmove = e => handleOnMove(e.touches[0]);
+	document.body.onmouseleave = () => updateLastMousePosition(originPosition);
+	// better mouse fr
 
-    // mouse needs to change istg it sucks
+	// military strength system
+    	function calculateMilitaryStrength(countryData) {
+      	const armyStrength = countryData.army / 500000;
+      	const motorStrength = countryData.motor / 10000; 
+      	const navyStrength = countryData.navy / 2000;
+      	const airforceStrength = countryData.airforce / 1000;
 
-    function calculateMilitaryStrength(countryData) {
-      const armyStrength = countryData.army / 100000;
-      const motorStrength = countryData.motor / 5000; 
-      const navyStrength = countryData.navy / 500;
-      const airforceStrength = countryData.airforce / 500;
-
-      let militaryStrength = armyStrength + motorStrength + navyStrength + airforceStrength;
-      militaryStrength *= countryData.multiplier; // Apply multiplier
+      	let militaryStrength = armyStrength + motorStrength + navyStrength + airforceStrength;
+      	militaryStrength *= countryData.multiplier; // Apply multiplier
       
-      return militaryStrength.toFixed(2); // Round to two decimal places
-    }
+      	return militaryStrength.toFixed(2); // Round to two decimal places
+    	}	
 
-    fetch('sahurlecountries.json') // Fetch the JSON data
-      .then(response => response.json())
-      .then(data => {
-        const headingDiv = document.querySelector('.heading'); 
-        data.forEach(country => {
-          const militaryStrength = calculateMilitaryStrength(country);
-          const entryDiv = document.createElement('div');
-          entryDiv.classList.add('entry');
-          entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${country.army} / ${country.motor} / ${country.navy} / ${country.airforce} / ${country.multiplier}x`;
-          headingDiv.appendChild(entryDiv);
-        });
-      })
-      .catch(error => console.error('Error fetching data:', error));
+    	fetch('countries.json') // Fetch the JSON data
+      	.then(response => response.json())
+      	.then(data => {
+        	const headingDiv = document.querySelector('.heading'); 
+        	data.forEach(country => {
+          	const militaryStrength = calculateMilitaryStrength(country);
+          	const entryDiv = document.createElement('div');
+          	entryDiv.classList.add('entry');
+          	entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${country.army} / ${country.motor} / ${country.navy} / ${country.airforce} / ${country.multiplier}x`;
+          	headingDiv.appendChild(entryDiv);
+        	});
+      	})
+      	.catch(error => console.error('Error fetching data:', error));
 </script>
 
 </body>
