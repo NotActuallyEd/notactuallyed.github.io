@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
 	:root {
-	  --glow-rgb: 250, 184, 255;
+	  --glow-rgb: 114, 126, 179, 0.75;
 	}
 	
 	.glow-point {
@@ -30,10 +30,6 @@
         align-items: center; /* Center content vertically */
         justify-content: center; /* Center content horizontally */
         user-select: none;
-    }
-
-    * {
-        cursor: none;
     }
 
     /* Main container with responsive layout */
@@ -96,6 +92,15 @@
         left: 20px;
     }
 
+    .subheader a {
+        text-decoration: none;
+        color: inherit;
+        margin-right: 10px;
+    }
+    .header-links a:hover {
+        text-decoration: underline;
+    }
+
     /* Title SVG with center alignment */
     .title-image {
         display: flex;
@@ -155,15 +160,14 @@
             <a href="mapview">mapview</a>
         </div>
         <div class="subheader">
-            inventum 14, year 476 | <a href="index">notactuallyed</a>
+            inventum 1, year 476 | <a href="index">notactuallyed</a>
         </div>
 
-        <!-- Centered Content: Title and Description -->
         <div class="title-image">
             <img src="assets/SahurleTitle.svg" alt="Sahurle / Season 3.26 * Polariarch" height="60px">
         </div>
         <div class="description" id="descriptionText">
-            "A longing for the past. Waiting something to happen?"
+            "A longing for the past. Almost as if like your waiting for something to happen?"
         </div>
     </div>
 
@@ -171,7 +175,7 @@
     <div class="right">
         <div class="country-stats">
             <div class="heading">country: ms / population ／ army ／ motor ／ navy ／ air / x</div>
-            <div class="entry">canary: —</div>
+            <div class="entry">canary: — </div>
         </div>
     </div>
 </div>
