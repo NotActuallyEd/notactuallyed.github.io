@@ -50,7 +50,7 @@
     }
 
     /* Responsive font sizes */
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { /* im fixing this later */
         .container {
             flex-direction: column;
             align-items: center;
@@ -138,7 +138,7 @@
 	color: rgba(30, 35, 59, 0.7);
     }
     .country-stats .entry {
-        font-size: 13px;
+        font-size: 15px;
         margin: 5px 0;
         user-select: text;
     }
@@ -261,19 +261,17 @@
 	};
 	
 	window.onmousemove = e => handleOnMove(e);
-	
 	window.ontouchmove = e => handleOnMove(e.touches[0]);
-	
 	document.body.onmouseleave = () => updateLastMousePosition(originPosition);
 
 	// better mouse fr
 
 	// military strength system
     	function calculateMilitaryStrength(countryData) {
-      	const armyStrength = countryData.army / 500000;
-      	const motorStrength = countryData.motor / 10000; 
-      	const navyStrength = countryData.navy / 2000;
-      	const airforceStrength = countryData.airforce / 1000;
+      	const armyStrength = countryData.army / 50000;
+      	const motorStrength = countryData.motor / 5000; 
+      	const navyStrength = countryData.navy / 500;
+      	const airforceStrength = countryData.airforce / 500;
 
       	let militaryStrength = armyStrength + motorStrength + navyStrength + airforceStrength;
       	militaryStrength *= countryData.multiplier; // Apply multiplier
@@ -284,7 +282,7 @@
     	fetch('sahurlecountries.json') // Fetch the JSON data
       	.then(response => response.json())
       	.then(data => {
-        	const headingDiv = document.querySelector('.heading'); 
+        	const headingDiv = document.querySelector('.country-stats'); 
         	data.forEach(country => {
           	const militaryStrength = calculateMilitaryStrength(country);
           	const entryDiv = document.createElement('div');
