@@ -1,20 +1,83 @@
 [
   {
-    "country": "CountryA",
-    "population": 1568372,
-    "army": 2,
-    "motor": 2,
-    "navy": 2,
-    "airforce": 2,
-    "multiplier": 152.0
+    "country": "ambrosia",
+    "population": 102901,
+    "army": 78542,
+    "motor": 875,
+    "navy": 67,
+    "airforce": 121,
+    "multiplier": 1
   },
   {
-    "country": "CountryB",
-    "population": 2,
-    "army": 5,
-    "motor": 58,
-    "navy": 5,
-    "airforce": 4173,
-    "multiplier": 5000.0
+    "country": "australasia",
+    "population": 187036,
+    "army": 79023,
+    "motor": 194,
+    "navy": 33,
+    "airforce": 176,
+    "multiplier": 1
+  },
+  {
+    "country": "ddi",
+    "population": 138451,
+    "army": 32651,
+    "motor": 989,
+    "navy": 100,
+    "airforce": 57,
+    "multiplier": 1
+  },
+  {
+    "country": "hanguk",
+    "population": 198764,
+    "army": 65427,
+    "motor": 897,
+    "navy": 95,
+    "airforce": 52,
+    "multiplier": 1
+  },
+  {
+    "country": "issasuku",
+    "population": 173817,
+    "army": 40092,
+    "motor": 550,
+    "navy": 78,
+    "airforce": 143,
+    "multiplier": 1
+  },
+  {
+    "country": "kitatsuki",
+    "population": 144862,
+    "army": 30218,
+    "motor": 103,
+    "navy": 65,
+    "airforce": 176,
+    "multiplier": 1
+  },
+  {
+    "country": "koryo",
+    "population": 185374,
+    "army": 56744,
+    "motor": 786,
+    "navy": 85,
+    "airforce": 198,
+    "multiplier": 1
+  },
+  {
+    "country": "paculasia",
+    "population": 185273,
+    "army": 78646,
+    "motor": 876,
+    "navy": 98,
+    "airforce": 17,
+    "multiplier": 1
+  },
+  {
+    "country": "skarletia",
+    "population": 171904,
+    "army": 20374,
+    "motor": 492,
+    "navy": 21,
+    "airforce": 43,
+    "multiplier": 0.5
   }
 ]
