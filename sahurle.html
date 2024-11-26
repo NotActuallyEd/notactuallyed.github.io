@@ -268,10 +268,10 @@
 
 	// military strength system
     	function calculateMilitaryStrength(countryData) {
-      	const armyStrength = countryData.army / 50000;
-      	const motorStrength = countryData.motor / 5000; 
-      	const navyStrength = countryData.navy / 500;
-      	const airforceStrength = countryData.airforce / 500;
+      	const armyStrength = countryData.army / 20000;
+      	const motorStrength = countryData.motor / 800; 
+      	const navyStrength = countryData.navy / 300;
+      	const airforceStrength = countryData.airforce / 200;
 
       	let militaryStrength = armyStrength + motorStrength + navyStrength + airforceStrength;
       	militaryStrength *= countryData.multiplier; // Apply multiplier
