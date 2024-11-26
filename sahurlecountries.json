@@ -54,6 +54,15 @@
     "multiplier": 1
   },
   {
+    "country": "kamikaji",
+    "population": 184279,
+    "army": 74264,
+    "motor": 765,
+    "navy": 88,
+    "airforce": 195,
+    "multiplier": 1
+  },
+  {
     "country": "koryo",
     "population": 185374,
     "army": 56744,
