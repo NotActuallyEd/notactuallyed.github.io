@@ -9,13 +9,13 @@
     "multiplier": 1
   },
   {
-    "country": "australasia",
+    "country": "columbia",
     "population": 187036,
     "army": 79023,
     "motor": 194,
     "navy": 33,
     "airforce": 176,
-    "multiplier": 2
+    "multiplier": 1.5
   },
   {
     "country": "ddi",
@@ -87,6 +87,6 @@
     "motor": 492,
     "navy": 21,
     "airforce": 43,
-    "multiplier": 0.5
+    "multiplier": 1.5
   }
 ]
