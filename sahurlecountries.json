@@ -6,6 +6,9 @@
     "motor": 875,
     "navy": 67,
     "airforce": 121,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -15,6 +18,9 @@
     "motor": 194,
     "navy": 33,
     "airforce": 176,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1.5
   },
   {
@@ -24,6 +30,9 @@
     "motor": 989,
     "navy": 100,
     "airforce": 57,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -33,6 +42,9 @@
     "motor": 901,
     "navy": 97,
     "airforce": 152,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -42,6 +54,9 @@
     "motor": 550,
     "navy": 78,
     "airforce": 143,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -51,6 +66,9 @@
     "motor": 103,
     "navy": 65,
     "airforce": 176,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -60,6 +78,9 @@
     "motor": 765,
     "navy": 88,
     "airforce": 195,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -69,6 +90,9 @@
     "motor": 786,
     "navy": 85,
     "airforce": 198,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -78,6 +102,9 @@
     "motor": 876,
     "navy": 98,
     "airforce": 17,
+    "military_training": 2,
+    "infrastructure_level": 1,
+    "stability": 55,
     "multiplier": 1
   },
   {
@@ -87,6 +114,9 @@
     "motor": 492,
     "navy": 21,
     "airforce": 48,
+    "military_training": 1,
+    "infrastructure_level": 1,
+    "stability": 40,
     "multiplier": 1.5
   }
 ]
