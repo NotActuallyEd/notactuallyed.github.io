@@ -269,7 +269,7 @@
 	// military strength system
 	function calculateMilitaryStrength(countryData) {
 	    // Base strength calculation
-	    const armyStrength = countryData.army / 50000;
+	    const armyStrength = countryData.army / 60000;
 	    const motorStrength = countryData.motor / 700;
 	    const navyStrength = countryData.navy / 300;
 	    const airforceStrength = countryData.airforce / 200;
@@ -282,9 +282,9 @@
 	    } else if (countryData.stability >= 11 && countryData.stability <= 20) {
 	        militaryStrength += -0.7;
 	    } else if (countryData.stability >= 21 && countryData.stability <= 40) {
-	        militaryStrength += -0.2;
+	        militaryStrength += -0.4;
 	    } else if (countryData.stability >= 41 && countryData.stability <= 44) {
-	        militaryStrength += -0.1;
+	        militaryStrength += -0.2;
 	    } else if (countryData.stability >= 45 && countryData.stability <= 55) {
 	        militaryStrength += 0;
 	    } else if (countryData.stability >= 56 && countryData.stability <= 65) {
