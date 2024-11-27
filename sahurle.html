@@ -8,148 +8,151 @@
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
 	:root {
-	  --glow-rgb: 114, 126, 179, 0.55;
+		--glow-rgb: 232, 217, 223, 0.5;
 	}
 	
 	.glow-point {
-	  position: absolute;
-	  box-shadow: 0rem 0rem 1.5rem 0.6rem rgb(var(--glow-rgb));
-	  pointer-events: none;
-	  z-index: 9999;
+		position: absolute;
+		box-shadow: 0rem 0rem 1.5rem 0.7rem rgb(var(--glow-rgb));
+		pointer-events: none;
+		z-index: 9999;
 	}
 	/* oh my god the tabbing space is horrid, ill go fix it later */
-    /* Background gradient */
-    body {
-        margin: 0;
-        font-family: 'DotGothic16', sans-serif;
-        background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
-        color: #1E233B;
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-        align-items: center; /* Center content vertically */
-        justify-content: center; /* Center content horizontally */
-        user-select: none;
-    }
-
-    /* Main container with responsive layout */
-    .container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1400px;
-        gap: 260px;
-    }
-
-    /* Left and right columns */
-    .left, .right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* Responsive font sizes */
-    @media (max-width: 768px) { /* im fixing this later */
-        .container {
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        .header-links, .subheader, .country-stats .heading {
-            font-size: 10px;
-        }
-        .country-stats .entry {
-            font-size: 12px;
-        }
-    }
-
-    /* Header Links */
-    .header-links {
-        font-size: 14px;
-        color: #2A3050;
-        margin-bottom: 5px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
-    
-    .header-links a {
-        text-decoration: none;
-        color: inherit;
-        margin-right: 10px;
-    }
-    .header-links a:hover {
-        text-decoration: underline;
-    }
-
-    /* Subheader text */
-    .subheader {
-        font-size: 12px;
-        color: #2A3050;
-        position: absolute;
-        top: 40px;
-        left: 20px;
-    }
-
-    .subheader a {
-        text-decoration: none;
-        color: inherit;
-        margin-right: 10px;
-    }
-    .subheader a:hover {
-        text-decoration: underline;
-    }
-
-    /* Title SVG with center alignment */
-    .title-image {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .title-image img {
-	user-drag: none;
-        -webkit-user-drag: none;
-	-moz-user-select: none;
-    }
-
-    /* Centered Dynamic Description Text */
-    .description {
-        font-size: 14px;
-        color: #40293F;
-        text-align: center;
-        line-height: 1.5;
-        transition: opacity 1s ease-in-out;
-        display: flex;
-        justify-content: center;
-    }
-
-    /* Country Stats Table */
-    .country-stats {
-        font-family: 'DotGothic16', sans-serif;
-        color: #1E233B;
-        font-size: 20px;
-        text-align: right;
-        align-self: flex-end; /* Align to right edge */
-    }
-    .country-stats .heading {
-        font-size: 10px;
-	color: rgba(30, 35, 59, 0.7);
-    }
-    .country-stats .entry {
-        font-size: 15px;
-        margin: 5px 0;
-        user-select: text;
-	transition: opacity 0.3s ease;
-    }
-    .country-stats .entry:hover ~ .entry, .container:hover .entry:not(:hover) {
-        opacity: 0.2;
-    }
-    .country-stats .entry::selection {
-        background: black;
-        color: white;
-    }
+	/* Background gradient */
+	body {
+		margin: 0;
+		font-family: 'DotGothic16', sans-serif;
+		background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
+		color: #1E233B;
+		display: flex;
+		height: 100vh;
+		overflow: hidden;
+		align-items: center; /* Center content vertically */
+		justify-content: center; /* Center content horizontally */
+		user-select: none;
+	}
+	
+	/* Main container with responsive layout */
+	.container {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 1400px;
+		gap: 260px;
+	}
+	
+	/* Left and right columns */
+	.left, .right {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+	/* Responsive font sizes */
+	@media (max-width: 768px) { /* im fixing this later */
+	.container {
+		flex-direction: column;
+		align-items: center;
+		gap: 30px;
+	}
+	.header-links, .subheader, .country-stats .heading {
+		font-size: 10px;
+	}
+	.country-stats .entry {
+		font-size: 12px;
+	}
+	
+	/* Header Links */
+		.header-links {
+		font-size: 14px;
+		color: #2A3050;
+		margin-bottom: 5px;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+	
+	.header-links a {
+		text-decoration: none;
+		color: inherit;
+		margin-right: 10px;
+	}
+	.header-links a:hover {
+		text-decoration: underline;
+	}
+	
+	/* Subheader text */
+	.subheader {
+		font-size: 12px;
+		color: #2A3050;
+		position: absolute;
+		top: 40px;
+		left: 20px;
+	}
+	
+	.subheader a {
+		text-decoration: none;
+		color: inherit;
+		margin-right: 10px;
+	}
+	.subheader a:hover {
+		text-decoration: underline;
+	}
+	
+	/* Title SVG with center alignment */
+	.title-image {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
+	}
+	
+	.title-image img {
+		user-drag: none;
+		-webkit-user-drag: none;
+		-moz-user-select: none;
+	}
+	
+	/* Centered Dynamic Description Text */
+	.description {
+		font-size: 14px;
+		color: #40293F;
+		text-align: center;
+		line-height: 1.5;
+		transition: opacity 1s ease-in-out;
+		display: flex;
+		justify-content: center;
+	}
+	
+	/* Country Stats Table */
+	.country-stats {
+		font-family: 'DotGothic16', sans-serif;
+		color: #1E233B;
+		font-size: 20px;
+		text-align: right;
+		align-self: flex-end; /* Align to right edge */
+	}
+	.country-stats .heading {
+		font-size: 12px;
+		color: rgba(30, 35, 59, 0.7);
+	}
+	.country-stats .entry {
+		font-size: 15px;
+		margin: 5px 0;
+		user-select: text;
+		transition: opacity 0.5s ease transform 0.5s ease;
+	}
+	.country-stats .entry:hover ~ .entry, .container:hover .entry:not(:hover) {
+		opacity: 0.2;
+	}
+	.country-stats .entry:hover {
+		transform: translateX(-10px);
+	}
+	
+	.country-stats .entry::selection {
+		background: black;
+		color: white;
+	}
 </style>
 </head>
 <body>
@@ -276,8 +279,8 @@
 		// Calculate army size based on recruitment percentage
                 const armySize = (countryData.population * countryData.recruitment) / 100;
 		
-		const populationNumber = countryData.population / 1000000;
-	        const armyStrength = armySize / 60000;
+		const populationNumber = countryData.population / 2000000;
+	        const armyStrength = armySize / 80000;
 	        const motorStrength = countryData.motor / 700;
 	        const navyStrength = countryData.navy / 300;
 	        const airforceStrength = countryData.airforce / 200;
