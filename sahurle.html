@@ -269,8 +269,11 @@
 	// military strength system
 	function calculateMilitaryStrength(countryData) {
 	    // Base strength calculation
+		// Calculate army size based on recruitment percentage
+                const armySize = (countryData.population * countryData.recruitment) / 100;
+		
 		const populationNumber = countryData.population / 500000;
-	        const armyStrength = countryData.army / 60000;
+	        const armyStrength = armySize / 60000;
 	        const motorStrength = countryData.motor / 700;
 	        const navyStrength = countryData.navy / 300;
 	        const airforceStrength = countryData.airforce / 200;
@@ -324,7 +327,7 @@
 	    } else if (countryData.infrastructure_level === 5) {
 	        militaryStrength += 0.8;
 	    } else if (countryData.infrastructure_level === 6) {
-	        militaryStrength += 1;
+	        militaryStrength += 1.5;
 	    }
 	
 	    // Apply multiplier
@@ -339,9 +342,10 @@
 	        const headingDiv = document.querySelector('.country-stats');
 	        data.forEach(country => {
 	            const militaryStrength = calculateMilitaryStrength(country);
+	            const armySize = (country.population * country.recruitment) / 100; // Calculate army size for display
 	            const entryDiv = document.createElement('div');
 	            entryDiv.classList.add('entry');
-	            entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${country.army} / ${country.motor} / ${country.navy} / ${country.airforce} / ${country.multiplier}x`;
+	            entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${armySize.toFixed(0)} / ${country.motor} / ${country.navy} / ${country.airforce} / ${country.multiplier}x`;
 	            headingDiv.appendChild(entryDiv);
 	        });
 	    })
