@@ -141,6 +141,10 @@
         font-size: 15px;
         margin: 5px 0;
         user-select: text;
+	transition: opacity 0.3s ease;
+    }
+    .country-stats .entry:hover ~ .entry, .container:hover .entry:not(:hover) {
+        opacity: 0.6;
     }
     .country-stats .entry::selection {
         background: black;
