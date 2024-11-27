@@ -280,21 +280,21 @@
 	    // Stability adjustment
 		
 		if (countryData.stability >= 1 && countryData.stability <= 10) {
-		    militaryStrength -= militaryStrength * 0.10; // Decrease by 10%
+		    militaryStrength -= militaryStrength * 0.90; // Decrease by 90%
 		} else if (countryData.stability >= 11 && countryData.stability <= 20) {
-		    militaryStrength -= militaryStrength * 0.07; // Decrease by 7%
+		    militaryStrength -= militaryStrength * 0.70; // Decrease by 70%
 		} else if (countryData.stability >= 21 && countryData.stability <= 40) {
-		    militaryStrength -= militaryStrength * 0.04; // Decrease by 4%
+		    militaryStrength -= militaryStrength * 0.40; // Decrease by 40%
 		} else if (countryData.stability >= 41 && countryData.stability <= 44) {
-		    militaryStrength -= militaryStrength * 0.02; // Decrease by 2%
+		    militaryStrength -= militaryStrength * 0.20; // Decrease by 20%
 		} else if (countryData.stability >= 45 && countryData.stability <= 55) {
 		    // No change (0%)
 		} else if (countryData.stability >= 56 && countryData.stability <= 65) {
-		    militaryStrength += militaryStrength * 0.02; // Increase by 2%
-		} else if (countryData.stability >= 66 && countryData.stability <= 75) {
-		    militaryStrength += militaryStrength * 0.07; // Increase by 7%
-		} else if (countryData.stability >= 76 && countryData.stability <= 100) {
-		    militaryStrength += militaryStrength * 0.10; // Increase by 10%
+		    militaryStrength += militaryStrength * 0.30; // Increase by 30%
+		} else if (countryData.stability >= 66 && countryData.stability <= 74) {
+		    militaryStrength += militaryStrength * 0.50; // Increase by 50%
+		} else if (countryData.stability >= 75 && countryData.stability <= 100) {
+		    militaryStrength += militaryStrength * 0.70; // Increase by 70%
 		}
 		
 	    // Military training adjustment
