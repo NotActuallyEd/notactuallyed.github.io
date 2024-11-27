@@ -2,7 +2,7 @@
   {
     "country": "ambrosia",
     "population": 102901,
-    "army": 78542,
+    "recruitment": 20,
     "motor": 875,
     "navy": 67,
     "airforce": 121,
@@ -14,7 +14,7 @@
   {
     "country": "columbia",
     "population": 187036,
-    "army": 79023,
+    "recruitment": 20,
     "motor": 194,
     "navy": 33,
     "airforce": 176,
@@ -26,7 +26,7 @@
   {
     "country": "ddi",
     "population": 138451,
-    "army": 32651,
+    "recruitment": 20,
     "motor": 989,
     "navy": 100,
     "airforce": 57,
@@ -38,7 +38,7 @@
   {
     "country": "hanguk",
     "population": 198764,
-    "army": 65427,
+    "recruitment": 20,
     "motor": 901,
     "navy": 97,
     "airforce": 152,
@@ -50,7 +50,7 @@
   {
     "country": "issasuku",
     "population": 173817,
-    "army": 40092,
+    "recruitment": 20,
     "motor": 550,
     "navy": 78,
     "airforce": 143,
@@ -62,7 +62,7 @@
   {
     "country": "kitatsuki",
     "population": 144862,
-    "army": 30218,
+    "recruitment": 20,
     "motor": 103,
     "navy": 65,
     "airforce": 176,
@@ -74,7 +74,7 @@
   {
     "country": "kamikaji",
     "population": 184279,
-    "army": 74264,
+    "recruitment": 20,
     "motor": 765,
     "navy": 88,
     "airforce": 195,
@@ -86,7 +86,7 @@
   {
     "country": "koryo",
     "population": 185374,
-    "army": 56744,
+    "recruitment": 20,
     "motor": 786,
     "navy": 85,
     "airforce": 198,
@@ -98,7 +98,7 @@
   {
     "country": "paculasia",
     "population": 185273,
-    "army": 78646,
+    "recruitment": 20,
     "motor": 876,
     "navy": 98,
     "airforce": 17,
@@ -110,13 +110,13 @@
   {
     "country": "skarletia",
     "population": 171904,
-    "army": 20374,
+    "recruitment": 10,
     "motor": 492,
     "navy": 0,
     "airforce": 48,
     "military_training": 1,
     "infrastructure_level": 1,
-    "stability": 30,
+    "stability": 25,
     "multiplier": 1.5
   }
 ]
