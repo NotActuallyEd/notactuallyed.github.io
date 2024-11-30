@@ -49,13 +49,13 @@
   },
   {
     "country": "issasuku",
-    "population": 173817,
+    "population": 347634,
     "recruitment": 20,
     "motor": 550,
     "navy": 78,
     "airforce": 143,
     "military_training": 2,
-    "infrastructure_level": 1,
+    "infrastructure_level": 3,
     "stability": 55,
     "multiplier": 1
   },
