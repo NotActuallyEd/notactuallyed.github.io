@@ -42,10 +42,10 @@
     "motor": 901,
     "navy": 97,
     "airforce": 152,
-    "military_training": 3,
-    "infrastructure_level": 3,
+    "military_training": 2,
+    "infrastructure_level": 2,
     "stability": 55,
-    "multiplier": 1.75
+    "multiplier": 1.25
   },
   {
     "country": "issasuku",
