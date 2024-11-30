@@ -103,12 +103,16 @@ document.getElementById('goButton').addEventListener('click', function() {
         adjustedMilitaryStrength -= 5;
     }
 
-    let successfulRate;
-    if (Math.random() < 0.2) {
-        successfulRate = Math.floor(Math.random() * 30) + 1;
-    } else {
-        successfulRate = Math.floor(Math.random() * 20) + 1;
-    }
+	let successfulRate;
+	const chance = Math.random();
+	
+	if (chance < 0.2) {
+	  successfulRate = Math.floor(Math.random() * 20) + 1; // Range 1 to 20 with 20% chance
+	} else if (chance < 0.3) { // 10% chance (0.3 - 0.2)
+	  successfulRate = Math.floor(Math.random() * 30) + 1; // Range 1 to 30 with 10% chance
+	} else {
+	  successfulRate = Math.floor(Math.random() * 10) + 1; // Default range 1 to 10
+	}
 
     const percentage = (adjustedMilitaryStrength / (adjustedMilitaryStrength + successfulRate)) * 100;
 
@@ -133,7 +137,7 @@ document.getElementById('goButton').addEventListener('click', function() {
     if (threadId) {
         const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
         const data = {
-            content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n\n-# I am a webhook! This action was performed through the complementary [Sahurle War System](https://notactuallyed.github.io/warsystem)!`
+            content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n-# I am a webhook! This action was performed through the complementary [Sahurle War System](https://notactuallyed.github.io/warsystem)!`
         };
 
         if (message === "DECISIVE VICTORY") {
@@ -142,7 +146,7 @@ document.getElementById('goButton').addEventListener('click', function() {
                 "Good job."
             ];
             const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-            data.content += `\n${randomMessage}`; // Append the random message
+            data.content += `${randomMessage}`; // Append the random message
         }
 
         fetch(webhookURL, {
