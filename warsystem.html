@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="assets/favicon.svg">
-	<title>SHL￤main</title>
 	<title>SHL￤war</title>
 	<link rel="stylesheet" type="text/css" href="pages/mouseglow.css">
 	<link rel="stylesheet" type="text/css" href="pages/sahurlebg.css">
@@ -13,7 +12,7 @@
     <div class="container">
         <div class="result">
             <div class="percentage">-</div>
-            <div class="message">000</div>
+            <div class="message"></div>
         </div>
         <div class="inputs">
             <input type="number" id="militaryStrength" placeholder="Military Strength (1-30)">
@@ -112,18 +111,18 @@ document.getElementById('goButton').addEventListener('click', function() {
     const percentage = (adjustedMilitaryStrength / (adjustedMilitaryStrength + successfulRate)) * 100;
 
     let message;
-    if (percentage <= 5) message = "CATASTROPHIC<br>DISASTER";
-    else if (percentage <= 15) message = "DECISIVE<br>DEFEAT";
-    else if (percentage <= 25) message = "SUBSTANSIAL<br>DEFEAT";
-    else if (percentage <= 35) message = "TACTICAL<br>DEFEAT";
-    else if (percentage <= 45) message = "SLIGHT<br>DEFEAT";
+    if (percentage <= 5) message = "CATASTROPHIC\nDISASTER";
+    else if (percentage <= 15) message = "DECISIVE\nDEFEAT";
+    else if (percentage <= 25) message = "SUBSTANSIAL\nDEFEAT";
+    else if (percentage <= 35) message = "TACTICAL\nDEFEAT";
+    else if (percentage <= 45) message = "SLIGHT\nDEFEAT";
     else if (percentage <= 48) message = "DEFEAT";
     else if (percentage <= 50) message = "TIE";
-    else if (percentage <= 52) message = "PYRRHIC<br>VICTORY";
-    else if (percentage <= 59) message = "MARGINAL<br>VICTORY";
-    else if (percentage <= 65) message = "SLIGHT<br>VICTORY";
+    else if (percentage <= 52) message = "PYRRHIC\nVICTORY";
+    else if (percentage <= 59) message = "MARGINAL\nVICTORY";
+    else if (percentage <= 65) message = "SLIGHT\nVICTORY";
     else if (percentage <= 80) message = "VICTORY";
-    else if (percentage <= 95) message = "CLEAR<br>VICTORY";
+    else if (percentage <= 95) message = "CLEAR\nVICTORY";
     else message = "DECISIVE VICTORY";
 
     document.querySelector('.percentage').textContent = percentage.toFixed(0) + "%";
