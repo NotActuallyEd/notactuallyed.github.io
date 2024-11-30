@@ -21,7 +21,7 @@
     "military_training": 2,
     "infrastructure_level": 1,
     "stability": 55,
-    "multiplier": 2
+    "multiplier": 2.25
   },
   {
     "country": "ddi",
@@ -45,7 +45,7 @@
     "military_training": 2,
     "infrastructure_level": 2,
     "stability": 55,
-    "multiplier": 1.25
+    "multiplier": 1.15
   },
   {
     "country": "issasuku",
