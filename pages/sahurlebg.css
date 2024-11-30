@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=DotGothic16&family=Hachi+Maru+Pop&family=Linefont:wght@4..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=Wavefont:wght@4..1000&family=Yuji+Boku&display=swap');
+/* fonts: DotGothic16, Montserrat, Hachi Maru Pop, Yuji Boku, Silkscreen, Borel, Wavefont, Linefont, Outfit, Pixelify Sans */
+
+body {
+		margin: 0;
+		font-family: 'DotGothic16', sans-serif;
+		background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
+		color: #1E233B;
+		display: flex;
+		height: 100vh;
+		overflow: hidden;
+		align-items: center; /* Center content vertically */
+		justify-content: center; /* Center content horizontally */
+		user-select: none;
+	}
+
