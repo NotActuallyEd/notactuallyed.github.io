@@ -87,7 +87,7 @@ button {
 
 <script>
 document.getElementById('goButton').addEventListener('click', function() {
-    const militaryStrengthInput = parseInt(document.getElementById('militaryStrength').value);
+    const militaryStrengthInput = parseFloat(document.getElementById('militaryStrength').value); // Changed to parseFloat to support decimals
     const threadId = document.getElementById('threadId').value;
     const key = document.getElementById('key').value;
 
@@ -97,22 +97,24 @@ document.getElementById('goButton').addEventListener('click', function() {
     }
 
     let adjustedMilitaryStrength = militaryStrengthInput;
-    if (key === "HOSHIMACHI") {
+    if (key === "") {
         adjustedMilitaryStrength += 10;
     } else if (key === "REDASTHEWIND") {
         adjustedMilitaryStrength -= 5;
     }
 
-	let successfulRate;
-	const chance = Math.random();
-	
-	if (chance < 0.2) {
-	  successfulRate = Math.floor(Math.random() * 20) + 1; // Range 1 to 20 with 20% chance
-	} else if (chance < 0.3) { // 10% chance (0.3 - 0.2)
-	  successfulRate = Math.floor(Math.random() * 30) + 1; // Range 1 to 30 with 10% chance
-	} else {
-	  successfulRate = Math.floor(Math.random() * 10) + 1; // Default range 1 to 10
-	}
+    let successfulRate;
+    const chance = Math.random();
+
+    if (chance < 0.01) { // 1% chance
+        successfulRate = Math.floor(Math.random() * 30) + 1; // Range 1 to 30
+    } else if (chance < 0.05) { // 4% chance (0.05 - 0.01)
+        successfulRate = Math.floor(Math.random() * 25) + 1; // Range 1 to 25
+    } else if (chance < 0.20) { // 15% chance (0.20 - 0.05)
+        successfulRate = Math.floor(Math.random() * 15) + 1; // Range 1 to 15
+    } else { // 80% chance
+        successfulRate = Math.floor(Math.random() * 12) + 1; // Range 1 to 12
+    }
 
     const percentage = (adjustedMilitaryStrength / (adjustedMilitaryStrength + successfulRate)) * 100;
 
