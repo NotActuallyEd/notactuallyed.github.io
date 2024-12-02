@@ -97,8 +97,10 @@ document.getElementById('goButton').addEventListener('click', function() {
     }
 
     let adjustedMilitaryStrength = militaryStrengthInput;
-    if (key === "") {
+    if (key === "weallmakemistakes") {
         adjustedMilitaryStrength += 10;
+    } else if (key === "nodokamybeloved") {
+        adjustedMilitaryStrength -= 10;
     } else if (key === "REDASTHEWIND") {
         adjustedMilitaryStrength -= 5;
     }
