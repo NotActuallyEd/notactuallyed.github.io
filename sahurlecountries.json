@@ -21,7 +21,8 @@
     "military_training": 2,
     "infrastructure_level": 1,
     "stability": 55,
-    "multiplier": 2.25
+    "multiplier": 1,
+    "resonance": ["Outsider Hegemony", 1.5]
   },
   {
     "country": "ddi",
@@ -45,7 +46,8 @@
     "military_training": 2,
     "infrastructure_level": 2,
     "stability": 55,
-    "multiplier": 1.15
+    "multiplier": 1,
+    "resonance": ["Intervention Upon Song", 0.25]
   },
   {
     "country": "issasuku",
@@ -117,6 +119,7 @@
     "military_training": 1,
     "infrastructure_level": 1,
     "stability": 25,
-    "multiplier": 1.5
+    "multiplier": 1,
+    "resonance": ["Persevere Through All", 0.5]
   }
 ]
