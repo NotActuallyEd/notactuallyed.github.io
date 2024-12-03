@@ -32,7 +32,7 @@
 		}
 		
 	    // Military training adjustment
-	    if (countryData.military_training === 0) {
+	    if (countryData.military_training <= 0) {
 	        militaryStrength -= militaryStrength * 0.90;
 	    } else if (countryData.military_training === 1) {
 	        militaryStrength -= militaryStrength * 0.40;
@@ -42,12 +42,12 @@
 	        militaryStrength += militaryStrength * 0.20;
 	    } else if (countryData.military_training === 4) {
 	        militaryStrength += militaryStrength * 0.40;
-	    } else if (countryData.military_training === 5) {
+	    } else if (countryData.military_training >= 5) {
 	        militaryStrength += militaryStrength * 0.90;
 	    }
 	
 	    // Infrastructure level adjustment
-	    if (countryData.infrastructure_level === 1) {
+	    if (countryData.infrastructure_level <= 1) {
 	        militaryStrength += 0;
 	    } else if (countryData.infrastructure_level === 2) {
 	        militaryStrength += 0.2;
@@ -57,7 +57,7 @@
 	        militaryStrength += 0.6;
 	    } else if (countryData.infrastructure_level === 5) {
 	        militaryStrength += 0.8;
-	    } else if (countryData.infrastructure_level === 6) {
+	    } else if (countryData.infrastructure_level >= 6) {
 	        militaryStrength += 1.5;
 	    }
 	
