@@ -169,38 +169,35 @@
 
 <script src="pages/mouseglow.js"></script>
 <script>
-    fetch('sahurlecountries.json') // Fetch the JSON data
-        .then(response => response.json())
-        .then(data => {
-            const headingDiv = document.querySelector('.country-stats');
-            data.forEach(country => {
-                const militaryStrength = calculateMilitaryStrength(country);
-                const armySize = (country.population * country.recruitment) / 100; // Calculate army size for display
+fetch('sahurlecountries.json')
+    .then(response => response.json())
+    .then(data => {
+        const headingDiv = document.querySelector('.country-stats');
+        data.forEach(country => {
+            const militaryStrength = calculateMilitaryStrength(country);
+            const armySize = (country.population * country.recruitment) / 100; // Calculate army size for display
 
-                // Apply resonance effect if present for display
-                let resonanceMultiplier = 1;
-                if (country.resonance) {
-                    resonanceMultiplier = country.resonance[1];
-                }
+            // Apply resonance effect if present for display
+            let resonanceMultiplier = 1;
+            let resonanceDisplay = ""; // Initialize resonance display
+            if (country.resonance) {
+                resonanceMultiplier = country.resonance[1];
+                resonanceDisplay = `<span class="resonance"> + ${resonanceMultiplier}x</span>`; // Green colored part
+            }
 
-                const motorDisplay = (country.motor * resonanceMultiplier).toFixed(0);
-                const navyDisplay = (country.navy * resonanceMultiplier).toFixed(0);
-                const airforceDisplay = (country.airforce * resonanceMultiplier).toFixed(0);
+            const motorDisplay = (country.motor * resonanceMultiplier).toFixed(0);
+            const navyDisplay = (country.navy * resonanceMultiplier).toFixed(0);
+            const airforceDisplay = (country.airforce * resonanceMultiplier).toFixed(0);
 
-                const entryDiv = document.createElement('div');
-                entryDiv.classList.add('entry');
+            const entryDiv = document.createElement('div');
+            entryDiv.classList.add('entry');
 
-                // Display resonance along with multiplier
-                let multiplierDisplay = `${country.multiplier}x`;
-                if (country.resonance) {
-                    multiplierDisplay += ` (${country.resonance[1]})`;
-                }
-
-                entryDiv.textContent = `${country.country}: ${militaryStrength} / ${country.population} / ${armySize.toFixed(0)} / ${motorDisplay} / ${navyDisplay} / ${airforceDisplay} / ${multiplierDisplay}`;
-                headingDiv.appendChild(entryDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
+            // Display multiplier and resonance separately
+            entryDiv.innerHTML = `${country.country}: ${militaryStrength} / ${country.population} / ${armySize.toFixed(0)} / ${motorDisplay} / ${navyDisplay} / ${airforceDisplay} / ${country.multiplier}x ${resonanceDisplay}`;
+            headingDiv.appendChild(entryDiv);
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
 </script>
 
 </body>
