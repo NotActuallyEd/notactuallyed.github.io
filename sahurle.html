@@ -135,7 +135,13 @@
 	}
 
 	.country-stats .entry .resonance {
-    		color: white;
+    		animation: colorChange 2s ease-in-out infinite;
+	}
+
+	@keyframes colorChange {
+    		0% { color: #5f33ff; }
+    		50% { color: #f533ff; }
+    		100% { color: #5f33ff; }
 	}
 </style>
 </head>
