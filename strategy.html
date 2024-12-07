@@ -37,7 +37,7 @@ body {
 .container {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: rgba(0, 1, 46, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -49,10 +49,11 @@ body {
 }
 
 .percentage {
-    font-size: 2em;
-    font-weight: bold;
-    color: #0B0834;
-    margin-bottom: 10px;
+    	font-size: 2em;
+    	font-weight: bold;
+    	color: rgba(188, 184, 255, 1);
+    	margin-bottom: 10px;
+	font-family: 'DotGothic16', monospace;
 }
 
 .message {
@@ -188,7 +189,7 @@ document.getElementById('goButton').addEventListener('click', function() {
 				// Delay the actual results
                 setTimeout(() => {
                     let data = {
-                        content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Casualties: ${casualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
+                        content: `# ${message}\n> Military Strength: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Win Percentage: ${percentage.toFixed(0)}%\n> Army Casualties: ${casualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
                     };
 
                     if (message === "DECISIVE VICTORY") {
