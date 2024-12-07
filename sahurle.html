@@ -43,7 +43,7 @@
             margin-bottom: 5px;
 		position: absolute;
 		top: var(--top-bar-top); 
-		transition: 0.1s ease;
+		transition: 0.2s ease;
         }
 
         .top-bar a {
@@ -72,7 +72,7 @@
 
 	@media (hover: hover) and (pointer: fine) {
 		.top-bar:hover + .date {
-			top: calc(var(--top-bar-top) * 3.25); 
+			top: calc(var(--top-bar-top) * 3.35); 
 		}
 	}
 
@@ -151,11 +151,13 @@
 		opacity: 0.5;
 	}
 	
-	.content-container .row:not(:first-child):hover {
+	.content-container .row:not(:first-child):hover ~ .row:first-child {
 		opacity: 1;
-		transform: translateX(-1em); /* Nudge to the left */
+		transform: translateX(-1em); /* Nudge the first row to the left on hover */
 		}
 	}
+
+	
     </style>
 </head>
 <body>
