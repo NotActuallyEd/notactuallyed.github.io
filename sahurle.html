@@ -12,6 +12,10 @@
     <link rel="stylesheet" type="text/css" href="pages/mouseglow.css">
     <script src="pages/militarystrength.js"></script>
     <style>
+	:root {
+		--top-bar-top: 10px;
+	}
+	    
         body {
             font-family: 'DotGothic16', sans-serif;
             margin: 0;
@@ -39,7 +43,7 @@
             justify-content: center; /* Center the links horizontally */
             margin-bottom: 5px;
 		position: absolute;
-		top: 10px;
+		top: var(--top-bar-top); 
         }
 
         .top-bar a {
@@ -55,7 +59,7 @@
         .date {
             	font-size: 12px;
 		position: absolute;
-		top: 15px;
+		top: var(--top-bar-top) * 2.5; 
         }
 
         .container {
