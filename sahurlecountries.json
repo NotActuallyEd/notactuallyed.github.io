@@ -22,7 +22,7 @@
     "infrastructure_level": 1,
     "stability": 55,
     "multiplier": 1,
-    "resonance": ["Outsider Hegemony", 2]
+    "resonance": ["Outsider Hegemony", 2.25]
   },
   {
     "country": "ddi",
@@ -64,7 +64,7 @@
   },
   {
     "country": "kitatsuki",
-    "population": 144862,
+    "population": 174862,
     "recruitment": 20,
     "motor": 103,
     "navy": 65,
@@ -76,7 +76,7 @@
   },
   {
     "country": "kamikaji",
-    "population": 184279,
+    "population": 194279,
     "recruitment": 20,
     "motor": 765,
     "navy": 88,
@@ -121,6 +121,6 @@
     "infrastructure_level": 1,
     "stability": 25,
     "multiplier": 1,
-    "resonance": ["Persevere Through All", 1.5]
+    "resonance": ["Persevere Through All", 1.45]
   }
 ]
