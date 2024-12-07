@@ -22,7 +22,7 @@
     "infrastructure_level": 1,
     "stability": 55,
     "multiplier": 1,
-    "resonance": ["Outsider Hegemony", 1.5]
+    "resonance": ["Outsider Hegemony", 2]
   },
   {
     "country": "ddi",
@@ -47,7 +47,7 @@
     "infrastructure_level": 2,
     "stability": 55,
     "multiplier": 1,
-    "resonance": ["Intervention Upon Song", 0.25]
+    "resonance": ["Intervention by Concepts", 1.25]
   },
   {
     "country": "issasuku",
@@ -120,6 +120,6 @@
     "infrastructure_level": 1,
     "stability": 25,
     "multiplier": 1,
-    "resonance": ["Persevere Through All", 0.5]
+    "resonance": ["Persevere Through All", 1.5]
   }
 ]
