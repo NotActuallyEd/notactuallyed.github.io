@@ -59,8 +59,8 @@
     "military_training": 2,
     "infrastructure_level": 1,
     "stability": 55,
-    "multiplier": 1
-    "resonance": ["Powered By Luminite", 1.75]
+    "multiplier": 1,
+    "resonance": ["Fueled By Luminite", 2.25]
   },
   {
     "country": "kitatsuki",
