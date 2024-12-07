@@ -146,21 +146,22 @@
 	}
 
     .tooltip {
-        	visibility: hidden;
-        	width: auto;
-        	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-	        color: #fff;
-	        text-align: center;
-	        border-radius: 6px;
-	        padding: 5px 10px;
-	        position: absolute;
-	        z-index: 1;
-	        bottom: 100%;
-	        left: 50%;
-	        transform: translateX(-50%);
-	        margin-bottom: 5px; /* Space between span and tooltip */
-	        font-weight: bold; /* Make the text bold */
-	        font-size: 16px; /* Larger font size */
+		visibility: hidden;
+		width: auto;
+		background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 10px;
+		position: absolute;
+		z-index: 1;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-bottom: 5px; /* Space between span and tooltip */
+		font-weight: bold; /* Make the text bold */
+		font-size: 16px; /* Larger font size */
+	    	color: white;
     }
 
     .resonance:hover .tooltip {
@@ -220,7 +221,9 @@ fetch('sahurlecountries.json')
             let resonanceDisplay = ""; // Initialize resonance display
             if (country.resonance) {
                 resonanceMultiplier = country.resonance[1];
-                resonanceDisplay = `<span class="resonance">${country.resonance[0]} (${resonanceMultiplier})<span class="tooltip">${country.resonance[0]} (${resonanceMultiplier})</span></span>`; // Green colored part
+                resonanceDisplay = `1x <span class="resonance">+ ${resonanceMultiplier}x<span class="tooltip">${country.resonance[0]} (${resonanceMultiplier})</span></span>`; // Green colored part
+            } else {
+              resonanceDisplay = `1x`;
             }
 
             const motorDisplay = (country.motor * resonanceMultiplier).toFixed(0);
@@ -231,7 +234,7 @@ fetch('sahurlecountries.json')
             entryDiv.classList.add('entry');
 
             // Display multiplier and resonance separately
-            entryDiv.innerHTML = `${country.country}: ${militaryStrength} / ${country.population} / ${armySize.toFixed(0)} / ${motorDisplay} / ${navyDisplay} / ${airforceDisplay} / ${country.multiplier}x ${resonanceDisplay}`;
+            entryDiv.innerHTML = `${country.country}: ${militaryStrength} / ${country.population} / ${armySize.toFixed(0)} / ${motorDisplay} / ${navyDisplay} / ${airforceDisplay} / ${resonanceDisplay}`;
             headingDiv.appendChild(entryDiv);
         });
     })
