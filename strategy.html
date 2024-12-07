@@ -94,7 +94,7 @@ document.getElementById('goButton').addEventListener('click', function() {
     setTimeout(() => {
         this.disabled = false;
         this.style.opacity = 1; // Restore full opacity
-    }, 1000); // Re-enable after 1 second
+    }, 50);
 
 document.getElementById('goButton').addEventListener('click', function() {
     const militaryStrengthInput = parseFloat(document.getElementById('militaryStrength').value); // Changed to parseFloat to support decimals
@@ -177,7 +177,7 @@ document.getElementById('goButton').addEventListener('click', function() {
         const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
         
 		let data = {
-			content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Casualties: ${formattedCasualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
+			content: `# ${message}\n> Military Strength: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Army Casualties: ${formattedCasualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
 		};
 
 		if (message === "DECISIVE VICTORY") {
