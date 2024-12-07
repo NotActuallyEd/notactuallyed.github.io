@@ -148,7 +148,6 @@
 		visibility: hidden;
 		width: auto;
     		background-color: rgba(0, 0, 0, 0.7); /* Keep or choose a different color/opacity */
-    		color: white !important;  /* This should now work correctly */
 		text-align: center;
 		border-radius: 6px;
 		padding: 5px 10px;
@@ -158,9 +157,22 @@
 		left: 50%;
 		transform: translateX(-50%);
 		margin-bottom: 5px; /* Space between span and tooltip */
-		font-weight: bold; /* Make the text bold */
-		font-size: 16px; /* Larger font size */
 	}
+
+    .country-stats .entry .resonance .tooltip {
+		visibility: hidden;
+		width: auto;
+    		background-color: rgba(0, 0, 0, 0.7); /* Keep or choose a different color/opacity */
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 10px;
+		position: absolute;
+		z-index: 1;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-bottom: 5px; /* Space between span and tooltip */
+	}	
 
 	.country-stats .entry .resonance .tooltip {
 		color: white !important;
@@ -168,7 +180,11 @@
 
 	.country-stats .entry .resonance:hover .tooltip {
 		visibility: visible;
+		color: white !important;
+		font-size: 16px;
+		font-weight: bold;
 	}
+
 
 	@keyframes moveGradient {
   		0% { background-position: 0% 0%; }
