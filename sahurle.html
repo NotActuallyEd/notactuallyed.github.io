@@ -50,7 +50,7 @@
             	color: #101828;
             	text-decoration: none;
             	margin: 0 10px;
-		padding: 2.5px;
+		padding: 2.5px 2.5px;
         }
 
         .top-bar span {
@@ -67,7 +67,14 @@
             	font-size: 12px;
 		position: absolute;
 		top: calc(var(--top-bar-top) * 2.75);
+		transition: top 0.1s ease;
         }
+
+	@media (hover: hover) and (pointer: fine) {
+		.top-bar:hover + .date {
+			top: calc(var(--top-bar-top) * 3.25); 
+		}
+	}
 
         .container {
             width: 90%; /* Adjust as needed */
