@@ -13,6 +13,7 @@
     <style>
 	:root {
 		--top-bar-top: 10px;
+		--row-moving-distance: 1em;
 	}
 	    
         body {
@@ -148,16 +149,16 @@
 
 	@media (hover: hover) and (pointer: fine) {
 		.content-container:hover .row:not(:first-child) {
-		opacity: 0.5;
+			opacity: 0.5;
 	}
 	
-	.content-container .row:not(:first-child):hover ~ .row:first-child {
-		opacity: 1;
-		transform: translateX(-1em); /* Nudge the first row to the left on hover */
+	.content-container .row:not(:first-child):hover,
+	.content-container .row:not(:first-child):hover ~ .row:first-child { /* Target first child when other row is hovered */
+			opacity: 1;
+			transform: translateX(var(--row-move-distance)); /* Nudge to the left */
 		}
 	}
-
-	
+		
     </style>
 </head>
 <body>
