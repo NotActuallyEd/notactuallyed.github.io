@@ -135,13 +135,17 @@
 	}
 
 	.country-stats .entry .resonance {
-    		animation: colorChange 2s ease-in-out infinite;
+    		background: linear-gradient(to right, #8b33ff, #ff54f9);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+ 	 	animation: moveGradient 5s linear infinite;
+ 	 	background-size: 200% 100%; /* Double the size for animation */
+		text-shadow: 2px 2px 4px rgba(31, 0, 119, 0.8);
 	}
 
-	@keyframes colorChange {
-    		0% { color: #5f33ff; }
-    		50% { color: #f533ff; }
-    		100% { color: #5f33ff; }
+	@keyframes moveGradient {
+  		0% { background-position: 0% 0%; }
+ 	 	100% { background-position: -100% 0%; }
 	}
 </style>
 </head>
