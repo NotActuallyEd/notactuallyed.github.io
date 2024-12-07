@@ -141,7 +141,31 @@
  	 	animation: moveGradient 5s linear infinite;
  	 	background-size: 200% 100%; /* Double the size for animation */
 		text-shadow: 2px 2px 4px rgba(31, 0, 119, 0.8);
+        	position: relative; /* Make it a positioning context for the tooltip */
+        	cursor: pointer;
 	}
+
+    .tooltip {
+        	visibility: hidden;
+        	width: auto;
+        	background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+	        color: #fff;
+	        text-align: center;
+	        border-radius: 6px;
+	        padding: 5px 10px;
+	        position: absolute;
+	        z-index: 1;
+	        bottom: 100%;
+	        left: 50%;
+	        transform: translateX(-50%);
+	        margin-bottom: 5px; /* Space between span and tooltip */
+	        font-weight: bold; /* Make the text bold */
+	        font-size: 16px; /* Larger font size */
+    }
+
+    .resonance:hover .tooltip {
+	        visibility: visible;
+    }
 
 	@keyframes moveGradient {
   		0% { background-position: 0% 0%; }
@@ -196,7 +220,7 @@ fetch('sahurlecountries.json')
             let resonanceDisplay = ""; // Initialize resonance display
             if (country.resonance) {
                 resonanceMultiplier = country.resonance[1];
-                resonanceDisplay = `<span class="resonance"> + ${resonanceMultiplier}x</span>`; // Green colored part
+                resonanceDisplay = `<span class="resonance">${country.resonance[0]} (${resonanceMultiplier})<span class="tooltip">${country.resonance[0]} (${resonanceMultiplier})</span></span>`; // Green colored part
             }
 
             const motorDisplay = (country.motor * resonanceMultiplier).toFixed(0);
@@ -215,4 +239,3 @@ fetch('sahurlecountries.json')
 </script>
 
 </body>
-</html>
