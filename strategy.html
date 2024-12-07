@@ -88,16 +88,8 @@ button {
 
 <script>
 document.getElementById('goButton').addEventListener('click', function() {
-    // Disable and grey out the button
-    this.disabled = true;
-    this.style.opacity = 0.5; // Grey out the button
-    setTimeout(() => {
-        this.disabled = false;
-        this.style.opacity = 1; // Restore full opacity
-    }, 50);
 
-document.getElementById('goButton').addEventListener('click', function() {
-    const militaryStrengthInput = parseFloat(document.getElementById('militaryStrength').value); // Changed to parseFloat to support decimals
+    const militaryStrengthInput = parseFloat(document.getElementById('militaryStrength').value);
     const threadId = document.getElementById('threadId').value;
     const key = document.getElementById('key').value;
 
@@ -118,14 +110,14 @@ document.getElementById('goButton').addEventListener('click', function() {
     let successfulRate;
     const chance = Math.random();
 
-    if (chance < 0.01) { // 1% chance
-        successfulRate = Math.floor(Math.random() * 30) + 1; // Range 1 to 30
-    } else if (chance < 0.05) { // 4% chance (0.05 - 0.01)
-        successfulRate = Math.floor(Math.random() * 25) + 1; // Range 1 to 25
-    } else if (chance < 0.20) { // 15% chance (0.20 - 0.05)
-        successfulRate = Math.floor(Math.random() * 15) + 1; // Range 1 to 15
-    } else { // 80% chance
-        successfulRate = Math.floor(Math.random() * 12) + 1; // Range 1 to 12
+    if (chance < 0.01) {
+        successfulRate = Math.floor(Math.random() * 30) + 1;
+    } else if (chance < 0.05) {
+        successfulRate = Math.floor(Math.random() * 25) + 1;
+    } else if (chance < 0.20) {
+        successfulRate = Math.floor(Math.random() * 15) + 1;
+    } else {
+        successfulRate = Math.floor(Math.random() * 12) + 1;
     }
 
     const percentage = (adjustedMilitaryStrength / (adjustedMilitaryStrength + successfulRate)) * 100;
@@ -133,7 +125,7 @@ document.getElementById('goButton').addEventListener('click', function() {
     let message;
     if (percentage <= 5) message = "CATASTROPHIC DISASTER";
     else if (percentage <= 15) message = "DECISIVE DEFEAT";
-    else if (percentage <= 25) message = "SUBSTANSIAL DEFEAT";
+    else if (percentage <= 25) message = "SUBSTANTIAL DEFEAT";
     else if (percentage <= 35) message = "TACTICAL DEFEAT";
     else if (percentage <= 45) message = "SLIGHT DEFEAT";
     else if (percentage <= 48) message = "DEFEAT";
@@ -148,63 +140,63 @@ document.getElementById('goButton').addEventListener('click', function() {
     document.querySelector('.percentage').textContent = percentage.toFixed(0) + "%";
     document.querySelector('.message').innerHTML = message.replace(/ /g, "<br>");
 
-   let casualties;
+    let casualties;
     if (message === "CATASTROPHIC DISASTER" || message === "DECISIVE DEFEAT") {
-        casualties = Math.floor(Math.random() * 5001) + 10000; // 10,000 to 15,000
+        casualties = Math.floor(Math.random() * 5001) + 10000;
     } else if (message === "SUBSTANTIAL DEFEAT" || message === "TACTICAL DEFEAT" || message === "SLIGHT DEFEAT") {
-        casualties = Math.floor(Math.random() * 5001) + 5000; // 5,000 to 10,000
+        casualties = Math.floor(Math.random() * 5001) + 5000;
     } else if (message === "DEFEAT" || message === "INDECISIVE") {
-        casualties = Math.floor(Math.random() * 6001) + 1000; // 1,000 to 7,000
+        casualties = Math.floor(Math.random() * 6001) + 1000;
     } else if (message === "PYRRHIC VICTORY") {
-        casualties = Math.floor(Math.random() * 4001) + 1000; // 1,000 to 5,000
+        casualties = Math.floor(Math.random() * 4001) + 1000;
     } else if (message === "MARGINAL VICTORY") {
-        casualties = Math.floor(Math.random() * 2501) + 500; // 500 to 3,000
+        casualties = Math.floor(Math.random() * 2501) + 500;
     } else if (message === "SLIGHT VICTORY" || message === "VICTORY") {
-        casualties = Math.floor(Math.random() * 2901) + 100; // 100 to 3,000
+        casualties = Math.floor(Math.random() * 2901) + 100;
     } else if (message === "CLEAR VICTORY") {
-        casualties = Math.floor(Math.random() * 401) + 100; // 100 to 500
-	} else {
-		casualties = Math.floor(Math.random() * 101);
-	}
+        casualties = Math.floor(Math.random() * 401) + 100;
+    } else {
+        casualties = Math.floor(Math.random() * 101);
+    }
 
-	// Add commas to casualties
     const formattedCasualties = casualties.toLocaleString();
-
-    document.querySelector('.percentage').textContent = percentage.toFixed(0) + "%";
-    document.querySelector('.message').innerHTML = message.replace(/ /g, "<br>");
 
     if (threadId) {
         const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
-        
-		let data = {
-			content: `# ${message}\n> Military Strength: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Army Casualties: ${formattedCasualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
-		};
 
-		if (message === "DECISIVE VICTORY") {
-			const randomMessages = [
-				"Luck really paid you off, or strategy really.",
-				"Good job."
-			];
-			const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-			data.content += ` ${randomMessage}`; // Append the random message
-		}
+        let data = {
+            content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Army Casualties: ${formattedCasualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
+        };
 
-		fetch(webhookURL, {
-			method: "POST",
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		})
-		.then(response => {
-			if (!response.ok) {
-				console.error("Failed to post results to Discord webhook.");
-			}
-		})
-		.catch(error => {
-			console.error("Error posting results to Discord webhook:", error);
-		});
+        if (message === "DECISIVE VICTORY") {
+            const randomMessages = [
+                "Luck really paid you off, or strategy really.",
+                "Good job."
+            ];
+            const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+            data.content += ` ${randomMessage}`;
+        }
+
+		if (this.posting) return;
+		this.posting = true;
+        fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error("Failed to post results to Discord webhook.");
+            }
+        })
+        .catch(error => {
+            console.error("Error posting results to Discord webhook:", error);
+        })
+        .finally(() => {
+            this.posting = false;
+        });
     }
 });
-})
 </script>
