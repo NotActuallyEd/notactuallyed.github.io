@@ -60,6 +60,7 @@
     "infrastructure_level": 1,
     "stability": 55,
     "multiplier": 1
+    "resonance": ["Powered By Luminite", 1.75]
   },
   {
     "country": "kitatsuki",
