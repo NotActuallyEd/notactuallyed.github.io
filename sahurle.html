@@ -43,16 +43,24 @@
             margin-bottom: 5px;
 		position: absolute;
 		top: var(--top-bar-top); 
+		transition: 0.05s ease;
         }
 
         .top-bar a {
             	color: #101828;
             	text-decoration: none;
             	margin: 0 10px;
+		padding: 5px;
+        }
+
+        .top-bar span {
+            	padding: 0 5px;
         }
 
         .top-bar a:hover {
             	text-decoration: underline;
+		color: black;
+		background: white;
         }
 
         .date {
@@ -146,7 +154,7 @@
 <body>
     <div class="top-container">
         <div class="top-bar">
-            <a href="sahurle.html">mainview</a> / <a href="strategy.html">strategy</a> / <a href="advanced.html">advanced</a>
+            <a href="sahurle.html">mainview</a> <span>/</span> <a href="strategy.html">strategy</a> <span>/</span> <a href="advanced.html">advanced</a>
         </div>
         <div class="date">January 1st, 476</div>
     </div>
