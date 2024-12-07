@@ -88,9 +88,12 @@ button {
 
 <script>
 document.getElementById('goButton').addEventListener('click', function() {
+    // Disable and grey out the button
     this.disabled = true;
+    this.style.opacity = 0.5; // Grey out the button
     setTimeout(() => {
         this.disabled = false;
+        this.style.opacity = 1; // Restore full opacity
     }, 1000); // Re-enable after 1 second
 
 document.getElementById('goButton').addEventListener('click', function() {
@@ -145,10 +148,10 @@ document.getElementById('goButton').addEventListener('click', function() {
     document.querySelector('.percentage').textContent = percentage.toFixed(0) + "%";
     document.querySelector('.message').innerHTML = message.replace(/ /g, "<br>");
 
-    let casualties;
+   let casualties;
     if (message === "CATASTROPHIC DISASTER" || message === "DECISIVE DEFEAT") {
         casualties = Math.floor(Math.random() * 5001) + 10000; // 10,000 to 15,000
-    } else if (message === "SUBSTANSIAL DEFEAT" || message === "TACTICAL DEFEAT" || message === "SLIGHT DEFEAT") {
+    } else if (message === "SUBSTANTIAL DEFEAT" || message === "TACTICAL DEFEAT" || message === "SLIGHT DEFEAT") {
         casualties = Math.floor(Math.random() * 5001) + 5000; // 5,000 to 10,000
     } else if (message === "DEFEAT" || message === "INDECISIVE") {
         casualties = Math.floor(Math.random() * 6001) + 1000; // 1,000 to 7,000
@@ -164,64 +167,43 @@ document.getElementById('goButton').addEventListener('click', function() {
 		casualties = Math.floor(Math.random() * 101);
 	}
 
+	// Add commas to casualties
+    const formattedCasualties = casualties.toLocaleString();
+
     document.querySelector('.percentage').textContent = percentage.toFixed(0) + "%";
     document.querySelector('.message').innerHTML = message.replace(/ /g, "<br>");
 
     if (threadId) {
         const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
         
-		// Initial message
-        let initialData = {
-            content: `The action has begun, and the result is!...`
-        };
+		let data = {
+			content: `# ${message}\n> Military Strength Provided: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Percentage: ${percentage.toFixed(0)}%\n> Casualties: ${formattedCasualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
+		};
 
-        fetch(webhookURL, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(initialData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                console.error("Failed to post initial message to Discord webhook.");
-            } else {
-				// Delay the actual results
-                setTimeout(() => {
-                    let data = {
-                        content: `# ${message}\n> Military Strength: ${adjustedMilitaryStrength}\n> Failure Chance: ${successfulRate}\n> Win Percentage: ${percentage.toFixed(0)}%\n> Army Casualties: ${casualties}\n-# I am a webhook! This action was performed through the complementary [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`
-                    };
+		if (message === "DECISIVE VICTORY") {
+			const randomMessages = [
+				"Luck really paid you off, or strategy really.",
+				"Good job."
+			];
+			const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+			data.content += ` ${randomMessage}`; // Append the random message
+		}
 
-                    if (message === "DECISIVE VICTORY") {
-                        const randomMessages = [
-                            "Luck really paid you off, or strategy really.",
-                            "Good job."
-                        ];
-                        const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-                        data.content += ` ${randomMessage}`; // Append the random message
-                    }
-
-                    fetch(webhookURL, {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            console.error("Failed to post results to Discord webhook.");
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error posting results to Discord webhook:", error);
-                    });
-                }, Math.floor(Math.random() * 3000) + 2000); // 2-5 second delay
-            }
-        })
-        .catch(error => {
-            console.error("Error posting initial message to Discord webhook:", error);
-        });
+		fetch(webhookURL, {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+		.then(response => {
+			if (!response.ok) {
+				console.error("Failed to post results to Discord webhook.");
+			}
+		})
+		.catch(error => {
+			console.error("Error posting results to Discord webhook:", error);
+		});
     }
 });
 })
