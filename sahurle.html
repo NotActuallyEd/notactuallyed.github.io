@@ -13,19 +13,28 @@
     <style>
 	:root {
 		--top-bar-top: 10px;
-		--row-move-distance: -1.1em;
+		--row-move-distance: -1.2em;
+		--top-bar-spacing-between: 5px;
 	}
 	    
         body {
-            font-family: 'DotGothic16', sans-serif;
-            margin: 0;
-            background: linear-gradient(0deg, #EFE6E5 0%, #CFAECE 50%, #6374AA 100%);
-            color: #101828;
-            display: flex;
-            flex-direction: column; /* Align items vertically */
-            height: 100vh;
-            overflow: hidden; /* Prevent scrolling */
-	    align-items: center; /* Center content vertically */
+		font-family: 'DotGothic16', sans-serif;
+		margin: 0;
+		background-color: #EFE6E5;
+		background-image: radial-gradient(
+			circle at top center, 
+			#304178 0%, 
+			#9991BC 50%, 
+			#CFAECE 69%, 
+			#EFE6E5 85%
+		);
+		background-repeat: no-repeat;
+		color: #101828;
+		display: flex;
+		flex-direction: column; /* Align items vertically */
+		height: 100vh;
+		overflow: hidden; /* Prevent scrolling */
+		align-items: center; /* Center content vertically */
         }
 
         .top-container {
@@ -37,11 +46,11 @@
         }
 
         .top-bar {
-            font-size: 14px;
-            width: fit-content; /* Adjust width to content */
-            display: flex; /* Make it a flex container */
-            justify-content: center; /* Center the links horizontally */
-            margin-bottom: 5px;
+		font-size: 14px;
+		width: fit-content; /* Adjust width to content */
+		display: flex; /* Make it a flex container */
+		justify-content: center; /* Center the links horizontally */
+		margin-bottom: 5px;
 		position: absolute;
 		top: var(--top-bar-top); 
         }
@@ -50,12 +59,12 @@
             	color: #101828;
             	text-decoration: none;
             	margin: 0 10px;
-		padding: 2.5px 2.5px;
+		padding: var(--top-bar-spacing-between) 0.75em;
 		transition: 0.2s ease;
         }
 
         .top-bar span {
-            	padding: 2.5px;
+            	padding: var(--top-bar-spacing-between);
         }
 
         .top-bar a:hover {
@@ -67,14 +76,14 @@
         .date {
             	font-size: 12px;
 		position: absolute;
-		top: calc(var(--top-bar-top) * 2.75);
+		top: calc(var(--top-bar-top) * 2.95);
 		transition: top 0.1s ease;
 		opacity: 0.95;
         }
 
 	@media (hover: hover) and (pointer: fine) {
 		.top-bar:hover + .date {
-			top: calc(var(--top-bar-top) * 3.35); 
+			top: calc(var(--top-bar-top) * 3.75); 
 			opacity: 0.75;
 		}
 	}
@@ -89,32 +98,36 @@
         }
 
         .left-section {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
         }
 
         .right-section {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center items horizontally */
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Center items horizontally */
         }
 
         .title-image {
-            width: 300px;
-            height: 200px;
-            border-radius: 20px;
-            background-image: url(assets/SahurleTitle.svg);
-            background-size: cover;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
         }
 
+	.title-image img {
+		user-drag: none;
+		-webkit-user-drag: none;
+		-moz-user-select: none;
+	}
+
         .quote {
-            font-size: 14px;
-            margin-top: 20px;
-            text-align: center;
+		font-size: 14px;
+		margin-top: 20px;
+		text-align: center;
 		line-height: 95%;
         }
 
@@ -173,7 +186,7 @@
 
     <div class="container">
         <div class="left-section">
-            <div class="title-image"></div>
+            <div class="title-image"><img src="assets/SahurleTitle.svg" alt="Sahurle / Season 3.26 ・ Polariarch" height="60px"></div>
             <div class="quote">"A longing for the past.<br>Are you waiting for something to happen?"</div>
         </div>
         <div class="right-section">
