@@ -1,0 +1,50 @@
+[
+  {
+    "country": "canary state",
+    "country_short_name": "canary",
+    "country_tag": "CAS",
+    "country_type": 0,
+    "capital": "parnnawiyn",
+    "ideology": "grosmichel capitalism",
+    "population": 584,
+    "army_recruitment_rate": 20,
+    "motor": 0,
+    "artillery": 0,
+    "naval": 0,
+    "airforce": 0,
+    "missiles": 0,
+    "normal_multiplier": 1,
+    "technology": {
+      "military_training": 1,
+      "infrastructure_level": 1,
+      "nuclear_level": 0,
+      "land_tech": 1,
+      "navy_tech": 1,
+      "air_tech": 1
+    }
+  },
+  {
+    "country": "kingdom of ambrosia",
+    "country_short_name": "ambrosia",
+    "country_tag": "AMB",
+    "country_type": 1,
+    "capital": "artois",
+    "ideology": "nationalism",
+    "population": 102901,
+    "army_recruitment_rate": 20,
+    "motor": 0,
+    "artillery": 0,
+    "naval": 0,
+    "airforce": 0,
+    "missiles": 0,
+    "normal_multiplier": 1,
+    "technology": {
+      "military_training": 1,
+      "infrastructure_level": 1,
+      "nuclear_level": 0,
+      "land_tech": 1,
+      "navy_tech": 1,
+      "air_tech": 1
+    }
+  }
+]
