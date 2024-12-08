@@ -14,6 +14,7 @@
     "airforce": 0,
     "missiles": 0,
     "normal_multiplier": 1,
+    "resonance_multiplier": ["Grosmichel Subsidiary", 7.25]
     "technology": {
       "military_training": 1,
       "infrastructure_level": 1,
@@ -21,7 +22,7 @@
       "land_tech": 1,
       "navy_tech": 1,
       "air_tech": 1
-    }
+    },
   },
   {
     "country": "kingdom of ambrosia",
@@ -32,10 +33,10 @@
     "ideology": "nationalism",
     "population": 102901,
     "army_recruitment_rate": 20,
-    "motor": 0,
-    "artillery": 0,
-    "naval": 0,
-    "airforce": 0,
+    "motor": 875,
+    "artillery": 865,
+    "naval": 67,
+    "airforce": 121,
     "missiles": 0,
     "normal_multiplier": 1,
     "technology": {
