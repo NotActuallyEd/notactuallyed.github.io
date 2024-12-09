@@ -15,6 +15,7 @@
 		--top-bar-top: 10px;
 		--row-move-distance: -1.2em;
 		--top-bar-spacing-between: 5px;
+		--top-bar-color: rgb(198, 208, 255);
 	}
 	    
         body {
@@ -23,6 +24,7 @@
 		background-color: #EFE6E5;
 		background-image: radial-gradient(
 			circle at top center, 
+            		#18285C -1%,
 			#304178 5%, 
 			#9991BC 70%, 
 			#CFAECE 89%, 
@@ -54,7 +56,7 @@
 		position: absolute;
 		top: var(--top-bar-top); 
 		user-select: none;
-		color: rgb(230, 235, 255);
+		color: var(--top-bar-color);
         }
 
         .top-bar a {
@@ -62,7 +64,7 @@
             	margin: 0 10px;
 		padding: var(--top-bar-spacing-between) 0.75em;
 		transition: 0.2s ease;
-		color: rgb(230, 235, 255);
+		color: var(--top-bar-color);
         }
 
         .top-bar span {
@@ -81,13 +83,13 @@
 		top: calc(var(--top-bar-top) * 3.85);
 		transition: top 0.1s ease;
 		opacity: 0.95;
-		color: rgb(230, 235, 255);
+		color: var(--top-bar-color);
         }
 
 	@media (hover: hover) and (pointer: fine) {
 		.top-bar:hover + .date {
 			top: calc(var(--top-bar-top) * 4.25); 
-			opacity: 0.75;
+			opacity: 0.55;
 		}
 	}
 
@@ -122,7 +124,7 @@
         }
 
 	.title-image img {
-		user-drag: none;
+		user-select: none;
 		-webkit-user-drag: none;
 		-moz-user-select: none;
 	}
