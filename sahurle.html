@@ -58,11 +58,11 @@
         }
 
         .top-bar a {
-            	color: rgb(230, 235, 255);
             	text-decoration: none;
             	margin: 0 10px;
 		padding: var(--top-bar-spacing-between) 0.75em;
 		transition: 0.2s ease;
+		color: rgb(230, 235, 255);
         }
 
         .top-bar span {
@@ -81,11 +81,12 @@
 		top: calc(var(--top-bar-top) * 3.85);
 		transition: top 0.1s ease;
 		opacity: 0.95;
+		color: rgb(230, 235, 255);
         }
 
 	@media (hover: hover) and (pointer: fine) {
 		.top-bar:hover + .date {
-			top: calc(var(--top-bar-top) * 4); 
+			top: calc(var(--top-bar-top) * 4.25); 
 			opacity: 0.75;
 		}
 	}
