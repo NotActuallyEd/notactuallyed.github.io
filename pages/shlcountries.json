@@ -1,30 +1,5 @@
 [
    {
-      "country":"canary state",
-      "country_short_name":"canary",
-      "country_tag":"CAS",
-      "country_type":0,
-      "country_stability":50,
-      "capital":"parnnawiyn",
-      "ideology":"grosmichel capitalism",
-      "population":176402,
-      "army_recruitment_rate":20,
-      "motor":881,
-      "artillery":79,
-      "naval":86,
-      "airforce":153,
-      "missiles":0,
-      "normal_multiplier":5,
-      "technology":{
-         "military_training":1,
-         "infrastructure_level":1,
-         "nuclear_level":0,
-         "land_tech":1,
-         "navy_tech":1,
-         "air_tech":1
-      }
-   },
-   {
       "country":"kingdom of ambrosia",
       "country_short_name":"ambrosia",
       "country_tag":"AMB",
@@ -40,6 +15,31 @@
       "airforce":121,
       "missiles":0,
       "normal_multiplier":1,
+      "technology":{
+         "military_training":1,
+         "infrastructure_level":1,
+         "nuclear_level":0,
+         "land_tech":1,
+         "navy_tech":1,
+         "air_tech":1
+      }
+   },
+   {
+      "country":"canary state",
+      "country_short_name":"canary",
+      "country_tag":"CAS",
+      "country_type":0,
+      "country_stability":50,
+      "capital":"parnnawiyn",
+      "ideology":"grosmichel capitalism",
+      "population":176402,
+      "army_recruitment_rate":20,
+      "motor":881,
+      "artillery":79,
+      "naval":86,
+      "airforce":153,
+      "missiles":0,
+      "normal_multiplier":5,
       "technology":{
          "military_training":1,
          "infrastructure_level":1,
