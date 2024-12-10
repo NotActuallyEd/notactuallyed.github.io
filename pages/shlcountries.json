@@ -114,7 +114,7 @@
       "naval":97,
       "airforce":153,
       "missiles":0,
-      "multiplier":1,
+      "multiplier":1.5,
       "technology":{
          "military_training":1,
          "infrastructure_level":1,
@@ -139,7 +139,7 @@
       "naval":87,
       "airforce":143,
       "missiles":0,
-      "multiplier":1,
+      "multiplier":1.5,
       "technology":{
          "military_training":1,
          "infrastructure_level":1,
