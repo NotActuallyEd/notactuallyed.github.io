@@ -63,12 +63,12 @@
       "artillery":79,
       "naval":86,
       "airforce":153,
-      "missiles":0,
-      "multiplier":3.5,
+      "missiles":1,
+      "multiplier":3.75,
       "technology":{
          "military_training":1,
          "infrastructure_level":1,
-         "nuclear_level":0,
+         "nuclear_level":3,
          "land_tech":1,
          "navy_tech":1,
          "air_tech":1
