@@ -179,17 +179,37 @@
 			const contentContainer = document.querySelector('.content-container');
 			countries.forEach(country => {
 				// Army Calculation
-				const army = Math.round(country.population * (country.army_recruitment_rate / 100));
-	
+				const countryarmy = Math.round(country.population * (country.army_recruitment_rate / 100));
+
+				// Display Missile stuff
+				let actualMissileCount = country.missiles; 
+				if (country.technology.nuclear_level === 0) {
+					actualMissileCount = 0; // Set missiles to 0 if nuclear_level is 0, intentionally.
+				}
+				
 				// Military Strength Calculation
-				const population_support = country.population / 150000;
-				const army_strength = army / 120000;
-				const motor_strength = country.motor / 3000;
-				const navy_strength = country.naval / 1000;
-				const airforce_strength = country.airforce / 1000;
-				const missile_strength = country.missiles / 0.5;
+				const population_support = country.population / 200000;
+				const army_strength = countryarmy / 120000;
+				const motor_strength = country.motor / 1200;
+				const navy_strength = country.naval / 500;
+				const artillery_strength = country.artillery / 500;
+				const airforce_strength = country.airforce / 700;
+
+			        // Missile Strength Calculation, seperate from the calculations above due to reasons!!
+			        let missile_strength;
+				if (country.technology.nuclear_level === 2) {
+					missile_strength = actualMissileCount / 0.35;
+				} else if (country.technology.nuclear_level === 4) {
+					missile_strength = actualMissileCount / 0.15;
+				} else if (country.technology.nuclear_level === 5) {
+					missile_strength = actualMissileCount / 0.05;
+				} else if (country.technology.nuclear_level >= 6) {
+					missile_strength = actualMissileCount / 0.001;
+				} else {
+					missile_strength = actualMissileCount / 0.75; // default
+				}
 	
-				let ms = population_support + army_strength + motor_strength + navy_strength + airforce_strength + missile_strength;
+				let ms = population_support + army_strength + motor_strength + navy_strength + artillery_strength + airforce_strength + missile_strength;
 	
 				// Military Training Modifiers
 				switch (country.technology.military_training) {
@@ -238,7 +258,7 @@
 				}
 				
 				ms *= country.multiplier; // Apply the multiplier
-				ms = parseFloat(ms.toFixed(3)); // Format it to two decimal places
+				ms = parseFloat(ms.toFixed(2)); // Format it to two decimal places
 
 				// Status
 				if (country.country_type === -1) {
@@ -250,7 +270,7 @@
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.multiplier}x</span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} / ${country.multiplier}x</span>`;
 				
 				contentContainer.appendChild(row);
 			});
