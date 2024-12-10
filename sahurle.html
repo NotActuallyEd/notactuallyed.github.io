@@ -239,11 +239,6 @@
 				
 				ms *= country.multiplier; // Apply the multiplier
 				ms = parseFloat(ms.toFixed(3)); // Format it to two decimal places
-				
-				// Create and insert the row
-				const row = document.createElement('div');
-				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.multiplier}x</span>`;
 
 				// Status
 				if (country.country_type === -1) {
@@ -251,6 +246,11 @@
 				} else if (country.country_type === 0) {
 					row.style.backgroundColor = 'rgb(57, 75, 99 / 80%)';
 				}
+				
+				// Create and insert the row
+				const row = document.createElement('div');
+				row.classList.add('row');
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.multiplier}x</span>`;
 				
 				contentContainer.appendChild(row);
 			});
