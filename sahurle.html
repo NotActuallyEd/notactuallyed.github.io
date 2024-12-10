@@ -217,8 +217,9 @@
 				} else if (country.technology.infrastructure_level >= 6) {
 					ms *= (1 + (country.technology.infrastructure_level - 5) * 0.1 + 0.9);
 				}
-	
-				ms = parseFloat(ms.toFixed(2)); // Format to two decimal places
+				
+				ms *= country.normal_multiplier; // Apply the multiplier
+				ms = parseFloat(ms.toFixed(3)); // Format it to two decimal places
 				
 				// Create and insert the row
 				const row = document.createElement('div');
