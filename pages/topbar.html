@@ -54,9 +54,16 @@
                         }
                 }
         </style>
+        <script>
+                const topBar = document.getElementById("top-bar");
+                
+                topBar.addEventListener("contextmenu", function(event) {
+                        event.preventDefault();
+                });
+        </script>
 </head>
 
-<div class="top-bar">
+<div class="top-bar" id="top-bar">
             <a href="sahurle">mainview</a> <span>|</span> 
             <a href="oldsahurle">old</a> <span>/</span> 
             <a href="strategy">strategy</a> <span>/</span> 
