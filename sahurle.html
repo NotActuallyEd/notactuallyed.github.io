@@ -162,6 +162,72 @@
 			.then(data => {
 				document.getElementById('top-container').innerHTML = data;
 		});
+
+		fetch('pages/shlcountries.json')
+		.then(response => response.json())
+		.then(countries => {
+			const contentContainer = document.querySelector('.content-container');
+			countries.forEach(country => {
+				// Army Calculation
+				const army = Math.round(country.population * (country.army_recruitment_rate / 100));
+	
+				// Military Strength Calculation
+				const population_support = country.population / 150000;
+				const army_strength = army / 120000;
+				const motor_strength = country.motor / 3000;
+				const navy_strength = country.naval / 1000;
+				const airforce_strength = country.airforce / 1000;
+				const missile_strength = country.missiles / 0.5;
+	
+				let ms = population_support + army_strength + motor_strength + navy_strength + airforce_strength + missile_strength;
+	
+				// Military Training Modifiers
+				switch (country.technology.military_training) {
+					case -1:
+					case -2:
+						ms *= 0.05; // Decrease by 95%
+						break;
+					case 0:
+						ms *= 0.5; // Decrease by 50%
+						break;
+					case 2:
+						ms *= 1.2; // Increase by 20%
+						break;
+					case 3:
+						ms *= 1.5; // Increase by 50%
+						break;
+					case 4:
+						ms *= 1.75; // Increase by 75%
+						break;
+				}
+				if (country.technology.military_training >= 4){
+					ms *= 1.75
+				}
+				
+				// Infrastructure Level Modifiers
+				if (country.technology.infrastructure_level <= 0) {
+					ms *= 0.4; // Decrease by 60%
+				} else if (country.technology.infrastructure_level === 2) {
+					ms *= 1.1; // Increase by 10%
+				} else if (country.technology.infrastructure_level === 3) {
+					ms *= 1.3; // Increase by 30%
+				} else if (country.technology.infrastructure_level === 4) {
+					ms *= 1.6; // Increase by 60%
+				} else if (country.technology.infrastructure_level === 5) {
+					ms *= 1.8; // Increase by 80%
+				} else if (country.technology.infrastructure_level >= 6) {
+					ms *= (1 + (country.technology.infrastructure_level - 5) * 0.1 + 0.9);
+				}
+	
+				ms = parseFloat(ms.toFixed(2)); // Format to two decimal places
+				
+				// Create and insert the row
+				const row = document.createElement('div');
+				row.classList.add('row');
+				row.innerHTML = `<span class="stats">${country.country_short_name} <sup>(${country.country_tag})</sup>: ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.normal_multiplier}x</span>`;
+				contentContainer.appendChild(row);
+			});
+		});
 	</script>
 	</body>
 </html>
