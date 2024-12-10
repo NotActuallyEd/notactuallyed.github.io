@@ -47,53 +47,6 @@
             margin-bottom: 20px; /* Add some space between top container and content */
         }
 
-        .top-bar {
-		font-size: 12px;
-		width: fit-content; /* Adjust width to content */
-		display: flex; /* Make it a flex container */
-		justify-content: center; /* Center the links horizontally */
-		margin-bottom: 5px;
-		position: absolute;
-		top: var(--top-bar-top); 
-		user-select: none;
-		color: var(--top-bar-color);
-        }
-
-        .top-bar a {
-            	text-decoration: none;
-            	margin: 0 10px;
-		padding: var(--top-bar-spacing-between) 0.75em;
-		transition: 0.2s ease;
-		color: var(--top-bar-color);
-        }
-
-        .top-bar span {
-            	padding: var(--top-bar-spacing-between);
-        }
-
-        .top-bar a:hover {
-            	text-decoration: underline;
-		color: black;
-		background: white;
-        }
-
-        .date {
-            	font-size: 10.5px;
-		position: absolute;
-		top: calc(var(--top-bar-top) * 3.85);
-		transition: 0.2s ease;
-		opacity: 0.95;
-		color: var(--top-bar-color);
-		user-select: none;
-        }
-
-	@media (hover: hover) and (pointer: fine) {
-		.top-bar:hover + .date {
-			top: calc(var(--top-bar-top) * 4.25); 
-			opacity: 0.55;
-		}
-	}
-
         .container {
             	width: 95%; /* Adjust as needed */
             	max-width: 2400px; /* Limit maximum width */
@@ -185,28 +138,31 @@
 		
     </style>
 </head>
-<body>
-    <div class="top-container">
-        <div class="top-bar">
-            <a href="sahurle">mainview</a> <span>|</span> <a href="oldsahurle">old</a> <span>/</span> <a href="strategy">strategy</a> <span>/</span> <a href="advanced">advanced (wip)</a> <span>/</span> <a href="continent">continent (wip)</a>
-        </div>
-        <div class="date">January 1st, 476 | NEW YEAR'S DAY.</div>
-    </div>
-
-    <div class="container">
-        <div class="left-section">
-            <div class="title-image"><img src="assets/SHLSeason3.26Title.svg" alt="Sahurle / Season 3.26 ・ Polariarch" height="70px"></div>
-            <div class="quote">"A longing for the past.<br>Are you waiting for something to happen?"</div>
-        </div>
-        <div class="right-section">
-          <div class ="content-container">
-		<div class="row">country: ms <span class="stats">/ population / army / motor / artillery / navy / air / missiles / x</span></div>
-		<div class="row"><span class="stats">hello this is what we would like to call the testing procedure area</span></div>
-		<div class="row"><span class="stats">ooh how many things can I add here</span></div>
-		
-          </div>
-        </div>
-    </div>
-<script src="pages/mouseglow.js"></script>
-</body>
+	<body>
+	    <div class="top-container">
+	    </div>
+	
+	    <div class="container">
+	        <div class="left-section">
+	            <div class="title-image"><img src="assets/SHLSeason3.26Title.svg" alt="Sahurle / Season 3.26 ・ Polariarch" height="70px"></div>
+	            <div class="quote">"A longing for the past.<br>Are you waiting for something to happen?"</div>
+	        </div>
+	        <div class="right-section">
+	          <div class ="content-container">
+			<div class="row">country: ms <span class="stats">/ population / army / motor / artillery / navy / air / missiles / x</span></div>
+			<div class="row"><span class="stats">hello this is what we would like to call the testing procedure area</span></div>
+			<div class="row"><span class="stats">ooh how many things can I add here</span></div>
+			
+	          </div>
+	        </div>
+	    </div>
+	<script src="pages/mouseglow.js"></script>
+	<script>    
+		fetch('pages/topbar.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('top-container').innerHTML = data;
+		});
+	</script>
+	</body>
 </html>
