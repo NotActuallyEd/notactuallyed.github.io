@@ -226,6 +226,14 @@
 				} else if (country.technology.infrastructure_level >= 6) {
 					ms *= (1 + (country.technology.infrastructure_level - 5) * 0.1 + 0.9);
 				}
+
+				// Stability Modifiers
+				if (country.country_stability <= 10) {
+					ms *= 0.1; // Decrease by 90% if stability is 10% or below
+				} else {
+					const stabilityDifference = country.country_stability - 50;
+					ms *= (1 + (stabilityDifference / 100)); 
+				}
 				
 				ms *= country.multiplier; // Apply the multiplier
 				ms = parseFloat(ms.toFixed(3)); // Format it to two decimal places
