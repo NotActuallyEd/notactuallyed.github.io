@@ -1,0 +1,67 @@
+<head>
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+        <style>
+                :root {
+                        --top-bar-top: 10px;
+                        --top-bar-spacing-between: 5px;
+                        --top-bar-color: rgb(198, 208, 255);
+                }
+
+                .top-bar {
+                        font-size: 12px;
+                        width: fit-content; /* Adjust width to content */
+                        display: flex; /* Make it a flex container */
+                        justify-content: center; /* Center the links horizontally */
+                        margin-bottom: 5px;
+                        position: absolute;
+                        top: var(--top-bar-top); 
+                        user-select: none;
+                        color: var(--top-bar-color);
+                }
+                
+                .top-bar a {
+                        text-decoration: none;
+                        margin: 0 10px;
+                        padding: var(--top-bar-spacing-between) 0.75em;
+                        transition: 0.2s ease;
+                        color: var(--top-bar-color);
+                }
+                
+                .top-bar span {
+                        padding: var(--top-bar-spacing-between);
+                }
+                
+                .top-bar a:hover {
+                        text-decoration: underline;
+                        color: black;
+                        background: white;
+                }
+                
+                .date {
+                        font-size: 10.5px;
+                        position: absolute;
+                        top: calc(var(--top-bar-top) * 3.85);
+                        transition: 0.2s ease;
+                        opacity: 0.95;
+                        color: var(--top-bar-color);
+                        user-select: none;
+                }
+                
+                @media (hover: hover) and (pointer: fine) {
+                        .top-bar:hover + .date {
+                                top: calc(var(--top-bar-top) * 4.25); 
+                                opacity: 0.55;
+                        }
+                }
+        </style>
+</head>
+
+<div class="top-bar">
+            <a href="sahurle">mainview</a> <span>|</span> 
+            <a href="oldsahurle">old</a> <span>/</span> 
+            <a href="strategy">strategy</a> <span>/</span> 
+            <a href="advanced">advanced (wip)</a> <span>/</span> 
+            <a href="continent">continent (wip)</a>
+    </div>
+    <div class="date">January 1st, 476 | NEW YEAR'S DAY.</div>
+</div>
