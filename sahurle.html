@@ -124,6 +124,12 @@
 		padding: 10px 20px;
 	}
 
+	.row .stats sup::selection {
+		color: black;
+		background: white;
+		padding: 10px 20px;
+	}
+
 	@media (hover: hover) and (pointer: fine) {
 		.content-container:hover .row:not(:first-child) {
 			opacity: 0.5;
@@ -224,7 +230,7 @@
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name} <sup>(${country.country_tag})</sup>: ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.normal_multiplier}x</span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.normal_multiplier}x</span>`;
 				contentContainer.appendChild(row);
 			});
 		});
