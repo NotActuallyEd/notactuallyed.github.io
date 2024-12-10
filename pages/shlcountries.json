@@ -14,7 +14,6 @@
     "airforce": 0,
     "missiles": 0,
     "normal_multiplier": 1,
-    "resonance_multiplier": ["Grosmichel Subsidiary", 7.25]
     "technology": {
       "military_training": 1,
       "infrastructure_level": 1,
