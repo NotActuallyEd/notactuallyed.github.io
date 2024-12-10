@@ -101,7 +101,7 @@
         }
 
 	.row {
-		background-color: rgb(16 13 35 / 81%);
+		background-color: rgb(16 13 35 / 80%);
 		width: 90%;
 		margin-bottom: 5px;
 		padding: 10px 20px;
@@ -244,6 +244,14 @@
 				const row = document.createElement('div');
 				row.classList.add('row');
 				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.multiplier}x</span>`;
+
+				// Status
+				if (country.country_type === -1) {
+					row.style.backgroundColor = 'rgb(97, 27, 54 / 80%)';
+				} else if (country.country_type === 0) {
+					row.style.backgroundColor = 'rgb(57, 75, 99 / 80%)';
+				}
+				
 				contentContainer.appendChild(row);
 			});
 		});
