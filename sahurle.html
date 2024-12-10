@@ -224,13 +224,13 @@
 					ms *= (1 + (country.technology.infrastructure_level - 5) * 0.1 + 0.9);
 				}
 				
-				ms *= country.normal_multiplier; // Apply the multiplier
+				ms *= country.multiplier; // Apply the multiplier
 				ms = parseFloat(ms.toFixed(3)); // Format it to two decimal places
 				
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.normal_multiplier}x</span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${army} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${country.missiles} / ${country.multiplier}x</span>`;
 				contentContainer.appendChild(row);
 			});
 		});
