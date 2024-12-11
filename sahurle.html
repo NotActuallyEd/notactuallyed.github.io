@@ -160,8 +160,7 @@
 	        </div>
 	        <div class="right-section">
 	          <div class ="content-container">
-			<div class="row">country: ms <span class="stats">/ population / army / motor / artillery / navy / air / missiles / x</span></div>
-			
+			<div class="row" id="indicator-row"></div>
 	          </div>
 	        </div>
 	    </div>
@@ -173,6 +172,8 @@
 				document.getElementById('top-container').innerHTML = data;
 		});
 
+		const globalModifier = 1;
+		
 		fetch('pages/shlcountries.json')
 		.then(response => response.json())
 		.then(countries => {
@@ -259,6 +260,10 @@
 				
 				ms *= country.multiplier; // Apply the multiplier
 				ms = parseFloat(ms.toFixed(2)); // Format it to two decimal places
+
+				// Add the indicator row first!
+				const globalRow = document.getElementById('indicator-row');
+				globalRow.innerHTML = `<span class="stats">country: ms / population / army / motor / artillery / navy / air / missiles / x (${globalmodifier}x)</span>`;
 				
 				// Create and insert the row
 				const row = document.createElement('div');
