@@ -108,7 +108,7 @@
 		border-radius: 3px;
 		font-size: 10px;
 		color: white;
-		transition: 0.2s ease;
+		transition: 0.25s cubic-bezier(0, 0.67, 0.67, 2.26);
 	}
 
 	.row .stats sup {
@@ -172,7 +172,7 @@
 				document.getElementById('top-container').innerHTML = data;
 		});
 
-		const globalModifier = 1;
+		const globalPercentage = -99;
 		
 		fetch('pages/shlcountries.json')
 		.then(response => response.json())
@@ -210,7 +210,7 @@
 					missile_strength = actualMissileCount / 0.75; // default
 				}
 	
-				let ms = population_support + army_strength + motor_strength + navy_strength + artillery_strength + airforce_strength + missile_strength;
+				let ms = population_support + army_strength + motor_strength + navy_strength + artillery_strength + airforce_strength;
 	
 				// Military Training Modifiers
 				switch (country.technology.military_training) {
@@ -257,25 +257,24 @@
 					const stabilityDifference = country.country_stability - 50;
 					ms *= (1 + (stabilityDifference / 100)); 
 				}
-				
+
+				// Multiplier Modifiers & Final Touches
 				ms *= country.multiplier; // Apply the multiplier
+				if (globalPercentage >= 0) { // Apply the global modifier
+					ms *= (1 + globalPercentage / 100);
+				} else {
+					ms *= (1 + globalPercentage / 100); 
+				}
 				ms = parseFloat(ms.toFixed(2)); // Format it to two decimal places
 
-				// Add the indicator row first!
+				// Add the indicator row first
 				const globalRow = document.getElementById('indicator-row');
-				globalRow.innerHTML = `<span class="stats">country: ms / population / army / motor / artillery / navy / air / missiles / x (${globalModifier}x)</span>`;
+				globalRow.innerHTML = `<span class="stats">country: ms / population / army / motor / artillery / navy / air / missiles / x (${globalPercentage}x)</span>`;
 				
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} / ${country.population} / ${countryarmy} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} / ${country.multiplier}x</span>`;
-
-				// Status
-				if (country.country_type === -1) {
-					row.style.backgroundColor = 'rgb(97, 27, 54 / 80%)';
-				} else if (country.country_type === 0) {
-					row.style.backgroundColor = 'rgb(57, 75, 99 / 80%)';
-				}
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms} + ${missile_strength} / ${country.population} / ${countryarmy} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} / ${country.multiplier}x</span>`;
 				
 				contentContainer.appendChild(row);
 			});
