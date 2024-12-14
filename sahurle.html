@@ -265,11 +265,13 @@
 				} else {
 					ms *= (1 + globalPercentage / 100); 
 				}
-				ms = parseFloat(ms.toFixed(2)); // Format it to two decimal places
+				
+				ms = parseFloat(ms.toFixed(2)); // Format military strength to two decimal places
+				missile_strength = parseFloat(missile_strength.toFixed(2)); // Format missile strength to two decimal places
 
 				// Add the indicator row first
 				const globalRow = document.getElementById('indicator-row');
-				globalRow.innerHTML = `<span class="stats">country: ms / population / army / motor / artillery / navy / air / missiles / x (${globalPercentage}x)</span>`;
+				globalRow.innerHTML = `<span class="stats">country: ms / population / army / motor / artillery / navy / air / missiles / x (${globalPercentage}%)</span>`;
 				
 				// Create and insert the row
 				const row = document.createElement('div');
