@@ -116,7 +116,7 @@
 	}
 
 	.row .stats .multiplier-effect { /* the one that makes the cool multiplier effects */
-		color: rgb(193, 122, 255);
+		color: rgb(228, 196, 255);
 		user-select: none;
 	}
 
@@ -281,7 +281,7 @@
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms}<sup>+ ${missile_strength}</sup> / ${country.population} / ${countryarmy} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${ms}<sup> + ${missile_strength}</sup> / ${country.population} / ${countryarmy} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
 				
 				contentContainer.appendChild(row);
 			});
