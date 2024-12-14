@@ -55,7 +55,7 @@
       "country_tag":"CAS",
       "country_type":0,
       "country_stability":50,
-      "capital":"Port Morrelede",
+      "capital":"Port Morelaide",
       "ideology":"democracy",
       "population":176402,
       "army_recruitment_rate":20,
@@ -67,7 +67,7 @@
       "multiplier":3.75,
       "technology":{
          "military_training":1,
-         "infrastructure_level":1,
+         "infrastructure_level":5,
          "nuclear_level":3,
          "land_tech":1,
          "navy_tech":1,
