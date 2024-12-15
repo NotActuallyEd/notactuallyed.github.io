@@ -102,7 +102,7 @@
    {
       "country":"대한민국",
       "country_short_name":"hanguk",
-      "country_tag":"HGG",
+      "country_tag":"HGK",
       "country_type":1,
       "country_stability":50,
       "capital":"Undefined",
@@ -227,7 +227,7 @@
    {
       "country":"Pacluasian Resistance",
       "country_short_name":"pacluasia",
-      "country_tag":"PAC",
+      "country_tag":"PCL",
       "country_type":1,
       "country_stability":50,
       "capital":"Undefined",
@@ -252,7 +252,7 @@
    {
       "country":"Skarletian Resistance",
       "country_short_name":"skarletia",
-      "country_tag":"SKR",
+      "country_tag":"SKL",
       "country_type":1,
       "country_stability":20,
       "capital":"Undefined",
