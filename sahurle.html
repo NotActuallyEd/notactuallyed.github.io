@@ -119,7 +119,7 @@
 		border-radius: 3px;
 		font-size: 10px;
 		color: white;
-		transition: 0.25s cubic-bezier(0, 1.53, 0.67, 2.26)
+		transition: 0.25s cubic-bezier(0, 1.53, 0.67, 2.26);
 	}
 
 	.row .stats sup {
@@ -128,12 +128,12 @@
 
 	.row .stats .multiplier-effect { /* the one that makes the cool multiplier effects */
 		color: rgb(209, 176, 255);
-		background: linear-gradient(90deg, rgba(209,176,255,1) 0%, rgba(131,149,255,1) 50%, rgba(209,176,255,1) 100%);
+		background: linear-gradient(90deg, rgba(224, 201, 255,1) 0%, rgba(199, 207, 255,1) 50%, rgba(224, 201, 255,1) 100%);
 		background-size: 400% 100%; 
 		user-select: none;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-		animation: multiplierEffect 10s ease infinite;
+		animation: multiplierEffect 5s cubic-bezier(0, 1.53, 0.67, 2.26) infinite;
 	}
 
 	@keyframes gradientAnimation {
