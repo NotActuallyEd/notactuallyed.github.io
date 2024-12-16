@@ -210,12 +210,12 @@
 				}
 				
 				// Military Strength Calculation
-				const population_support = (country.population / 200000).toLocaleString();
-				const army_strength = (countryarmy / 120000).toLocaleString();
-				const motor_strength = (country.motor / 1200).toLocaleString();
-				const navy_strength = (country.naval / 500).toLocaleString();
-				const artillery_strength = (country.artillery / 500).toLocaleString();
-				const airforce_strength = (country.airforce / 700).toLocaleString();
+				const population_support = country.population / 200000;
+				const army_strength = countryarmy / 120000);
+				const motor_strength = country.motor / 1200);
+				const navy_strength = country.naval / 500);
+				const artillery_strength = country.artillery / 500;
+				const airforce_strength = country.airforce / 700;
 
 			        // Missile Strength Calculation, seperate from the calculations above due to reasons!!
 			        let missile_strength;
@@ -298,7 +298,7 @@
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${military_strength}<sup> + ${missile_strength}</sup> / ${country.population} / ${countryarmy} <sup class="indiv-effect">${army_strength}</span> / ${country.motor} <sup class="indiv-effect">${motor_strength}</span> / ${country.artillery} <sup class="indiv-effect">${artillery_strength}</span> / ${country.naval} <sup class="indiv-effect">${navy_strength}</span> / ${country.airforce} <sup class="indiv-effect">${airforce_strength}</span> / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${military_strength}<sup> + ${missile_strength}</sup> / ${country.population} / ${countryarmy} <sup class="indiv-effect">${army_strength}</sup> / ${country.motor} <sup class="indiv-effect">${motor_strength}</sup> / ${country.artillery} <sup class="indiv-effect">${artillery_strength}</sup> / ${country.naval} <sup class="indiv-effect">${navy_strength}</sup> / ${country.airforce} <sup class="indiv-effect">${airforce_strength}</sup> / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
 				
 				contentContainer.appendChild(row);
 			});
