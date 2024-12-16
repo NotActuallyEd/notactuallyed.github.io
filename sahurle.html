@@ -128,15 +128,15 @@
 
 	.row .stats .multiplier-effect { /* the one that makes the cool multiplier effects */
 		color: rgb(209, 176, 255);
-		background: linear-gradient(90deg, rgba(233, 217, 255,1) 0%, rgba(199, 207, 255,1) 50%, rgba(233, 217, 255,1) 100%);
+		background: linear-gradient(90deg, rgba(209,176,255,1) 0%, rgba(131,149,255,1) 50%, rgba(209,176,255,1) 100%);
 		background-size: 400% 100%; 
 		user-select: none;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-		animation: multiplierEffect 3s cubic-bezier(0.52, -0.38, 1, 1.99) infinite
+		animation: multiplierEffect 10s ease infinite;
 	}
 
-	@keyframes multiplierEffect {
+	@keyframes gradientAnimation {
 		0% {
 			background-position: 0% 50%;
 		}
