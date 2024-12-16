@@ -282,18 +282,14 @@
 
 				// Multiplier Modifiers & Final Touches
 				military_strength *= country.multiplier; // Apply the multiplier
-				army_strength *= country.multiplier; // Apply the multiplier too for the army to view
 				if (globalPercentage >= 0) { // Apply the global modifier
 					military_strength *= (1 + globalPercentage / 100);
-					army_strength *= (1 + globalPercentage / 100);
 				} else {
 					military_strength *= (1 + globalPercentage / 100); 
-					army_strength *= (1 + globalPercentage / 100); 
 				}
 				
 				military_strength = parseFloat(military_strength.toFixed(2)); // Format military strength to two decimal places
 				missile_strength = parseFloat(missile_strength.toFixed(2)); // Format missile strength to two decimal places
-				army_strength = parseFloat(missile_strength.toFixed(2)); // Format missile strength to two decimal places
 
 				// Add the indicator row first
 				const globalRow = document.getElementById('indicator-row');
@@ -302,7 +298,7 @@
 				// Create and insert the row
 				const row = document.createElement('div');
 				row.classList.add('row');
-				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${military_strength}<sup> + ${missile_strength}</sup> / ${country.population} / ${countryarmy} <sup class="indiv-effect">(${army_strength})</sup> / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
+				row.innerHTML = `<span class="stats">${country.country_short_name}<sup>(${country.country_tag})</sup> : ${military_strength}<sup> + ${missile_strength}</sup> / ${country.population} / ${countryarmy} / ${country.motor} / ${country.artillery} / ${country.naval} / ${country.airforce} / ${actualMissileCount} <sup class="multiplier-effect">(${country.multiplier}x)</sup></span>`;
 				
 				contentContainer.appendChild(row);
 			});
