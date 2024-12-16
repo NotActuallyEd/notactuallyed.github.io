@@ -75,31 +75,6 @@
       }
    },
    {
-      "country":"Liberation Lux Servus",
-      "country_short_name":"lls",
-      "country_tag":"LLS",
-      "country_type":1,
-      "country_stability":50,
-      "capital":"Undefined",
-      "ideology":"nationalism",
-      "population":138451,
-      "army_recruitment_rate":20,
-      "motor":989,
-      "artillery":197,
-      "naval":100,
-      "airforce":57,
-      "missiles":0,
-      "multiplier":1,
-      "technology":{
-         "military_training":1,
-         "infrastructure_level":1,
-         "nuclear_level":0,
-         "land_tech":1,
-         "navy_tech":1,
-         "air_tech":1
-      }
-   },
-   {
       "country":"대한민국",
       "country_short_name":"hanguk",
       "country_tag":"HGK",
@@ -213,6 +188,31 @@
       "artillery":240,
       "naval":81,
       "airforce":197,
+      "missiles":0,
+      "multiplier":1,
+      "technology":{
+         "military_training":1,
+         "infrastructure_level":1,
+         "nuclear_level":0,
+         "land_tech":1,
+         "navy_tech":1,
+         "air_tech":1
+      }
+   },
+   {
+      "country":"Liberation Lux Servus",
+      "country_short_name":"lux servus",
+      "country_tag":"LLS",
+      "country_type":1,
+      "country_stability":50,
+      "capital":"Undefined",
+      "ideology":"nationalism",
+      "population":138451,
+      "army_recruitment_rate":20,
+      "motor":989,
+      "artillery":197,
+      "naval":100,
+      "airforce":57,
       "missiles":0,
       "multiplier":1,
       "technology":{
