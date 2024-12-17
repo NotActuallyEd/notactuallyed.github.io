@@ -132,6 +132,76 @@
 			.then(data => {
 			document.getElementById('top-container').innerHTML = data;
 		});
+
+		const militaryStrengthInput = document.getElementById('militaryStrength');
+		const terrainSelect = document.getElementById('terrain');
+		const threadIdInput = document.getElementById('threadId');
+		const keyInput = document.getElementById('key');
+		const goButton = document.getElementById('goButton');
+		const percentageDiv = document.querySelector('.percentage');
+		const resultTextDiv = document.getElementById('resultText');
+		
+		goButton.addEventListener('click', () => {
+		const militaryStrength = parseInt(militaryStrengthInput.value);
+		const terrain = terrainSelect.value;
+		
+		// Input validation (only military strength and terrain are required)
+		if (isNaN(militaryStrength) || militaryStrength < 0 || militaryStrength > 50) {
+			alert("Please enter a valid Military Strength between 0 and 50.");
+			return;
+		}
+		if (!terrain) {
+			alert("Please select a Terrain.");
+			return;
+		}
+		
+		// Generate success rate
+		const successRate = generateSuccessRate();
+		
+		// Calculate the outcome
+		const outcomePercentage = (militaryStrength / successRate) * 100;
+		const outcomeResult = getOutcomeResult(outcomePercentage);
+		
+		// Display the results
+		percentageDiv.textContent = `${outcomePercentage.toFixed(2)}%`;
+		resultTextDiv.textContent = outcomeResult;
+		});
+		
+		function generateSuccessRate() {
+		const randomNum = Math.random() * 100; // Generate a random number between 0 and 100
+		
+		if (randomNum <= 1) { // 1% chance for 1-50 RNG
+			return Math.floor(Math.random() * 50) + 1;
+		} else if (randomNum <= 6) { // 5% chance for 1-40 RNG (cumulative 1 + 5)
+			return Math.floor(Math.random() * 40) + 1;
+		} else if (randomNum <= 16) { // 10% chance for 1-30 RNG (cumulative 1 + 5 + 10)
+			return Math.floor(Math.random() * 30) + 1;
+		} else { // 84% chance for 1-20 RNG (remaining probability)
+			return Math.floor(Math.random() * 20) + 1;
+			}
+		}
+		
+		function getOutcomeResult(percentage) {
+		if (percentage >= 100) {
+			return "Complete Victory!";
+		} else if (percentage >= 90) {
+			return "Major Victory";
+		} else if (percentage >= 75) {
+			return "Decisive Victory";
+		} else if (percentage >= 60) {
+			return "Victory";
+		} else if (percentage >= 50) {
+			return "Indeterminate";
+		} else if (percentage >= 40) {
+			return "Minor Loss";
+		} else if (percentage >= 25) {
+			return "Decisive Loss";
+		} else if (percentage >= 10) {
+			return "Major Loss";
+		} else {
+			return "Catastrophic Disaster!";
+			}
+		}
 	</script>
 </body>
 </html>
