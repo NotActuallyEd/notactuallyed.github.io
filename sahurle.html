@@ -10,6 +10,7 @@
 	
 	<!-- imports that we care about -->
 	<link rel="stylesheet" type="text/css" href="pages/mouseglow.css">
+	<link rel="stylesheet" type="text/css" href="pages/sahurlebackground.css">
 	<script src="pages/militarystrength.js"></script>
 	
 	<!-- merging all these memories to a blend of anomalies — Open Graph Protocol stuff lol -->
@@ -31,17 +32,6 @@
         body {
 		font-family: 'DotGothic16', sans-serif;
 		margin: 0;
-		background-color: #EFE6E5;
-		background-image: radial-gradient(
-			circle at top center, 
-            		#18285C -1%,
-			#304178 5%, 
-			#9991BC 70%, 
-			#CFAECE 89%, 
-			#EFE6E5 100%
-		);
-		background-repeat: no-repeat;
-		color: #101828;
 		display: flex;
 		flex-direction: column; /* Align itemilitary_strength vertically */
 		height: 100vh;
@@ -176,7 +166,7 @@
 	.content-container .row:not(:first-child):hover,
 	.content-container .row:not(:first-child):hover ~ .row:first-child { /* Target first child when other row is hovered */
 			opacity: 1;
-			transform: translate(var(--row-move-distance)); /* Nudge to the left */
+			transform: translate(var(--row-move-distance)) scale(1.01); /* Nudge to the left */
 			filter: blur(0px);
 		}
 	}
@@ -189,7 +179,7 @@
 	    <div class="container">
 	        <div class="left-section">
 	            <div class="title-image"><img src="assets/SHLSeason3.26Title.svg" alt="Sahurle / Season 3.26 ・ Polariarch" height="70px" draggable="false" oncontextmenu="return false;"></div>
-	            <div class="quote">"A longing for the past.<br>Are you waiting for something to happen?"</div>
+	            <div class="quote">"Are you waiting for something to happen?"</div>
 	        </div>
 	        <div class="right-section">
 	          <div class ="content-container">
