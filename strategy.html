@@ -171,6 +171,11 @@
 			const successPercentage = (militaryStrength / successRate) * 100;
 			percentageDiv.textContent = successPercentage.toFixed(2) + "%";
 
+			// Console log the values
+			console.log("Military Strength:", militaryStrength);
+			console.log("Success Rate:", successRate);
+			console.log("Success Percentage:", successPercentage.toFixed(2) + "%");
+
 			if (successPercentage >= 90) {
 				resultSpan.textContent = "Victory!";
 			} else if (successPercentage >= 50) {
