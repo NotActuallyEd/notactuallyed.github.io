@@ -1,0 +1,12 @@
+body {
+      background-color: #EFE6E5;
+      background-image: radial-gradient(
+      circle at top center, 
+                #18285C -1%,
+      #304178 5%, 
+      #9991BC 70%, 
+      #CFAECE 89%, 
+      #EFE6E5 100%
+      );
+      background-repeat: no-repeat;
+}
