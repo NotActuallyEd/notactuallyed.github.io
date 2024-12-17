@@ -125,7 +125,7 @@
 	<div class="container">
 		<div class="header"><div class="percentage">--%</div><span id="result">nothing</span></div>
 		<div class="inputs">
-			<input type="number" id="militaryStrength" placeholder="Military Strength" autocomplete="off" min="0" max="50">
+			<input type="number" id="militaryStrength" placeholder="Military Strength" autocomplete="off" min="0" max="50" required step="0.01">
 			<select id="terrain">
 				<option value="grassland">None</option>
 				<option value="plains">Plains</option>
@@ -156,7 +156,7 @@
 		const resultSpan = document.getElementById('result');
 
 		goButton.addEventListener('click', () => {
-			const militaryStrength = parseInt(militaryStrengthInput.value);
+			const militaryStrength = parseFloat(militaryStrengthInput.value);
 
 			// Validate Military Strength
 			if (isNaN(militaryStrength) || militaryStrength < 0 || militaryStrength > 50) {
@@ -187,15 +187,19 @@
 
 		function generateSuccessRate() {
 			const chance = Math.random();
+			let minRange = 5; // Minimum range is now 5
 			let maxRange = 10;
-
-			if (chance < 0.2) { // 20% chance for 1-30 range
+		
+			if (chance < 0.05) { // 5% chance for 5-40 range
 				maxRange = 30;
-			} else if (chance < 0.6) { // 40% chance for 1-20 range (cumulative 60%)
+			} else if (chance < 0.25) { // 20% chance for 5-30 range (cumulative 25%)
 				maxRange = 20;
+			} else if (chance < 0.65) { // 40% chance for 5-20 range (cumulative 65%)
+				maxRange = 15;
 			}
-
-			return Math.floor(Math.random() * maxRange) + 1;
+			// Remaining 35% chance: maxRange = 10 (default, for 5-10 range)
+			
+			return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 		}
 	</script>
 </body>
