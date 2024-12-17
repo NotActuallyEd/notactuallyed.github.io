@@ -154,50 +154,53 @@
 		const goButton = document.getElementById('goButton');
 		const percentageDiv = document.querySelector('.percentage');
 		const resultSpan = document.getElementById('result');
-
+		
 		goButton.addEventListener('click', () => {
 			const militaryStrength = parseFloat(militaryStrengthInput.value);
-
-			// Validate Military Strength
+			
 			if (isNaN(militaryStrength) || militaryStrength < 0 || militaryStrength > 50) {
-				alert("Please enter a valid Military Strength between 0 and 50.");
-				return;
+			alert("Please enter a valid Military Strength between 0 and 50.");
+			return;
 			}
-
-			// Generate success rate
+			
 			let successRate = generateSuccessRate();
-
-			// Calculate and display results
-			const successPercentage = (militaryStrength / successRate) * 100;
-			percentageDiv.textContent = successPercentage.toFixed(2) + "%";
-
-			// Console log the values
+			
+			// Calculate the real (unclamped) percentage
+			const realSuccessPercentage = (militaryStrength / successRate) * 100;
+			
+			// Clamp the percentage to a maximum of 100% for display
+			const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
+			
+			percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
+			
+			// Console log the real values
 			console.log("Military Strength:", militaryStrength);
 			console.log("Success Rate:", successRate);
-			console.log("Success Percentage:", successPercentage.toFixed(2) + "%");
-
-			if (successPercentage >= 90) {
-				resultSpan.textContent = "Victory!";
-			} else if (successPercentage >= 50) {
-				resultSpan.textContent = "Indecisive";
+			console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+			console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+			
+			// Use the real percentage for the result logic
+			if (realSuccessPercentage >= 90) {
+			resultSpan.textContent = "Victory!";
+			} else if (realSuccessPercentage >= 50) {
+			resultSpan.textContent = "Indecisive";
 			} else {
-				resultSpan.textContent = "Failure";
+			resultSpan.textContent = "Failure";
 			}
 		});
-
+		
 		function generateSuccessRate() {
 			const chance = Math.random();
-			let minRange = 5; // Minimum range is now 5
+			let minRange = 5;
 			let maxRange = 10;
-		
-			if (chance < 0.05) { // 5% chance for 5-40 range
+			
+			if (chance < 0.05) {
+				maxRange = 40;
+			} else if (chance < 0.25) {
 				maxRange = 30;
-			} else if (chance < 0.25) { // 20% chance for 5-30 range (cumulative 25%)
+			} else if (chance < 0.65) {
 				maxRange = 20;
-			} else if (chance < 0.65) { // 40% chance for 5-20 range (cumulative 65%)
-				maxRange = 15;
 			}
-			// Remaining 35% chance: maxRange = 10 (default, for 5-10 range)
 			
 			return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 		}
