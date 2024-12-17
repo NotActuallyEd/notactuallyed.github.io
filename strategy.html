@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="assets/favicon.svg">
-	<title>SHL￤war</title>
+	<title>SHL￤strategy</title>
 
 	<!-- font links -->
 	<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
@@ -62,7 +62,14 @@
 		text-align: center;
 		margin-bottom: 10px;
 		padding: 10px;
-		border-radius: 5px;
+		user-select: none;
+	}
+
+	.header .percentage {
+		font-family: 'DotGothic16', sans-serif;
+		font-size: 0.85em;
+		text-align: center;
+		color: #0000ff;
 	}
 	
 	.inputs {
@@ -82,12 +89,19 @@
 	
 	button {
 		padding: 10px 20px;
-		background-color: #0000ff;
+		background-color: rgb(93 93 255 / 40%);
 		color: white;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
-		font-family: 'Yusei Magic', sans-serif;
+		font-family: 'DotGothic16', sans-serif
+		transition: 0.25s ease;
+	}
+
+	button:hover {
+		background-color: rgb(93 93 255 / 80%);
+		color: white;
+		transform: scale(1.05);
 	}
 </style>
 </head>
@@ -95,19 +109,20 @@
 	<div class="top-container" id="top-container"></div>
 	
 	<div class="container">
-		<div class="header">---<br>test</div>
+		<div class="header"><div class="percentage">---</div> test</div>
 		<div class="inputs">
-			<input type="number" id="militaryStrength" placeholder="Military Strength (1-20)">
+			<input type="number" id="militaryStrength" placeholder="Military Strength" autocomplete="off" min="0" max="50">
 			<select id="terrain">
-				<option value="grassland">Grassland</option>
+				<option value="grassland">None</option>
+				<option value="plains">Plains</option>
 				<option value="desert">Desert</option>
 				<option value="forest">Forest</option>
 				<option value="tundra">Tundra</option>
 				<option value="mountain">Mountain</option>
 			</select>
-			<input type="text" id="threadId" placeholder="ThreadID">
-			<input type="text" id="key" placeholder="Key">
-			<button id="goButton">GO!</button>
+			<input type="text" id="threadId" placeholder="ThreadID" autocomplete="off">
+			<input type="text" id="key" placeholder="Key" autocomplete="off">
+			<button id="goButton">DECIDE!</button>
 		</div>
 	</div>
 	<script src="pages/mouseglow.js"></script>
