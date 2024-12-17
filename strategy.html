@@ -5,85 +5,160 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="assets/favicon.svg">
 	<title>SHL￤war</title>
+
+	<!-- font links -->
+	<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<!-- imports that we care about -->
 	<link rel="stylesheet" type="text/css" href="pages/mouseglow.css">
-	<link rel="stylesheet" type="text/css" href="pages/sahurlebg.css">
+	<link rel="stylesheet" type="text/css" href="pages/sahurlebackground.css">
+	<script src="pages/militarystrength.js"></script>
+
+	<!-- merging all these memories to a blend of anomalies — Open Graph Protocol stuff lol -->
+	<meta property="og:title" content="Sahurle Nation Roleplay" />
+	<meta property="og:description" content="Are you waiting for something to happen?" />
+	<meta property="og:url" content="https://notactuallyed.github.io/sahurle" />
+	<meta property="og:image" content="https://raw.githubusercontent.com/NotActuallyEd/notactuallyed.github.io/refs/heads/main/assets/SahurleNRPBanner.png" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="NotActuallyEd" />
+
+<style>
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: white;
+	}
+	
+	.container {
+		display: flex;
+		flex-direction: column;
+		background-color: rgb(16 13 35 / 80%);
+		padding: 20px;
+		border-radius: 10px;
+		color: white;
+		width: 30%;
+	}
+	
+	.header {
+		font-family: 'DotGothic16', sans-serif;
+		font-size: 2em;
+		text-align: center;
+		margin-bottom: 10px;
+		padding: 10px;
+		border-radius: 5px;
+	}
+	
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	
+	input, select {
+		padding: 10px;
+		border: 2px solid #0000ff;
+		border-radius: 5px;
+		font-family: 'DotGothic16', sans-serif;
+		background-color: #ffffff;
+		color: #000000;
+	}
+	
+	button {
+		padding: 10px 20px;
+		background-color: #0000ff;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		font-family: 'Yusei Magic', sans-serif;
+	}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="result">
-            <div class="percentage">-</div>
-            <div class="message"></div>
-        </div>
-        <div class="inputs">
-            <input type="number" id="militaryStrength" placeholder="Military Strength (1-30)">
-            <input type="text" id="threadId" placeholder="Thread ID (Optional)">
-            <input type="text" id="key" placeholder="Key (Optional)">
-            <button id="goButton">GO!</button>
-        </div>
-    </div>
+	<div class="container">
+		<div class="header">---<br>test</div>
+		<div class="inputs">
+			<input type="number" id="militaryStrength" placeholder="Military Strength (1-20)">
+			<select id="terrain">
+				<option value="grassland">Grassland</option>
+				<option value="desert">Desert</option>
+				<option value="forest">Forest</option>
+				<option value="tundra">Tundra</option>
+				<option value="mountain">Mountain</option>
+			</select>
+			<input type="text" id="threadId" placeholder="ThreadID">
+			<input type="text" id="key" placeholder="Key">
+			<button id="goButton">GO!</button>
+		</div>
+	</div>
     <script src="pages/mouseglow.js"></script>
 </body>
 </html>
 
+<!-- 
 <style>
-body {
-    font-family: 'Outfit', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 1, 46, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.result {
-    text-align: left;
-    margin-right: 50px;
-}
-
-.percentage {
-    	font-size: 2em;
-    	font-weight: bold;
-    	color: rgba(188, 184, 255, 1);
-    	margin-bottom: 10px;
-	font-family: 'DotGothic16', monospace;
-}
-
-.message {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #1400FF;
-}
-
-.inputs {
-    display: flex;
-    flex-direction: column;
-}
-
-input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 2px solid #1400FF;
-    border-radius: 5px;
-    font-family: 'DotGothic16', monospace;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #1400FF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'DotGothic16', monospace;
-}
+	body {
+		font-family: 'Outfit', sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+	
+	.container {
+		display: flex;
+		align-items: center;
+		background-color: rgba(0, 1, 46, 0.8);
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+	
+	.result {
+		text-align: left;
+		margin-right: 50px;
+	}
+	
+	.percentage {
+		font-size: 2em;
+		font-weight: bold;
+		color: rgba(188, 184, 255, 1);
+		margin-bottom: 10px;
+		font-family: 'DotGothic16', monospace;
+	}
+	
+	.message {
+		font-size: 2.5em;
+		font-weight: bold;
+		color: #1400FF;
+	}
+	
+	.inputs {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	input {
+		margin-bottom: 10px;
+		padding: 10px;
+		border: 2px solid #1400FF;
+		border-radius: 5px;
+		font-family: 'DotGothic16', monospace;
+	}
+	
+	button {
+		padding: 10px 20px;
+		background-color: #1400FF;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		font-family: 'DotGothic16', monospace;
+	}
 </style>
 
 <script>
@@ -200,3 +275,4 @@ document.getElementById('goButton').addEventListener('click', function() {
     }
 });
 </script>
+-->
