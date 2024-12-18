@@ -175,78 +175,72 @@
 		const resultSpan = document.getElementById('result');
 		
 		goButton.addEventListener('click', () => {
-			const militaryStrength = parseFloat(militaryStrengthInput.value);
-			const keyValue = keyInput.value.trim().toLowerCase(); // Get key value, trim whitespace, and convert to lowercase for case-insensitive comparison
-			
-			if (isNaN(militaryStrength) || militaryStrength < 0 || militaryStrength > 50) {
-				alert("Please enter a valid Military Strength between 0 and 50.");
-				return;
-			}
-			
-			let successRate = generateSuccessRate();
-			let modifiedMilitaryStrength = militaryStrength; // Initialize with the original value
-			
-			// Handle key input effects
-			if (keyValue === "unknown") {
-				percentageDiv.textContent = "??.??%";
-				
-				// Skip the rest of the calculation and result logic since we're displaying "??.??"
-				return;
-				
-			} else if (keyValue === "massive") {
-				modifiedMilitaryStrength *= 2.5; // Increase military strength by 150% (original + 150% = 250% or 2.5 times)
-			}
-			
-			// Calculate the real (unclamped) percentage
-			const realSuccessPercentage = (modifiedMilitaryStrength / successRate) * 100;
-			// Clamp the percentage to a maximum of 100% for display
-			const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
-			
-			// Only display the calculated percentage if the key is not "unknown"
-			if (keyValue !== "unknown") {
-				percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
-			}
-			
-			// Console log the real values
-			console.log("——————————————————————");
-			console.log(
-			"%cYOUR RESULTS — (indepth!)",
-			"font-family: monospace; font-size: 24px; font-weight: bold;",
-			);
-			console.log("Original Military Strength:", militaryStrength);
-			console.log("Modified Military Strength:", modifiedMilitaryStrength);
-			console.log("Success Rate:", successRate);
-			console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
-			console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
-			
-			// Use the real percentage for the result logic only if key is not "unknown"
-			if (keyValue !== "unknown") {
-			if (realSuccessPercentage >= 90) {
-				resultSpan.textContent = "Victory!";
-			} else if (realSuccessPercentage >= 50) {
-				resultSpan.textContent = "Indecisive";
-			} else {
-				resultSpan.textContent = "Failure";
-			}
-			} else {
-				resultSpan.textContent = "Unknown"; // Or any other appropriate message for the "unknown" key
-			}
+		    const baseMilitaryStrength = parseFloat(militaryStrengthInput.value);
+		
+		    if (isNaN(baseMilitaryStrength) || baseMilitaryStrength < 0 || baseMilitaryStrength > 50) {
+		        alert("Please enter a valid Military Strength between 0 and 50.");
+		        return;
+		    }
+		
+		    let militaryStrength = baseMilitaryStrength; // Initialize with the base value
+		    const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim()); // Split into array of keys
+		
+		    // Apply key-based modifications
+		    keys.forEach(key => {
+		        if (key === "massive") {
+		            militaryStrength *= 5.5; // Increase by 450%
+		        } else if (key === "hardcore_mode") {
+		            militaryStrength *= 0.5; // Decrease by 50%
+		        } else if (key === "smasheverything") {
+		            militaryStrength *= 50.0; // Increase by scary number
+		        }
+		    });
+		
+		    let successRate = generateSuccessRate();
+		
+		    // Calculate the real (unclamped) percentage
+		    const realSuccessPercentage = (militaryStrength / successRate) * 100;
+		    // Clamp the percentage to a maximum of 100% for display
+		    const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
+		
+		    percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
+		
+		    // Console log the real values
+		    console.log("——————————————————————");
+		    console.log(
+		        "%cYOUR RESULTS — (indepth!)",
+		        "font-family: monospace; font-size: 24px; font-weight: bold;",
+		    );
+		    console.log("Base Military Strength:", baseMilitaryStrength);
+		    console.log("Modified Military Strength (after keys):", militaryStrength);
+		    console.log("Success Rate:", successRate);
+		    console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+		    console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+		
+		    // Use the real percentage for the result logic
+		    if (realSuccessPercentage >= 90) {
+		        resultSpan.textContent = "Victory!";
+		    } else if (realSuccessPercentage >= 50) {
+		        resultSpan.textContent = "Indecisive";
+		    } else {
+		        resultSpan.textContent = "Failure";
+		    }
 		});
 		
 		function generateSuccessRate() {
-			const chance = Math.random();
-			let minRange = 5;
-			let maxRange = 10;
-			
-			if (chance < 0.05) {
-				maxRange = 40;
-			} else if (chance < 0.25) {
-				maxRange = 30;
-			} else if (chance < 0.65) {
-				maxRange = 20;
-			}
-			
-			return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+		    const chance = Math.random();
+		    let minRange = 5;
+		    let maxRange = 10;
+		
+		    if (chance < 0.05) {
+		        maxRange = 40;
+		    } else if (chance < 0.25) {
+		        maxRange = 30;
+		    } else if (chance < 0.65) {
+		        maxRange = 20;
+		    }
+		
+		    return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 		}
 	</script>
 </body>
