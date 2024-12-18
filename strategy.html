@@ -237,15 +237,15 @@
 				resultText = "Failure";
 			}
 
-		        // Discord Webhook Integration
-		        const threadId = threadIdInput.value.trim();
-		        if (threadId && countryData) {
-		                const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
-		                const armyCasualties = countryArmy - (countryArmy * 0.9);
-
-		                const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
-
-		                const message = `
+		// Discord Webhook Integration
+		const threadId = threadIdInput.value.trim();
+		if (threadId && countryData) {
+		const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
+		const armyCasualties = countryArmy - (countryArmy * 0.9); // Declare armyCasualties here
+		
+		const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
+		
+		const message = `
 		> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
 		
 		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
@@ -273,21 +273,25 @@
 		                        });
 		        }
 
-		        // Console logging (moved after webhook logic for clarity)
-		        console.log("——————————————————————");
-		        console.log(
-		                "%cYOUR RESULTS — (indepth!)",
-		                "font-family: monospace; font-size: 24px; font-weight: bold;",
-		        );
-		        console.log("Base Military Strength:", baseMilitaryStrength);
-		        console.log("Modified Military Strength (after keys):", militaryStrength);
-		        console.log("Success Rate:", successRate);
-		        console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
-		        console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
-		        if (countryData) {
-		                console.log("Country:", countryData.country_name);
-		                console.log("Army Casualties:", armyCasualties);
+		    // Console logging 
+		    console.log("——————————————————————");
+		    console.log(
+		        "%cYOUR RESULTS — (indepth!)",
+		        "font-family: monospace; font-size: 24px; font-weight: bold;",
+		    );
+		    console.log("Base Military Strength:", baseMilitaryStrength);
+		    console.log("Modified Military Strength (after keys):", militaryStrength);
+		    console.log("Success Rate:", successRate);
+		    console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+		    console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+		    if (countryData) {
+		        console.log("Country:", countryData.country_name);
+		        if (typeof armyCasualties !== 'undefined') {
+		            console.log("Army Casualties:", armyCasualties);
+		        } else {
+		            console.log("Army Casualties: Could not be calculated (country data may be missing).");
 		        }
+		    }
 		});
 
 		function generateSuccessRate() {
