@@ -182,65 +182,100 @@
 			return;
 			}
 			
-			let militaryStrength = baseMilitaryStrength; // Initialize with the base value
-			const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim()); // Split into array of keys
-	
-		// Apply key-based modifications
-		keys.forEach(key => {
-			if (key === "adv:massive_stats") {
-				militaryStrength *= 5.5; // Increase by 450%
-			} else if (key === "adv:angels_grace") {
-				militaryStrength *= 999.9; // Increase by 99,999%
-			} else if (key === "apocalypse") {
-				militaryStrength *= 0.75; // Decrease by 75%
+			let militaryStrength = baseMilitaryStrength;
+			const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim());
+		
+			// Apply key-based modifications
+			keys.forEach(key => {
+				if (key === "adv:massive_stats") {
+					militaryStrength *= 5.5; // Increase by 450%
+				} else if (key === "adv:angels_grace") {
+					militaryStrength *= 999.9; // Increase by 99,999%
+				} else if (key === "apocalypse") {
+					militaryStrength *= 0.75; // Decrease by 75%
+				}
+			});
+		
+		  let successRate = generateSuccessRate();
+		
+		  const realSuccessPercentage = (militaryStrength / successRate) * 100;
+		  const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
+		
+		  percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
+		
+		  let resultText;
+		  if (realSuccessPercentage >= 90) {
+		    resultText = "Victory!";
+		  } else if (realSuccessPercentage >= 50) {
+		    resultText = "Indecisive";
+		  } else {
+		    resultText = "Failure";
+		  }
+		  resultSpan.textContent = resultText;
+		
+		  console.log("——————————————————————");
+		  console.log(
+		    "%cYOUR RESULTS — (indepth!)",
+		    "font-family: monospace; font-size: 24px; font-weight: bold;",
+		  );
+		  console.log("Base Military Strength:", baseMilitaryStrength);
+		  console.log("Modified Military Strength (after keys):", militaryStrength);
+		  console.log("Success Rate:", successRate);
+		  console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+		  console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+		
+			// Discord Webhook Integration
+			const threadId = threadIdInput.value.trim();
+				if (threadId) {
+				const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
+				
+				const messageContent = `
+				> # ${displaySuccessPercentage.toFixed(2)}%
+				> ## ${resultText}
+				
+				> Military Strength: ${baseMilitaryStrength}
+				> Modified Military Strength: ${militaryStrength}
+				> Success Rate: ${successRate}
+				
+				-# I am a webhook!
+				`;
+				
+				fetch(webhookURL, {
+					method: 'POST',
+					headers: {
+					'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+					content: messageContent,
+					}),
+				})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(`Network response was not ok: ${response.status}`);
+					}
+						console.log('Webhook message sent successfully!');
+					})
+					.catch(error => {
+						console.error('Error sending webhook message:', error);
+						alert('Failed to send Discord message. Check console for details!');
+				});
 			}
-		});
-		
-		    let successRate = generateSuccessRate();
-		
-		    // Calculate the real (unclamped) percentage
-		    const realSuccessPercentage = (militaryStrength / successRate) * 100;
-		    // Clamp the percentage to a maximum of 100% for display
-		    const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
-		
-		    percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
-		
-		    // Console log the real values
-		    console.log("——————————————————————");
-		    console.log(
-		        "%cYOUR RESULTS — (indepth!)",
-		        "font-family: monospace; font-size: 24px; font-weight: bold;",
-		    );
-		    console.log("Base Military Strength:", baseMilitaryStrength);
-		    console.log("Modified Military Strength (after keys):", militaryStrength);
-		    console.log("Success Rate:", successRate);
-		    console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
-		    console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
-		
-		    // Use the real percentage for the result logic
-		    if (realSuccessPercentage >= 90) {
-		        resultSpan.textContent = "Victory!";
-		    } else if (realSuccessPercentage >= 50) {
-		        resultSpan.textContent = "Indecisive";
-		    } else {
-		        resultSpan.textContent = "Failure";
-		    }
-		});
+			});
 		
 		function generateSuccessRate() {
-		    const chance = Math.random();
-		    let minRange = 5;
-		    let maxRange = 10;
+		  const chance = Math.random();
+		  let minRange = 5;
+		  let maxRange = 10;
 		
-		    if (chance < 0.05) {
-		        maxRange = 40;
-		    } else if (chance < 0.25) {
-		        maxRange = 30;
-		    } else if (chance < 0.65) {
-		        maxRange = 20;
-		    }
+		  if (chance < 0.05) {
+		    maxRange = 40;
+		  } else if (chance < 0.25) {
+		    maxRange = 30;  
+		  } else if (chance < 0.65) {
+		    maxRange = 20;
+		  }
 		
-		    return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+		  return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 		}
 	</script>
 </body>
