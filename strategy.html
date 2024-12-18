@@ -173,104 +173,135 @@
 		const goButton = document.getElementById('goButton');
 		const percentageDiv = document.querySelector('.percentage');
 		const resultSpan = document.getElementById('result');
+
+		async function fetchCountries() {
+		        try {
+		                const response = await fetch('pages/shlcountries.json');
+		                if (!response.ok) {
+		                        throw new Error('Network response was not ok');
+		                }
+		                return await response.json();
+		        } catch (error) {
+		                console.error('Error fetching countries:', error);
+		                return null;
+		        }
+		}
+
+		goButton.addEventListener('click', async () => {
+		        const baseMilitaryStrength = parseFloat(militaryStrengthInput.value);
+
+		        if (isNaN(baseMilitaryStrength) || baseMilitaryStrength < 0 || baseMilitaryStrength > 50) {
+		                alert("Please enter a valid Military Strength between 0 and 50.");
+		                return;
+		        }
+
+		        let militaryStrength = baseMilitaryStrength;
+		        const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim());
+
+		        // Country data (initialize as null)
+		        let countryData = null;
+		        let countryShortName = null;
+
+		        for (const key of keys) {
+		                if (key === "adv:angels_grace") {
+		                        militaryStrength *= 5.5;
+		                } else if (key === "adv:math_bigs") {
+		                        militaryStrength *= 9999.9;
+		                } else if (key === "apocalypse") {
+		                        militaryStrength *= 0.75;
+		                } else if (key.startsWith("game:")) {
+		                        countryShortName = key.substring(5); // Extract country short name from key
+		                        const countries = await fetchCountries();
+		                        if (countries) {
+		                                countryData = countries.find(c => c.country_short_name.toLowerCase() === countryShortName);
+		                                if (!countryData) {
+		                                        console.warn(`Country not found: ${countryShortName}`);
+		                                }
+		                        }
+		                }
+		        }
+
+		        let successRate = generateSuccessRate();
+		        const realSuccessPercentage = (militaryStrength / successRate) * 100;
+		        const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
+
+		        percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
+
+		        if (realSuccessPercentage >= 90) {
+		                resultSpan.textContent = "CONCLUSIVE VICTORY";
+		        } else if (realSuccessPercentage >= 50) {
+		                resultSpan.textContent = "INDECISIVE";
+		        } else {
+		                resultSpan.textContent = "FAILURE";
+		        }
+
+		        // Discord Webhook Integration
+		        const threadId = threadIdInput.value.trim();
+		        if (threadId && countryData) {
+		                const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
+		                const armyCasualties = countryArmy - (countryArmy * 0.9);
+
+		                const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
+
+		                const message = `
+		> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
 		
-		goButton.addEventListener('click', () => {
-			const baseMilitaryStrength = parseFloat(militaryStrengthInput.value);
-			
-			if (isNaN(baseMilitaryStrength) || baseMilitaryStrength < 0 || baseMilitaryStrength > 50) {
-			alert("Please enter a valid Military Strength between 0 and 50.");
-			return;
-			}
-			
-			let militaryStrength = baseMilitaryStrength;
-			const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim());
-		
-			// Apply key-based modifications
-			keys.forEach(key => {
-				if (key === "adv:massive_stats") {
-					militaryStrength *= 5.5; // Increase by 450%
-				} else if (key === "adv:angels_grace") {
-					militaryStrength *= 999.9; // Increase by 99,999%
-				} else if (key === "apocalypse") {
-					militaryStrength *= 0.75; // Decrease by 75%
-				}
-			});
-		
-		  let successRate = generateSuccessRate();
-		
-		  const realSuccessPercentage = (militaryStrength / successRate) * 100;
-		  const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
-		
-		  percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
-		
-		  let resultText;
-		  if (realSuccessPercentage >= 90) {
-		    resultText = "Victory!";
-		  } else if (realSuccessPercentage >= 50) {
-		    resultText = "Indecisive";
-		  } else {
-		    resultText = "Failure";
-		  }
-		  resultSpan.textContent = resultText;
-		
-		  console.log("——————————————————————");
-		  console.log(
-		    "%cYOUR RESULTS — (indepth!)",
-		    "font-family: monospace; font-size: 24px; font-weight: bold;",
-		  );
-		  console.log("Base Military Strength:", baseMilitaryStrength);
-		  console.log("Modified Military Strength (after keys):", militaryStrength);
-		  console.log("Success Rate:", successRate);
-		  console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
-		  console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
-		
-			// Discord Webhook Integration
-			const threadId = threadIdInput.value.trim();
-				if (threadId) {
-				const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
-				
-				const messageContent = `
-				> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
-				
-				> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
-				> Success Percentage: ${successRate} \n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!`;
-				
-				fetch(webhookURL, {
-					method: 'POST',
-					headers: {
-					'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-					content: messageContent,
-					}),
-				})
-				.then(response => {
-					if (!response.ok) {
-						throw new Error(`Network response was not ok: ${response.status}`);
-					}
-						console.log('Webhook message sent successfully!');
-					})
-					.catch(error => {
-						console.error('Error sending webhook message:', error);
-						alert('Failed to send Discord message. Check console for details!');
-				});
-			}
-			});
-		
+		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
+		> Success Percentage: ${successRate}
+		> Army Casualties: ${armyCasualties} (from ${countryShortName})\n# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
+		`;
+
+		                fetch(webhookURL, {
+		                                method: 'POST',
+		                                headers: {
+		                                        'Content-Type': 'application/json',
+		                                },
+		                                body: JSON.stringify({
+		                                        content: message,
+		                                }),
+		                        })
+		                        .then(response => {
+		                                if (!response.ok) {
+		                                        throw new Error('Network response was not ok');
+		                                }
+		                                console.log('Webhook message sent successfully!');
+		                        })
+		                        .catch(error => {
+		                                console.error('There was a problem sending the webhook message:', error);
+		                        });
+		        }
+
+		        // Console logging (moved after webhook logic for clarity)
+		        console.log("——————————————————————");
+		        console.log(
+		                "%cYOUR RESULTS — (indepth!)",
+		                "font-family: monospace; font-size: 24px; font-weight: bold;",
+		        );
+		        console.log("Base Military Strength:", baseMilitaryStrength);
+		        console.log("Modified Military Strength (after keys):", militaryStrength);
+		        console.log("Success Rate:", successRate);
+		        console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+		        console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+		        if (countryData) {
+		                console.log("Country:", countryData.country_name);
+		                console.log("Army Casualties:", armyCasualties);
+		        }
+		});
+
 		function generateSuccessRate() {
-		  const chance = Math.random();
-		  let minRange = 5;
-		  let maxRange = 10;
-		
-		  if (chance < 0.05) {
-		    maxRange = 40;
-		  } else if (chance < 0.25) {
-		    maxRange = 30;  
-		  } else if (chance < 0.65) {
-		    maxRange = 20;
-		  }
-		
-		  return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+		        const chance = Math.random();
+		        let minRange = 5;
+		        let maxRange = 10;
+
+		        if (chance < 0.05) {
+		                maxRange = 40;
+		        } else if (chance < 0.25) {
+		                maxRange = 30;
+		        } else if (chance < 0.65) {
+		                maxRange = 20;
+		        }
+
+		        return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 		}
 	</script>
 </body>
