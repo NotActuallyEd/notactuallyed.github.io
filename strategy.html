@@ -207,8 +207,10 @@
 		                        militaryStrength *= 5.5;
 		                } else if (key === "adv:math_bigs") {
 		                        militaryStrength *= 9999.9;
+		                } else if (key === "adv:nightmar_ed") {
+		                        militaryStrength *= 0.05;
 		                } else if (key === "apocalypse") {
-		                        militaryStrength *= 0.75;
+		                        militaryStrength *= 0.25;
 		                } else if (key.startsWith("game:")) {
 		                        countryTag = key.substring(5).toUpperCase();
 		                        const countries = await fetchCountries();
