@@ -213,7 +213,7 @@
 		                        countryShortName = key.substring(5); // Extract country short name from key
 		                        const countries = await fetchCountries();
 		                        if (countries) {
-		                                countryData = countries.find(c => c.country_short_name.toLowerCase() === countryShortName);
+		                                countryData = countries.find(c => c.country_tag.toUpperCase() === countryShortName);
 		                                if (!countryData) {
 		                                        console.warn(`Country not found: ${countryShortName}`);
 		                                }
@@ -227,13 +227,15 @@
 
 		        percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
 
-		        if (realSuccessPercentage >= 90) {
-		                resultSpan.textContent = "CONCLUSIVE VICTORY";
-		        } else if (realSuccessPercentage >= 50) {
-		                resultSpan.textContent = "INDECISIVE";
-		        } else {
-		                resultSpan.textContent = "FAILURE";
-		        }
+			// Determine result text
+			let resultText;
+			if (realSuccessPercentage >= 90) {
+				resultText = "Victory!";
+			} else if (realSuccessPercentage >= 50) {
+				resultText = "Indecisive";
+			} else {
+				resultText = "Failure";
+			}
 
 		        // Discord Webhook Integration
 		        const threadId = threadIdInput.value.trim();
