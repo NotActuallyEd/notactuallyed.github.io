@@ -266,7 +266,7 @@
 		const threadId = threadIdInput.value.trim();
 		if (threadId && countryData) {
 		const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
-		const armyCasualties = countryArmy - (countryArmy * 0.9); // Declare armyCasualties here
+		const armyCasualties = (countryArmy - (countryArmy * 0.9)).toLocaleString('en-US', { maximumFractionDigits: 0 }); // Declare armyCasualties here
 		
 		const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
 		
