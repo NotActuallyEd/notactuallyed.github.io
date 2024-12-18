@@ -210,10 +210,10 @@
 		                } else if (key === "apocalypse") {
 		                        militaryStrength *= 0.75;
 		                } else if (key.startsWith("game:")) {
-		                        countryShortName = key.substring(5); // Extract country short name from key
+		                        countryTag = key.substring(5).toUpperCase();
 		                        const countries = await fetchCountries();
 		                        if (countries) {
-		                                countryData = countries.find(c => c.country_tag.toUpperCase() === countryShortName);
+		                                countryData = countries.find(c => c.country_tag === countryTag);
 		                                if (!countryData) {
 		                                        console.warn(`Country not found: ${countryShortName}`);
 		                                }
@@ -250,7 +250,7 @@
 		
 		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
 		> Success Percentage: ${successRate}
-		> Army Casualties: ${armyCasualties} (from ${countryShortName})\n# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
+		> Army Casualties: ${armyCasualties} (from ${countryData.country_short_name})\n# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
 		`;
 
 		                fetch(webhookURL, {
