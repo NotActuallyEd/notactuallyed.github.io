@@ -175,26 +175,26 @@
 		const resultSpan = document.getElementById('result');
 		
 		goButton.addEventListener('click', () => {
-		    const baseMilitaryStrength = parseFloat(militaryStrengthInput.value);
-		
-		    if (isNaN(baseMilitaryStrength) || baseMilitaryStrength < 0 || baseMilitaryStrength > 50) {
-		        alert("Please enter a valid Military Strength between 0 and 50.");
-		        return;
-		    }
-		
-		    let militaryStrength = baseMilitaryStrength; // Initialize with the base value
-		    const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim()); // Split into array of keys
-		
-		    // Apply key-based modifications
-		    keys.forEach(key => {
-		        if (key === "massive") {
-		            militaryStrength *= 5.5; // Increase by 450%
-		        } else if (key === "hardcore_mode") {
-		            militaryStrength *= 0.5; // Decrease by 50%
-		        } else if (key === "smasheverything") {
-		            militaryStrength *= 50.0; // Increase by scary number
-		        }
-		    });
+			const baseMilitaryStrength = parseFloat(militaryStrengthInput.value);
+			
+			if (isNaN(baseMilitaryStrength) || baseMilitaryStrength < 0 || baseMilitaryStrength > 50) {
+			alert("Please enter a valid Military Strength between 0 and 50.");
+			return;
+			}
+			
+			let militaryStrength = baseMilitaryStrength; // Initialize with the base value
+			const keys = keyInput.value.trim().toLowerCase().split('+').map(key => key.trim()); // Split into array of keys
+	
+		// Apply key-based modifications
+		keys.forEach(key => {
+			if (key === "adv:massive_stats") {
+				militaryStrength *= 5.5; // Increase by 450%
+			} else if (key === "adv:angels_grace") {
+				militaryStrength *= 999.9; // Increase by 99,999%
+			} else if (key === "apocalypse") {
+				militaryStrength *= 0.75; // Decrease by 75%
+			}
+		});
 		
 		    let successRate = generateSuccessRate();
 		
