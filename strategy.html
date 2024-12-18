@@ -229,12 +229,32 @@
 
 			// Determine result text
 			let resultText;
-			if (realSuccessPercentage >= 90) {
-				resultText = "Victory!";
-			} else if (realSuccessPercentage >= 50) {
-				resultText = "Indecisive";
+			if (realSuccessPercentage >= 94) {
+			resultText = "Paramount Victory";
+			} else if (realSuccessPercentage >= 86) {
+			resultText = "Decisive Victory";
+			} else if (realSuccessPercentage >= 76) {
+			resultText = "Major Victory";
+			} else if (realSuccessPercentage >= 66) {
+			resultText = "Tactical Victory";
+			} else if (realSuccessPercentage >= 56) {
+			resultText = "Minor Victory";
+			} else if (realSuccessPercentage >= 52) {
+			resultText = "Pyrrhic Victory";
+			} else if (realSuccessPercentage >= 49) {
+			resultText = "Draw";
+			} else if (realSuccessPercentage >= 46) {
+			resultText = "Minor Defeat";
+			} else if (realSuccessPercentage >= 26) {
+			resultText = "Tactical Defeat";
+			} else if (realSuccessPercentage >= 16) {
+			resultText = "Major Defeat";
+			} else if (realSuccessPercentage >= 6) {
+			resultText = "Rout";
+			} else if (realSuccessPercentage >= 0) {
+			resultText = "Catastrophic Disaster";
 			} else {
-				resultText = "Failure";
+			resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
 			}
 
 		// Discord Webhook Integration
@@ -250,7 +270,7 @@
 		
 		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
 		> Success Percentage: ${successRate}
-		> Army Casualties: ${armyCasualties} (from ${countryData.country_short_name})\n# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
+		> Army Casualties: ${armyCasualties} (from ${countryData.country_short_name})\n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
 		`;
 
 		                fetch(webhookURL, {
