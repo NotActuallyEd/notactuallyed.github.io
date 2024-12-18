@@ -257,6 +257,9 @@
 			resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
 			}
 
+		// Update resultSpan with resultText
+		resultSpan.textContent = resultText;
+
 		// Discord Webhook Integration
 		const threadId = threadIdInput.value.trim();
 		if (threadId && countryData) {
