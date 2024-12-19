@@ -301,10 +301,10 @@
 		                const message = `
 		> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
 		
-		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength.toFixed(5)})_ 
+		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength.toFixed(6)})_ 
 		> Success Percentage: ${successRate}
 		> Terrain: ${selectedTerrain} _(Modifier: ${(terrainModifier * 100).toFixed(2)}%)_
-		> Army Casualties: ${armyCasualties} _(From ${countryData.country_short_name})_\n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
+		> Army Casualties: ${armyCasualties} _(${countryData.country_short_name})_\n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
 		`;
 
 		                fetch(webhookURL, {
@@ -351,8 +351,8 @@
 
 		function generateSuccessRate(militaryStrength) {
 		        const chance = Math.random();
-		        let minRange = militaryStrength * 1.25; // Min is 150% of military strength
-		        let maxRange = militaryStrength * 4.0; // Max is 400% of military strength
+		        let minRange = militaryStrength * 1.25; // Min is 125% of military strength
+		        let maxRange = militaryStrength * 3.25; // Max is 325% of military strength
 
 		        return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
 		}
