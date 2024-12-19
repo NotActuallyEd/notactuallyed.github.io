@@ -352,7 +352,7 @@
 		function generateSuccessRate(militaryStrength) {
 		        const chance = Math.random();
 		        let minRange = militaryStrength * 0.75; // Min is 75% of military strength
-		        let maxRange = militaryStrength * 3.25; // Max is 325% of military strength
+		        let maxRange = militaryStrength * 2.5; // Max is 250% of military strength
 
 		        return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
 		}
