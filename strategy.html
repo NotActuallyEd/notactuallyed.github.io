@@ -223,7 +223,7 @@
 		                }
 		        }
 
-		        let successRate = generateSuccessRate();
+		        let successRate = generateSuccessRate(baseMilitaryStrength);
 		        const realSuccessPercentage = (militaryStrength / successRate) * 100;
 		        const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
 
@@ -235,43 +235,43 @@
 			
 			if (realSuccessPercentage >= 94) {
 			        resultText = "Paramount Victory";
-				casualtyRate = 0.02;
+				casualtyRate = 0.99;
 			} else if (realSuccessPercentage >= 86) {
 			        resultText = "Decisive Victory";
-				casualtyRate = 0.05;
+				casualtyRate = 0.95;
 			} else if (realSuccessPercentage >= 76) {
 			        resultText = "Major Victory";
-				casualtyRate = 0.10;
+				casualtyRate = 0.90;
 			} else if (realSuccessPercentage >= 66) {
 			        resultText = "Tactical Victory";
-				casualtyRate = 0.15;
+				casualtyRate = 0.80;
 			} else if (realSuccessPercentage >= 56) {
 			        resultText = "Minor Victory";
-				casualtyRate = 0.20;
+				casualtyRate = 0.70;
 			} else if (realSuccessPercentage >= 52) {
 			        resultText = "Pyrrhic Victory";
-				casualtyRate = 0.40;
+				casualtyRate = 0.60;
 			} else if (realSuccessPercentage >= 49) {
 			        resultText = "Draw";
 				casualtyRate = 0.50;
 			} else if (realSuccessPercentage >= 46) {
 			        resultText = "Minor Defeat";
-				casualtyRate = 0.60;
+				casualtyRate = 0.40;
 			} else if (realSuccessPercentage >= 26) {
 			        resultText = "Tactical Defeat";
-				casualtyRate = 0.70;
+				casualtyRate = 0.25;
 			} else if (realSuccessPercentage >= 16) {
 			        resultText = "Major Defeat";
-				casualtyRate = 0.80;
+				casualtyRate = 0.15;
 			} else if (realSuccessPercentage >= 6) {
 			        resultText = "Rout";
-				casualtyRate = 0.85;
+				casualtyRate = 0.05;
 			} else if (realSuccessPercentage >= 0) {
 			        resultText = "Catastrophic Disaster";
-				casualtyRate = 0.95;
+				casualtyRate = 0.01;
 			} else {
 			        resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
-				casualtyRate = 0.99;
+				casualtyRate = 0.001;
 			}
 
 		// Update resultSpan with resultText
@@ -334,20 +334,21 @@
 		    }
 		});
 
-		function generateSuccessRate() {
-		        const chance = Math.random();
-		        let minRange = 5;
-		        let maxRange = 10;
-
-		        if (chance < 0.05) {
-		                maxRange = 40;
-		        } else if (chance < 0.25) {
-		                maxRange = 30;
-		        } else if (chance < 0.65) {
-		                maxRange = 20;
-		        }
-
-		        return Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+		function generateSuccessRate(militaryStrength) {
+		const chance = Math.random();
+		let minRange = militaryStrength * 0.5; // Min is 50% of military strength
+		let maxRange = militaryStrength * 2; // Max is 200% of military strength
+		
+		if (chance < 0.05) {
+		maxRange = militaryStrength + 30;
+		} else if (chance < 0.25) {
+		maxRange = militaryStrength + 20;
+		} else if (chance < 0.65) {
+		maxRange = militaryStrength + 10;
+		}
+		
+		// Generate a random number with two decimal places
+		return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
 		}
 	</script>
 </body>
