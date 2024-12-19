@@ -231,32 +231,47 @@
 
 			// Determine result text
 			let resultText;
+			let casualtyRate; // Introduce a variable to store the casualty rate
+			
 			if (realSuccessPercentage >= 94) {
-			resultText = "Paramount Victory";
+			        resultText = "Paramount Victory";
+				casualtyRate = 0.02;
 			} else if (realSuccessPercentage >= 86) {
-			resultText = "Decisive Victory";
+			        resultText = "Decisive Victory";
+				casualtyRate = 0.05;
 			} else if (realSuccessPercentage >= 76) {
-			resultText = "Major Victory";
+			        resultText = "Major Victory";
+				casualtyRate = 0.10;
 			} else if (realSuccessPercentage >= 66) {
-			resultText = "Tactical Victory";
+			        resultText = "Tactical Victory";
+				casualtyRate = 0.15;
 			} else if (realSuccessPercentage >= 56) {
-			resultText = "Minor Victory";
+			        resultText = "Minor Victory";
+				casualtyRate = 0.20;
 			} else if (realSuccessPercentage >= 52) {
-			resultText = "Pyrrhic Victory";
+			        resultText = "Pyrrhic Victory";
+				casualtyRate = 0.40;
 			} else if (realSuccessPercentage >= 49) {
-			resultText = "Draw";
+			        resultText = "Draw";
+				casualtyRate = 0.50;
 			} else if (realSuccessPercentage >= 46) {
-			resultText = "Minor Defeat";
+			        resultText = "Minor Defeat";
+				casualtyRate = 0.60;
 			} else if (realSuccessPercentage >= 26) {
-			resultText = "Tactical Defeat";
+			        resultText = "Tactical Defeat";
+				casualtyRate = 0.70;
 			} else if (realSuccessPercentage >= 16) {
-			resultText = "Major Defeat";
+			        resultText = "Major Defeat";
+				casualtyRate = 0.80;
 			} else if (realSuccessPercentage >= 6) {
-			resultText = "Rout";
+			        resultText = "Rout";
+				casualtyRate = 0.85;
 			} else if (realSuccessPercentage >= 0) {
-			resultText = "Catastrophic Disaster";
+			        resultText = "Catastrophic Disaster";
+				casualtyRate = 0.95;
 			} else {
-			resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
+			        resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
+				casualtyRate = 0.99;
 			}
 
 		// Update resultSpan with resultText
@@ -266,7 +281,7 @@
 		const threadId = threadIdInput.value.trim();
 		if (threadId && countryData) {
 		const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
-		const armyCasualties = (countryArmy - (countryArmy * 0.9)).toLocaleString('en-US', { maximumFractionDigits: 0 }); // Declare armyCasualties here
+		const armyCasualties = (countryArmy - (countryArmy * casualtyRate)).toLocaleString('en-US', { maximumFractionDigits: 0 }); // Declare armyCasualties here
 		
 		const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
 		
