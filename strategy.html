@@ -148,10 +148,7 @@
 			<select id="terrain">
 				<option value="none">None</option>
 				<option value="plains">Plains (+5% — +15%)</option>
-				<option value="desert">Desert (-5% — +5%)</option>
-				<option value="forest">Forest (-10% — +5%)</option>
-				<option value="tundra">Tundra (-15% — +5%)</option>
-				<option value="mountain">Mountain (-30% — +10%)</option>
+				<option value="cityscape">Cityscape (-30% — +10%)</option>
 			</select>
 			<input type="text" id="threadId" placeholder="ThreadID" autocomplete="off">
 			<input type="text" id="key" placeholder="Key" autocomplete="off">
@@ -161,10 +158,10 @@
 	<script src="pages/mouseglow.js"></script>
 	<script>
 		fetch('pages/topbar.html')
-			.then(response => response.text())
-			.then(data => {
-			document.getElementById('top-container').innerHTML = data;
-		});
+		        .then(response => response.text())
+		        .then(data => {
+		                document.getElementById('top-container').innerHTML = data;
+		        });
 
 		const militaryStrengthInput = document.getElementById('militaryStrength');
 		const terrainSelect = document.getElementById('terrain');
@@ -223,73 +220,88 @@
 		                }
 		        }
 
+		        // Terrain modification
+		        const selectedTerrain = terrainSelect.value;
+		        let terrainModifier = 0;
+
+		        if (selectedTerrain === "plains") {
+		                terrainModifier = Math.random() * (0.15 - 0.05) + 0.05; // +5% to +15%
+		                militaryStrength *= (1 + terrainModifier);
+		        } else if (selectedTerrain === "cityscape") {
+		                terrainModifier = Math.random() * (0.10 - (-0.30)) + (-0.30); // -30% to +10%
+		                militaryStrength *= (1 + terrainModifier);
+		        }
+
 		        let successRate = generateSuccessRate(baseMilitaryStrength);
 		        const realSuccessPercentage = (militaryStrength / successRate) * 100;
 		        const displaySuccessPercentage = Math.min(realSuccessPercentage, 100);
 
 		        percentageDiv.textContent = displaySuccessPercentage.toFixed(2) + "%";
 
-			// Determine result text
-			let resultText;
-			let casualtyRate; // Introduce a variable to store the casualty rate
-			
-			if (realSuccessPercentage >= 94) {
-			        resultText = "Paramount Victory";
-				casualtyRate = 0.99;
-			} else if (realSuccessPercentage >= 86) {
-			        resultText = "Decisive Victory";
-				casualtyRate = 0.95;
-			} else if (realSuccessPercentage >= 76) {
-			        resultText = "Major Victory";
-				casualtyRate = 0.90;
-			} else if (realSuccessPercentage >= 66) {
-			        resultText = "Tactical Victory";
-				casualtyRate = 0.80;
-			} else if (realSuccessPercentage >= 56) {
-			        resultText = "Minor Victory";
-				casualtyRate = 0.70;
-			} else if (realSuccessPercentage >= 52) {
-			        resultText = "Pyrrhic Victory";
-				casualtyRate = 0.60;
-			} else if (realSuccessPercentage >= 49) {
-			        resultText = "Draw";
-				casualtyRate = 0.50;
-			} else if (realSuccessPercentage >= 46) {
-			        resultText = "Minor Defeat";
-				casualtyRate = 0.40;
-			} else if (realSuccessPercentage >= 26) {
-			        resultText = "Tactical Defeat";
-				casualtyRate = 0.25;
-			} else if (realSuccessPercentage >= 16) {
-			        resultText = "Major Defeat";
-				casualtyRate = 0.15;
-			} else if (realSuccessPercentage >= 6) {
-			        resultText = "Rout";
-				casualtyRate = 0.05;
-			} else if (realSuccessPercentage >= 0) {
-			        resultText = "Catastrophic Disaster";
-				casualtyRate = 0.01;
-			} else {
-			        resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
-				casualtyRate = 0.001;
-			}
+		        // Determine result text
+		        let resultText;
+		        let casualtyRate; // Introduce a variable to store the casualty rate
 
-		// Update resultSpan with resultText
-		resultSpan.textContent = resultText;
+		        if (realSuccessPercentage >= 94) {
+		                resultText = "Paramount Victory";
+		                casualtyRate = 0.99;
+		        } else if (realSuccessPercentage >= 86) {
+		                resultText = "Decisive Victory";
+		                casualtyRate = 0.95;
+		        } else if (realSuccessPercentage >= 76) {
+		                resultText = "Major Victory";
+		                casualtyRate = 0.90;
+		        } else if (realSuccessPercentage >= 66) {
+		                resultText = "Tactical Victory";
+		                casualtyRate = 0.80;
+		        } else if (realSuccessPercentage >= 56) {
+		                resultText = "Minor Victory";
+		                casualtyRate = 0.70;
+		        } else if (realSuccessPercentage >= 52) {
+		                resultText = "Pyrrhic Victory";
+		                casualtyRate = 0.60;
+		        } else if (realSuccessPercentage >= 49) {
+		                resultText = "Draw";
+		                casualtyRate = 0.50;
+		        } else if (realSuccessPercentage >= 46) {
+		                resultText = "Minor Defeat";
+		                casualtyRate = 0.40;
+		        } else if (realSuccessPercentage >= 26) {
+		                resultText = "Tactical Defeat";
+		                casualtyRate = 0.25;
+		        } else if (realSuccessPercentage >= 16) {
+		                resultText = "Major Defeat";
+		                casualtyRate = 0.15;
+		        } else if (realSuccessPercentage >= 6) {
+		                resultText = "Rout";
+		                casualtyRate = 0.05;
+		        } else if (realSuccessPercentage >= 0) {
+		                resultText = "Catastrophic Disaster";
+		                casualtyRate = 0.01;
+		        } else {
+		                resultText = "Invalid Input"; // Handle cases where realSuccessPercentage is less than 0
+		                casualtyRate = 0.001;
+		        }
 
-		// Discord Webhook Integration
-		const threadId = threadIdInput.value.trim();
-		if (threadId && countryData) {
-		const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
-		const armyCasualties = (countryArmy - (countryArmy * casualtyRate)).toLocaleString('en-US', { maximumFractionDigits: 0 }); // Declare armyCasualties here
-		
-		const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
-		
-		const message = `
+		        // Update resultSpan with resultText
+		        resultSpan.textContent = resultText;
+
+		        // Discord Webhook Integration
+		        const threadId = threadIdInput.value.trim();
+		        if (threadId && countryData) {
+		                const countryArmy = Math.round(countryData.population * (countryData.army_recruitment_rate / 100));
+		                const armyCasualties = (countryArmy - (countryArmy * casualtyRate)).toLocaleString('en-US', {
+		                        maximumFractionDigits: 0
+		                });
+
+		                const webhookURL = `https://discord.com/api/webhooks/1289525723555692544/bqcR2jsHhTQjewQRFtbMjWyRKowuA3ybtfzsoKeDLEvWzOrEU3XDGkdXK9PU5ikKKLHY?thread_id=${threadId}`;
+
+		                const message = `
 		> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
 		
 		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
 		> Success Percentage: ${successRate}
+		> Terrain: ${selectedTerrain} _(Modifier: ${(terrainModifier * 100).toFixed(2)}%)_
 		> Army Casualties: ${armyCasualties} _(From ${countryData.country_short_name})_\n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
 		`;
 
@@ -313,33 +325,34 @@
 		                        });
 		        }
 
-		    // Console logging 
-		    console.log("——————————————————————");
-		    console.log(
-		        "%cYOUR RESULTS — (indepth!)",
-		        "font-family: monospace; font-size: 24px; font-weight: bold;",
-		    );
-		    console.log("Base Military Strength:", baseMilitaryStrength);
-		    console.log("Modified Military Strength (after keys):", militaryStrength);
-		    console.log("Success Rate:", successRate);
-		    console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
-		    console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
-		    if (countryData) {
-		        console.log("Country:", countryData.country_name);
-		        if (typeof armyCasualties !== 'undefined') {
-		            console.log("Army Casualties:", armyCasualties);
-		        } else {
-		            console.log("Army Casualties: Could not be calculated (country data may be missing).");
+		        // Console logging 
+		        console.log("——————————————————————");
+		        console.log(
+		                "%cYOUR RESULTS — (indepth!)",
+		                "font-family: monospace; font-size: 24px; font-weight: bold;",
+		        );
+		        console.log("Base Military Strength:", baseMilitaryStrength);
+		        console.log("Modified Military Strength (after keys):", militaryStrength);
+		        console.log("Terrain:", selectedTerrain, `(Modifier: ${(terrainModifier * 100).toFixed(2)}%)`);
+		        console.log("Success Rate:", successRate);
+		        console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
+		        console.log("Display Success Percentage:", displaySuccessPercentage.toFixed(2) + "%");
+		        if (countryData) {
+		                console.log("Country:", countryData.country_name);
+		                if (typeof armyCasualties !== 'undefined') {
+		                        console.log("Army Casualties:", armyCasualties);
+		                } else {
+		                        console.log("Army Casualties: Could not be calculated (country data may be missing).");
+		                }
 		        }
-		    }
 		});
 
 		function generateSuccessRate(militaryStrength) {
-			const chance = Math.random();
-			let minRange = militaryStrength * 1.0; // Min is 100% of military strength
-			let maxRange = militaryStrength * 3.5; // Max is 350% of military strength
-			
-			return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
+		        const chance = Math.random();
+		        let minRange = militaryStrength * 1.0; // Min is 100% of military strength
+		        let maxRange = militaryStrength * 3.5; // Max is 350% of military strength
+
+		        return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
 		}
 	</script>
 </body>
