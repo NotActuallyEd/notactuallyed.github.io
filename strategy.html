@@ -301,7 +301,7 @@
 		                const message = `
 		> # __${displaySuccessPercentage.toFixed(2)}% ・ ${resultText}__
 		
-		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength})_ 
+		> Military Strength: ${baseMilitaryStrength} _(${militaryStrength.toFixed(5)})_ 
 		> Success Percentage: ${successRate}
 		> Terrain: ${selectedTerrain} _(Modifier: ${(terrainModifier * 100).toFixed(2)}%)_
 		> Army Casualties: ${armyCasualties} _(From ${countryData.country_short_name})_\n-# I am a webhook! This action was performed through [Sahurle Strategy](https://notactuallyed.github.io/strategy)!
@@ -334,7 +334,7 @@
 		                "font-family: monospace; font-size: 24px; font-weight: bold;",
 		        );
 		        console.log("Base Military Strength:", baseMilitaryStrength);
-		        console.log("Modified Military Strength (after keys):", militaryStrength);
+		        console.log("Modified Military Strength (after keys & terrain):", militaryStrength);
 		        console.log("Terrain:", selectedTerrain, `(Modifier: ${(terrainModifier * 100).toFixed(2)}%)`);
 		        console.log("Success Rate:", successRate);
 		        console.log("Real Success Percentage:", realSuccessPercentage.toFixed(2) + "%");
