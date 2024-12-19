@@ -335,20 +335,11 @@
 		});
 
 		function generateSuccessRate(militaryStrength) {
-		const chance = Math.random();
-		let minRange = militaryStrength * 0.5; // Min is 50% of military strength
-		let maxRange = militaryStrength * 2; // Max is 200% of military strength
-		
-		if (chance < 0.05) {
-		maxRange = militaryStrength + 30;
-		} else if (chance < 0.25) {
-		maxRange = militaryStrength + 20;
-		} else if (chance < 0.65) {
-		maxRange = militaryStrength + 10;
-		}
-		
-		// Generate a random number with two decimal places
-		return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
+			const chance = Math.random();
+			let minRange = militaryStrength * 0.5; // Min is 50% of military strength
+			let maxRange = militaryStrength * 2.5; // Max is 250% of military strength
+			
+			return (Math.random() * (maxRange - minRange) + minRange).toFixed(2);
 		}
 	</script>
 </body>
